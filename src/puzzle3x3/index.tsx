@@ -10,7 +10,7 @@ type Puzzle = {
 
 const puzzles: Array<Puzzle> = [{
   type: 'puzzle-3x3',
-  picture: '/puzzle3x3.png',
+  picture: '/quiz/puzzle3x3.png',
   series: [9, 6, 1, 4, 7, 3, 5, 2, 8]
 }]
 
