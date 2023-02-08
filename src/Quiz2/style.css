@@ -1,0 +1,19 @@
+.puzzle-container {
+    width: 800px;
+    max-width: 80%;
+    background-color: black;
+    border-radius: 5px;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    gap: 5px;
+    margin: 20px 0;
+}
+
+.puzzle-image {
+    position: relative;
+    height: 200px;
+    background-size: 333%;
+    background-origin: padding-box;
+}
+
