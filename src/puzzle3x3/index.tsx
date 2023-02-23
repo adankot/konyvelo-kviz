@@ -47,7 +47,7 @@ function Puzzle3x3() {
 
   const checkWin = (series: Array<number>) => series.every((v, i, a) => !i || a[i - 1] <= v);
 
-  return <div>
+  return <>
     <div className="puzzle-container">
       {series.map(id =>
         <div className="puzzle-image"
@@ -62,7 +62,7 @@ function Puzzle3x3() {
     <div>
       {checkWin(series) ? 'Nyertél' : ''}
     </div>
-  </div>
+  </>
 }
 
 export default Puzzle3x3;

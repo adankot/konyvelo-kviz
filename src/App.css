@@ -5,7 +5,7 @@
 
 *, *::before, *::after {
     box-sizing: border-box;
-    font-family: Stencilia;
+    font-family: sans-serif;
 }
 
 :root {
@@ -34,6 +34,9 @@ body {
     border-radius: 5px;
     padding: 10px;
     /*box-shadow: 0 0 10px 2px;*/
+    display: grid;
+    grid-template-columns: repeat(1, auto);
+    gap: 5px;
 }
 
 .btn-grid {
@@ -46,13 +49,14 @@ body {
 .btn {
     --bg-color: black;
     --color: white;
-    /*border: 1px solid hsl(var(--hue), 100%, 30%);*/
+    border: 1px solid white;
     background-color: var(--bg-color);
-    border-radius: 5px;
     padding: 5px 10px;
     color: var(--color);
     outline: none;
     font-size: 16px;
+    font-family: sans-serif;
+    width: 300px;
 }
 
 @-webkit-keyframes pulsate {
@@ -92,6 +96,7 @@ body {
     font-size: 40px;
     color: white;
     height: 300px;
+    font-family: Stencilia;
 }
 
 .rankings-container {

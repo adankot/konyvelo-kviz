@@ -1,13 +1,12 @@
 .puzzle-container {
-    width: 800px;
-    max-width: 80%;
+    width: 615px;
     background-color: black;
     border-radius: 5px;
     padding: 10px;
     display: grid;
     grid-template-columns: repeat(3, auto);
     gap: 5px;
-    margin: 20px 0;
+    margin: auto;
 }
 
 .puzzle-image {
