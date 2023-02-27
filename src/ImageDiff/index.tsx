@@ -1,63 +1,75 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import CheckIcon from '@mui/icons-material/Check';
 
 import './style.css';
 
-type ImageDiffType = {
-  type: 'diff',
-  picture1: string,
-  picture2: string,
-  diffs: Array<{ x: number, y: number, found: boolean }>;
-}
+let currentStep = 0;
 
-const imageDiffs: Array<ImageDiffType> = [{
-  type: 'diff',
-  picture1: '/quiz/diff1.png',
-  picture2: '/quiz/diff2.png',
-  diffs: [
-    { x: 33, y: 52, found: false },
-    { x: 74, y: 37, found: false },
-    { x: 66, y: 77, found: false },
-    { x: 1, y: 81, found: false },
-    { x: 8, y: 25, found: false },
-    { x: 25, y: 34, found: false }
-  ]
-}]
-
-function ImageDiff() {
-  const [actualDiff, setActualDiff] = useState(imageDiffs[0]);
-  const [diffs, setDiffs] = useState(imageDiffs[0].diffs);
+function ImageDiff({ game }: any) {
+  const [showDescription, setShowDescription] = useState(true);
+  const [actualDiff, setActualDiff] = useState(game.steps[currentStep]);
+  const [diffs, setDiffs] = useState(game.steps[currentStep].diffs);
+  const [showNextButton, setShowNextButton] = useState(false);
 
   const found = (index: number) => {
-    setDiffs((prev) => {
+    setDiffs((prev: any) => {
       const newDiffs = [...prev];
-      newDiffs[index].found = true
+      newDiffs[index].found = true;
       return newDiffs;
-    })
+    });
+  };
+
+  function setNextStep() {
+    setShowNextButton(false);
+    currentStep += 1;
+    setActualDiff(game.steps[currentStep]);
   }
 
   return <div>
-    <div className="diff-image-container">
-      {<div className="diff-image" style={{ backgroundImage: `url("${actualDiff.picture1}")` }}>
-        {diffs.map((diff, index) =>
-          <div className={`diff-spot${diff.found ? ' found' : ''}`}
-               style={{ left: `${diff.x}%`, top: `${diff.y}%` }}
-               onClick={() => found(index)}
-               key={index}
-          ><CheckIcon /></div>)}
-      </div>}
-      {<div className="diff-image" style={{ backgroundImage: `url("${actualDiff.picture2}")` }}>
-        {diffs.map((diff, index) =>
-          <div className={`diff-spot${diff.found ? ' found' : ''}`}
-               style={{ left: `${diff.x}%`, top: `${diff.y}%` }}
-               onClick={() => found(index)}
-               key={index}
-          ><CheckIcon /></div>
-        )}
-      </div>}
-    </div>
-    <div>Hátralévő különbségek: {diffs.filter(diff => !diff.found).length}</div>
-  </div>
+    {showDescription ?
+      <div className={'GameDescriptionContainer'}>
+        <div className={'GameDescription'}>
+          <h1>LEÍRÁS</h1>
+          <div>
+            {game.description}
+          </div>
+        </div>
+        <div className={'GameDescriptionButtonHold'}>
+          <button className={'btn start-btn'} onClick={() => setShowDescription(false)}>Tovább</button>
+        </div>
+      </div> : <>
+        <div className='diff-image-container'>
+          {<div className='diff-image'
+                style={{ backgroundImage: `url("${process.env.REACT_APP_ADMIN_URL}/${actualDiff.picture1}")` }}>
+            {diffs.map((diff: any, index: number) =>
+              <div className={`diff-spot${diff.found ? ' found' : ''}`}
+                   style={{ left: `${diff.x}%`, top: `${diff.y}%` }}
+                   onClick={() => found(index)}
+                   key={index}
+              ><CheckIcon /></div>)}
+          </div>}
+          {<div className='diff-image'
+                style={{ backgroundImage: `url("${process.env.REACT_APP_ADMIN_URL}/${actualDiff.picture2}")` }}>
+            {diffs.map((diff: any, index: number) =>
+              <div className={`diff-spot${diff.found ? ' found' : ''}`}
+                   style={{ left: `${diff.x}%`, top: `${diff.y}%` }}
+                   onClick={() => found(index)}
+                   key={index}
+              ><CheckIcon /></div>
+            )}
+          </div>}
+        </div>
+        <div>Hátralévő különbségek: {diffs.filter((diff: any) => !diff.found).length}</div>
+        <div className='controls'>
+          <div className={'buttonHold'}>
+            <button id='next-btn'
+                    className={`btn next-btn ${(!showNextButton || game.steps.length === currentStep + 1) && 'hide'}`}
+                    onClick={setNextStep}>Következő
+            </button>
+          </div>
+        </div>
+      </>}
+  </div>;
 }
 
 export default ImageDiff;
