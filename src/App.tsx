@@ -76,13 +76,24 @@ function App() {
       localStorage.setItem('ranks', JSON.stringify({ [type]: [{ name, points }], ...rankings }));
       return true;
     }
-    if (!rankings[type][9] || rankings[type][9].points < points) {
-      const indexOfSmallerScore = rankings[type].findIndex((rank: any) => rank.points < points);
-      const firstPart = rankings[type].slice(0, indexOfSmallerScore);
-      const secondPart = rankings[type].slice(indexOfSmallerScore);
-      const newArray = [...firstPart, { name, points }, ...secondPart];
-      localStorage.setItem('ranks', JSON.stringify({ ...rankings, [type]: newArray.slice(0, 10) }));
-      return true;
+    if (['diff', 'puzzle'].includes(type)) {
+      if (!rankings[type][9] || rankings[type][9].points > points) {
+        const indexOfSmallerScore = rankings[type].findIndex((rank: any) => rank.points > points);
+        const firstPart = rankings[type].slice(0, indexOfSmallerScore);
+        const secondPart = rankings[type].slice(indexOfSmallerScore);
+        const newArray = [...firstPart, { name, points }, ...secondPart];
+        localStorage.setItem('ranks', JSON.stringify({ ...rankings, [type]: newArray.slice(0, 10) }));
+        return true;
+      }
+    } else {
+      if (!rankings[type][9] || rankings[type][9].points < points) {
+        const indexOfSmallerScore = rankings[type].findIndex((rank: any) => rank.points < points);
+        const firstPart = rankings[type].slice(0, indexOfSmallerScore);
+        const secondPart = rankings[type].slice(indexOfSmallerScore);
+        const newArray = [...firstPart, { name, points }, ...secondPart];
+        localStorage.setItem('ranks', JSON.stringify({ ...rankings, [type]: newArray.slice(0, 10) }));
+        return true;
+      }
     }
     return false;
   }
@@ -135,10 +146,10 @@ function App() {
   return (
     <div className='App'>
       <body>
+      {!isFullscreen && <div className={'fs-button-container'} onClick={fullScreen}>
+        <FullscreenIcon fontSize={'inherit'} />
+      </div>}
       <div className='container'>
-        {!isFullscreen && <div className={'fs-button-container'} onClick={fullScreen}>
-          <FullscreenIcon fontSize={'inherit'} />
-        </div>}
         {showNameField && <NameField startGame={startGame} setStorageName={setName} />}
         {selectedGame?.type && selectedGame.type === 'diff' &&
           <ImageDiff

@@ -32,7 +32,10 @@ function Puzzle3x3({ game, savePoints, onShowRanking, startGame }: any) {
   function setNextStep() {
     if (currentStep + 1 === game.steps.length) {
       setFinished(true);
-      setEndTime(timespent);
+      setEndTime(() => {
+        savePoints(game.type, timespent);
+        return timespent;
+      });
       setShowNextButton(false);
     } else {
       setShowNextButton(false);
@@ -42,10 +45,6 @@ function Puzzle3x3({ game, savePoints, onShowRanking, startGame }: any) {
       setDiv(game.steps[currentStep].div)
     }
   }
-
-  useEffect(() => {
-    savePoints(game.type, endTime);
-  }, [endTime]);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -81,6 +80,9 @@ function Puzzle3x3({ game, savePoints, onShowRanking, startGame }: any) {
         </div>
         <div className={'GameDescriptionButtonHold'}>
           <button className={'btn start-btn'} onClick={() => setShowDescription(false)}>Tovább</button>
+        </div>
+        <div className={'GameDescriptionButtonHold'}>
+          <button className={'btn start-btn'} onClick={startGame}>Vissza</button>
         </div>
       </div>}
     {!showDescription && !finished && <>
@@ -121,6 +123,9 @@ function Puzzle3x3({ game, savePoints, onShowRanking, startGame }: any) {
           </button>
           <button className={`btn ${(!finished) && 'hide'}`}
                   onClick={startGame}>Vissza a játékokhoz
+          </button>
+          <button className={`btn ${(showDescription || showNextButton || finished) && 'hide'}`}
+                  onClick={startGame}>Feladom
           </button>
         </div>
       </div>

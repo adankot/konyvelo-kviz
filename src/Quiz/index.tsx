@@ -107,6 +107,9 @@ function Quiz2({ game, savePoints, onShowRanking, startGame }: any) {
             <button className={`btn ${(!finished) && 'hide'}`}
                     onClick={startGame}>Vissza a játékokhoz
             </button>
+            <button className={`btn ${(finished || showNextButton) && 'hide'}`}
+                    onClick={startGame}>Feladom
+            </button>
           </div>
         </div>
       </div>

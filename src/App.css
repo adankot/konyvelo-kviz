@@ -31,6 +31,7 @@ body {
 }
 
 .container {
+    transform: scale(0.7);
     width: 100%;
     background-color: black;
     border-radius: 5px;
@@ -207,7 +208,7 @@ body {
     top: 0px;
     left: 0px;
     padding: 25px;
-    font-size: 72px;
+    font-size: 56px;
 }
 
 .GameSummary {

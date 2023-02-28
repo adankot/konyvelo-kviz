@@ -6,7 +6,7 @@ import './style.css';
 let currentStep = 0;
 
 function ImageDiff({ game, savePoints, onShowRanking, startGame }: any) {
-  const Game = {...game};
+  const Game = { ...game };
   const [showDescription, setShowDescription] = useState(true);
   const [actualDiff, setActualDiff] = useState(Game.steps[currentStep]);
   const [diffs, setDiffs] = useState(Game.steps[currentStep].diffs);
@@ -32,16 +32,18 @@ function ImageDiff({ game, savePoints, onShowRanking, startGame }: any) {
   };
 
   useEffect(() => {
-    savePoints(game.type, endTime);
     Game.steps.forEach((step: any) => {
-      step.diffs.forEach((diff: any) => diff.found = false)
-    })
+      step.diffs.forEach((diff: any) => diff.found = false);
+    });
   }, [endTime]);
 
   function setNextStep() {
     if (currentStep + 1 === game.steps.length) {
       setFinished(true);
-      setEndTime(timespent);
+      setEndTime(() => {
+        savePoints(game.type, timespent);
+        return timespent;
+      });
       setShowNextButton(false);
     } else {
       setShowNextButton(false);
@@ -109,6 +111,9 @@ function ImageDiff({ game, savePoints, onShowRanking, startGame }: any) {
         </button>
         <button className={`btn ${(!finished) && 'hide'}`}
                 onClick={startGame}>Vissza a játékokhoz
+        </button>
+        <button className={`btn ${(showDescription || showNextButton || finished) && 'hide'}`}
+                onClick={startGame}>Feladom
         </button>
       </div>
     </div>
