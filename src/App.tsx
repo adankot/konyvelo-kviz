@@ -4,16 +4,42 @@ import ImageDiff from './ImageDiff';
 import Puzzle3x3 from './puzzle3x3';
 import Quiz from './Quiz';
 import NameField from './NameField';
+import Rankings from './Rankings';
+
+import FullscreenIcon from '@mui/icons-material/Fullscreen';
 
 import './App.css';
 
+const difficulties: any = {
+  easy: 'Fegyverhodozó',
+  medium: 'Harcos',
+  hard: 'Lovag'
+}
+
 function App() {
+  const [isFullscreen, setIsFullscreen] = React.useState(false);
+
+  useEffect(() => {
+    function onFullscreenChange() {
+      setIsFullscreen(Boolean(document.fullscreenElement));
+    }
+
+    document.addEventListener('fullscreenchange', onFullscreenChange);
+
+    return () => document.removeEventListener('fullscreenchange', onFullscreenChange);
+  }, []);
+
+  function fullScreen() {
+    document.body.requestFullscreen();
+  }
+
   const [showStartButton, setShowStartButton] = useState(true);
   const [showGameSelector, setShowGameSelector] = useState(false);
-  const [showRanking, setShowRanking] = useState(false);
+  const [showRanking, setShowRanking] = useState<boolean | string>(false);
   const [selectedGame, setSelectedGame] = useState<any>(null);
   const [showNameField, setShowNameField] = useState(false);
   const [games, setGames] = useState([]);
+  const [points, setPoints] = useState<any>({});
 
   useEffect(() => {
     const dataFetch = async () => {
@@ -38,24 +64,59 @@ function App() {
     localStorage.setItem('name', name);
   }
 
-  function addToRanks(type: string, name: string) {
-    localStorage.setItem('ranks', '{}');
+  function addToRanks(type: string, points: number) {
+    const name = localStorage.getItem('name');
+    const rankingsString = localStorage.getItem('ranks');
+    if (!rankingsString) {
+      localStorage.setItem('ranks', JSON.stringify({ [type]: [{ name, points }] }));
+      return true;
+    }
+    const rankings = JSON.parse(rankingsString);
+    if (!rankings[type]) {
+      localStorage.setItem('ranks', JSON.stringify({ [type]: [{ name, points }], ...rankings }));
+      return true;
+    }
+    if (!rankings[type][9] || rankings[type][9].points < points) {
+      const indexOfSmallerScore = rankings[type].findIndex((rank: any) => rank.points < points);
+      const firstPart = rankings[type].slice(0, indexOfSmallerScore);
+      const secondPart = rankings[type].slice(indexOfSmallerScore);
+      const newArray = [...firstPart, { name, points }, ...secondPart];
+      localStorage.setItem('ranks', JSON.stringify({ ...rankings, [type]: newArray.slice(0, 10) }));
+      return true;
+    }
+    return false;
+  }
+
+  function savePoints(type: string, points: number) {
+    const pointsAsString = localStorage.getItem('points');
+    if (pointsAsString) {
+      const storedPoints = JSON.parse(pointsAsString);
+      localStorage.setItem('points', JSON.stringify({ [type]: points, ...storedPoints }));
+      setPoints({ [type]: points, ...storedPoints });
+    } else {
+      localStorage.setItem('points', JSON.stringify({ [type]: points }));
+      setPoints({ [type]: points });
+    }
+    addToRanks(type, points);
   }
 
   function startGame() {
+    setPoints({});
     setShowStartButton(false);
     setShowNameField(false);
+    setSelectedGame(null);
     setShowGameSelector(true);
   }
 
-  function getNameField(){
+  function getNameField() {
     setShowStartButton(false);
     setShowNameField(true);
   }
 
-  function onShowRanking() {
+  function onShowRanking(type: string) {
     setShowStartButton(false);
-    setShowRanking(true);
+    setSelectedGame(null);
+    setShowRanking(type);
   }
 
   function showHomePage() {
@@ -75,17 +136,34 @@ function App() {
     <div className='App'>
       <body>
       <div className='container'>
-        {showNameField && <NameField startGame={startGame} setStorageName={setName} />}
-        {selectedGame?.type && selectedGame.type === 'diff' && <ImageDiff game={selectedGame} />}
-        {selectedGame?.type && (['quiz-2', 'quiz-3', 'quiz-4'].includes(selectedGame.type)) && <Quiz game={selectedGame} />}
-        {selectedGame?.type && selectedGame.type === 'puzzle' && <Puzzle3x3 game={selectedGame} />}
-        {selectedGame !== null && <div className={'buttonHold'}>
-          <button id='start-btn' className={`btn start-btn`}
-                  onClick={showHomePage}>Vissza
-          </button>
+        {!isFullscreen && <div className={'fs-button-container'} onClick={fullScreen}>
+          <FullscreenIcon fontSize={'inherit'} />
         </div>}
+        {showNameField && <NameField startGame={startGame} setStorageName={setName} />}
+        {selectedGame?.type && selectedGame.type === 'diff' &&
+          <ImageDiff
+            game={{...selectedGame}}
+            savePoints={savePoints}
+            onShowRanking={onShowRanking}
+            startGame={startGame}
+          />}
+        {selectedGame?.type && (['quiz-2', 'quiz-3', 'quiz-4'].includes(selectedGame.type)) &&
+          <Quiz
+            game={{...selectedGame}}
+            savePoints={savePoints}
+            onShowRanking={onShowRanking}
+            startGame={startGame}
+          />}
+        {selectedGame?.type && selectedGame.type === 'puzzle' &&
+          <Puzzle3x3
+            game={{...selectedGame}}
+            savePoints={savePoints}
+            onShowRanking={onShowRanking}
+            startGame={startGame}
+          />}
+        {showRanking && <Rankings showHomePage={showHomePage} rankingType={showRanking} />}
         <div className={`main-page ${!showStartButton && 'hide'}`}>
-          <div className='title'>solium regni</div>
+          <div className='title-logo'><img src='/quiz/title-logo.png' /></div>
           <div className={'buttonHold'}>
             <button id='start-btn' className={`btn start-btn ${!showStartButton && 'hide'}`}
                     onClick={getNameField}>Kezdés
@@ -93,25 +171,7 @@ function App() {
           </div>
           <div className={'buttonHold'}>
             <button id='start-btn' className={`btn start-btn ${!showStartButton && 'hide'}`}
-                    onClick={onShowRanking}>Ragsor
-            </button>
-          </div>
-        </div>
-        <div className={`main-page ${!showRanking && 'hide'}`}>
-          <div className='title'>Rangsor</div>
-          <div className={'rankings-container'}>
-            1. AAASSSDDD<br />
-            2. AAASSSDDD<br />
-            3. AAASSSDDD<br />
-            4. AAASSSDDD<br />
-            5. AAASSSDDD<br />
-            6. AAASSSDDD<br />
-            7. AAASSSDDD<br />
-            8. AAASSSDDD<br />
-          </div>
-          <div className={'buttonHold'}>
-            <button id='start-btn' className={`btn start-btn`}
-                    onClick={showHomePage}>Vissza
+                    onClick={() => onShowRanking('quiz-2')}>Rangsor
             </button>
           </div>
         </div>
@@ -119,11 +179,19 @@ function App() {
           <div className='title'>Válassz játékot</div>
           {games.map((game: any) =>
             <div className={'buttonHold'}>
-              <button id='start-btn' className={`btn start-btn`}
-                      onClick={() => onSetSelectedGame(game)}>{game.label}
-              </button>
+              <div className={`btn start-btn gameChooser`}
+                      onClick={() => onSetSelectedGame({...game})}>
+                <span className={'gameChooserLabel'}>{game.label}</span>
+                <span className={'gameChooserDifficulty'}>Szint: {difficulties[game.difficulty]}</span>
+                {!!points[game.type] && points[game.type] > 0 && <span className={'gameChooserDifficulty'}>Elért pontok: {points[game.type]}</span>}
+              </div>
             </div>
           )}
+          <div className={'buttonHold'}>
+            <button className={`btn start-btn`}
+                    onClick={showHomePage}>Vissza
+            </button>
+          </div>
         </div>
       </div>
       </body>

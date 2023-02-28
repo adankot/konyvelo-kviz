@@ -11,8 +11,19 @@
 
 .puzzle-image {
     position: relative;
-    height: 200px;
-    background-size: 333%;
+    background-size: 600px 600px;
     background-origin: padding-box;
 }
 
+.PuzzleGameInfoBox {
+    margin-top: 25px;
+    display: grid;
+    grid-template-columns: 6fr;
+    font-size: 1em;
+}
+
+.PuzzleGameInfoTime {
+    text-align: center;
+    font-size: 1.5em;
+    margin: 5px;
+}

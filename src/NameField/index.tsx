@@ -7,6 +7,7 @@ function NameField({ setStorageName, startGame }: any) {
   const [showWarning, setShowWarning] = useState(false);
 
   localStorage.removeItem('name');
+  localStorage.removeItem('points');
 
   function onNext() {
     if (name === '') {
@@ -17,6 +18,12 @@ function NameField({ setStorageName, startGame }: any) {
     }
   }
 
+  const handleKeyDown = (event: any) => {
+    if (event.key === 'Enter') {
+      onNext();
+    }
+  };
+
   return <div>
     <div className='controls'>
       <div className={'NameField'}>
@@ -25,6 +32,7 @@ function NameField({ setStorageName, startGame }: any) {
                onChange={(e) => setName(e.target.value.toUpperCase())}
                placeholder={'BECENÉV'}
                value={name}
+               onKeyDown={handleKeyDown}
         ></input>
       </div>
       <div className={'buttonHold'}>

@@ -1,0 +1,36 @@
+.rankLine {
+    width: 100%;
+    text-align: center;
+    font-size: 2em;
+    padding: 5px;
+}
+
+.rankings-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    min-height: 450px;
+    padding: 25px;
+    margin: 50px 0;
+}
+
+.rankings-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 100px;
+    color: white;
+    margin-bottom: 25px;
+    font-family: Stencilia;
+}
+
+.rankings-menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.rankings-menu-item {
+    font-size: 1.5em;
+    margin: 0 10px;
+}

@@ -1,19 +1,21 @@
-.puzzle-container {
+.picked {
+    border: 5px solid #f7a623 !important;
+}
+
+.questionContainer{
+    margin: 50px auto 10px auto;
     width: 800px;
     max-width: 80%;
     background-color: black;
     border-radius: 5px;
     padding: 10px;
-    display: grid;
-    grid-template-columns: repeat(3, auto);
-    gap: 5px;
-    margin: 20px 0;
 }
 
-.puzzle-image {
+.question-image {
     position: relative;
-    height: 200px;
-    background-size: 333%;
-    background-origin: padding-box;
+    min-height: 500px;
+    width: 500px;
+    background-size: cover;
+    box-shadow: 0 0 10px 2px;
+    margin: 0 auto;
 }
-

@@ -1,28 +1,33 @@
+.diff-container {
+    width: 940px;
+    margin: 0 auto;
+}
+
 .diff-image-container {
-    width: 100%;
+    width: 940px;
     background-color: black;
     border-radius: 5px;
     padding: 10px;
     display: grid;
     grid-template-columns: repeat(2, auto);
     gap: 20px;
-    margin: 20px 0;
+    margin: 20px auto;
     justify-content: center;
     align-items: center;
 }
 
 .diff-image {
     position: relative;
-    height: 300px;
-    width: 300px;
+    height: 450px;
+    width: 450px;
     background-size: cover;
 }
 
 .diff-spot {
     position: absolute;
     background-color: #f7a623;
-    width: 50px;
-    height: 50px;
+    width: 75px;
+    height: 75px;
     border-radius: 100%;
     border: 3px solid;
     opacity: 0;
@@ -44,3 +49,20 @@
     box-shadow: 0 0 10px 2px;
 }
 
+.DiffGameInfoBox {
+    margin-top: 25px;
+    display: grid;
+    grid-template-columns: 6fr 6fr;
+    font-size: 1em;
+}
+
+.DiffGameInfoStepsLeft {
+    font-size: 1.5em;
+    margin: 5px;
+}
+
+.DiffGameInfoFaults {
+    text-align: right;
+    font-size: 1.5em;
+    margin: 5px;
+}
