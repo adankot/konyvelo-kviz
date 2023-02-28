@@ -14,7 +14,7 @@ const difficulties: any = {
   easy: 'Fegyverhodozó',
   medium: 'Harcos',
   hard: 'Lovag'
-}
+};
 
 function App() {
   const [isFullscreen, setIsFullscreen] = React.useState(false);
@@ -87,21 +87,20 @@ function App() {
     return false;
   }
 
-  function savePoints(type: string, points: number) {
+  function savePoints(type: string, pointsGot: number) {
     const pointsAsString = localStorage.getItem('points');
     if (pointsAsString) {
       const storedPoints = JSON.parse(pointsAsString);
-      localStorage.setItem('points', JSON.stringify({ [type]: points, ...storedPoints }));
-      setPoints({ [type]: points, ...storedPoints });
+      localStorage.setItem('points', JSON.stringify({ [type]: pointsGot, ...storedPoints }));
+      setPoints({ [type]: pointsGot, ...storedPoints });
     } else {
-      localStorage.setItem('points', JSON.stringify({ [type]: points }));
-      setPoints({ [type]: points });
+      localStorage.setItem('points', JSON.stringify({ [type]: pointsGot }));
+      setPoints({ [type]: pointsGot });
     }
-    addToRanks(type, points);
+    addToRanks(type, pointsGot);
   }
 
   function startGame() {
-    setPoints({});
     setShowStartButton(false);
     setShowNameField(false);
     setSelectedGame(null);
@@ -109,6 +108,7 @@ function App() {
   }
 
   function getNameField() {
+    setPoints({});
     setShowStartButton(false);
     setShowNameField(true);
   }
@@ -142,21 +142,21 @@ function App() {
         {showNameField && <NameField startGame={startGame} setStorageName={setName} />}
         {selectedGame?.type && selectedGame.type === 'diff' &&
           <ImageDiff
-            game={{...selectedGame}}
+            game={{ ...selectedGame }}
             savePoints={savePoints}
             onShowRanking={onShowRanking}
             startGame={startGame}
           />}
         {selectedGame?.type && (['quiz-2', 'quiz-3', 'quiz-4'].includes(selectedGame.type)) &&
           <Quiz
-            game={{...selectedGame}}
+            game={{ ...selectedGame }}
             savePoints={savePoints}
             onShowRanking={onShowRanking}
             startGame={startGame}
           />}
         {selectedGame?.type && selectedGame.type === 'puzzle' &&
           <Puzzle3x3
-            game={{...selectedGame}}
+            game={{ ...selectedGame }}
             savePoints={savePoints}
             onShowRanking={onShowRanking}
             startGame={startGame}
@@ -180,10 +180,11 @@ function App() {
           {games.map((game: any) =>
             <div className={'buttonHold'}>
               <div className={`btn start-btn gameChooser`}
-                      onClick={() => onSetSelectedGame({...game})}>
+                   onClick={() => onSetSelectedGame({ ...game })}>
                 <span className={'gameChooserLabel'}>{game.label}</span>
                 <span className={'gameChooserDifficulty'}>Szint: {difficulties[game.difficulty]}</span>
-                {!!points[game.type] && points[game.type] > 0 && <span className={'gameChooserDifficulty'}>Elért pontok: {points[game.type]}</span>}
+                {points.hasOwnProperty(game.type) &&
+                  <span className={'gameChooserDifficulty'}>Elért pontok: {points[game.type]}</span>}
               </div>
             </div>
           )}
