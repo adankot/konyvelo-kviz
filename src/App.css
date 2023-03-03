@@ -122,9 +122,13 @@ body {
     align-items: center;
     font-size: 100px;
     color: white;
-    height: 300px;
-    padding-bottom: 50px;
+    height: 400px;
+    padding-bottom: 25px;
     font-family: Stencilia;
+}
+
+.title-logo img {
+    height: 100%;
 }
 
 .rankings-container {
