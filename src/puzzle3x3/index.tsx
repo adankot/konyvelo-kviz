@@ -15,7 +15,7 @@ const lastNumbers: any = {
   3: 9,
   5: 25,
   6: 36
-}
+};
 
 let currentStep = 0;
 
@@ -25,16 +25,25 @@ function Puzzle3x3({ game, savePoints, onShowRanking, startGame }: any) {
   const [div, setDiv] = useState(game.steps[0].div);
   const [showDescription, setShowDescription] = useState(true);
   const [showNextButton, setShowNextButton] = useState(false);
-  const [timespent, setTimespent] = useState(0);
+  const [timeSpent, setTimeSpent] = useState(0);
   const [endTime, setEndTime] = useState(0);
   const [finished, setFinished] = useState(false);
+  const [showHelp, setShowHelp] = useState(false);
+
+  useEffect(() => {
+    if (endTime) savePoints(game.type, endTime);
+  }, [endTime]);
+
+  function onHelpClick() {
+    setShowHelp(true);
+    setTimeSpent((oldTime: number) => oldTime + 30);
+  }
 
   function setNextStep() {
     if (currentStep + 1 === game.steps.length) {
       setFinished(true);
       setEndTime(() => {
-        savePoints(game.type, timespent);
-        return timespent;
+        return timeSpent;
       });
       setShowNextButton(false);
     } else {
@@ -42,16 +51,16 @@ function Puzzle3x3({ game, savePoints, onShowRanking, startGame }: any) {
       currentStep += 1;
       setPicture(game.steps[currentStep].picture);
       setSeries(game.steps[currentStep].series || []);
-      setDiv(game.steps[currentStep].div)
+      setDiv(game.steps[currentStep].div);
     }
   }
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setTimespent((oldTimespent: number) => oldTimespent + 1);
+      setTimeSpent((oldTimeSpent: number) => showDescription || showNextButton ? oldTimeSpent : oldTimeSpent + 1);
     }, 1000);
     return () => clearInterval(interval);
-  }, []);
+  }, [showDescription, showNextButton]);
 
   const moveTile = (id: number, div: number) => {
     setSeries((prev: any) => {
@@ -85,12 +94,22 @@ function Puzzle3x3({ game, savePoints, onShowRanking, startGame }: any) {
           <button className={'btn start-btn'} onClick={startGame}>Vissza</button>
         </div>
       </div>}
-    {!showDescription && !finished && <>
+    {!showDescription && !finished && <div className={'puzzle-game-container'}>
+      <div>
+        <div
+          className={'puzzle-help'}
+          onClick={onHelpClick}
+          style={{
+            backgroundImage: showHelp ? `url("${process.env.REACT_APP_ADMIN_URL}/${picture}")` : '',
+            backgroundSize: 'cover'
+          }}
+        >{!showHelp && <p>Segítség<br />(+30 másodperc)</p>}</div>
+      </div>
       <div className='puzzle-container' style={{
         display: 'grid',
         gridTemplateColumns: `repeat(${div}, auto)`,
         gap: '5px',
-        margin: 'auto',
+        margin: 'auto'
       }}>
         {series.map((id: number) =>
           <div className='puzzle-image'
@@ -104,10 +123,12 @@ function Puzzle3x3({ game, savePoints, onShowRanking, startGame }: any) {
                key={id}
           ></div>)}
       </div>
+      <div />
+      <div />
       <div className={'PuzzleGameInfoBox'}>
-        <div className={'PuzzleGameInfoTime'}>Eltelt idő: {timespent}</div>
+        <div className={'PuzzleGameInfoTime'}>Eltelt idő: {timeSpent}</div>
       </div>
-    </>}
+    </div>}
     <div>
       {finished && <div className={'GameSummary'}>
         <h5>Gratulálunk felkerültél a toplistára!</h5>

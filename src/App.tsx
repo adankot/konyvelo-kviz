@@ -6,6 +6,8 @@ import Quiz from './Quiz';
 import NameField from './NameField';
 import Rankings from './Rankings';
 
+import * as serviceWorker from './serviceWorker';
+
 import FullscreenIcon from '@mui/icons-material/Fullscreen';
 
 import './App.css';
@@ -65,40 +67,42 @@ function App() {
   }
 
   function addToRanks(type: string, points: number) {
-    const name = localStorage.getItem('name');
+    console.log('ranking called');
+    const name: string | null = localStorage.getItem('name');
+    if (!name) return false;
     const rankingsString = localStorage.getItem('ranks');
     if (!rankingsString) {
       localStorage.setItem('ranks', JSON.stringify({ [type]: [{ name, points }] }));
       return true;
     }
-    const rankings = JSON.parse(rankingsString);
+    type Rank = {
+      name: string,
+      points: number
+    }
+    const rankings: { [key: string]: Array<Rank> } = JSON.parse(rankingsString);
     if (!rankings[type]) {
       localStorage.setItem('ranks', JSON.stringify({ [type]: [{ name, points }], ...rankings }));
       return true;
     }
+    rankings[type].push({ name, points });
     if (['diff', 'puzzle'].includes(type)) {
-      if (!rankings[type][9] || rankings[type][9].points > points) {
-        const indexOfSmallerScore = rankings[type].findIndex((rank: any) => rank.points > points);
-        const firstPart = rankings[type].slice(0, indexOfSmallerScore);
-        const secondPart = rankings[type].slice(indexOfSmallerScore);
-        const newArray = [...firstPart, { name, points }, ...secondPart];
-        localStorage.setItem('ranks', JSON.stringify({ ...rankings, [type]: newArray.slice(0, 10) }));
-        return true;
-      }
+      rankings[type] = rankings[type].sort((a, b) => a.points - b.points);
     } else {
-      if (!rankings[type][9] || rankings[type][9].points < points) {
-        const indexOfSmallerScore = rankings[type].findIndex((rank: any) => rank.points < points);
-        const firstPart = rankings[type].slice(0, indexOfSmallerScore);
-        const secondPart = rankings[type].slice(indexOfSmallerScore);
-        const newArray = [...firstPart, { name, points }, ...secondPart];
-        localStorage.setItem('ranks', JSON.stringify({ ...rankings, [type]: newArray.slice(0, 10) }));
-        return true;
+      rankings[type] = rankings[type].sort((a, b) => b.points - a.points);
+    }
+    if (rankings[type].length > 10) {
+      const lastRank = rankings[type].pop();
+      if (lastRank && lastRank.name === name) {
+        return false;
       }
     }
-    return false;
+    localStorage.setItem('ranks', JSON.stringify(rankings));
+    return true;
+
   }
 
   function savePoints(type: string, pointsGot: number) {
+    console.log('save called');
     const pointsAsString = localStorage.getItem('points');
     if (pointsAsString) {
       const storedPoints = JSON.parse(pointsAsString);
@@ -210,5 +214,10 @@ function App() {
     </div>
   );
 }
+
+// If you want your app to work offline and load faster, you can change
+// unregister() to register() below. Note this comes with some pitfalls.
+// Learn more about service workers: https://bit.ly/CRA-PWA
+serviceWorker.unregister();
 
 export default App;

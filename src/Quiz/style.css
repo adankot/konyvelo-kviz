@@ -19,3 +19,9 @@
     box-shadow: 0 0 10px 2px;
     margin: 0 auto;
 }
+
+.failed-container {
+    width: 100%;
+    text-align: center;
+    font-size: 2rem;
+}

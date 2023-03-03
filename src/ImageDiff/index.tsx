@@ -11,16 +11,16 @@ function ImageDiff({ game, savePoints, onShowRanking, startGame }: any) {
   const [actualDiff, setActualDiff] = useState(Game.steps[currentStep]);
   const [diffs, setDiffs] = useState(Game.steps[currentStep].diffs);
   const [showNextButton, setShowNextButton] = useState(false);
-  const [timespent, setTimespent] = useState(0);
+  const [timeSpent, setTimeSpent] = useState(0);
   const [endTime, setEndTime] = useState(0);
   const [finished, setFinished] = useState(false);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setTimespent((oldTimespent: number) => oldTimespent + 1);
+      setTimeSpent((oldTimeSpent: number) => showDescription || showNextButton ? oldTimeSpent : oldTimeSpent + 1);
     }, 1000);
     return () => clearInterval(interval);
-  }, []);
+  }, [showDescription, showNextButton]);
 
   const found = (index: number) => {
     setDiffs((prev: any) => {
@@ -32,6 +32,7 @@ function ImageDiff({ game, savePoints, onShowRanking, startGame }: any) {
   };
 
   useEffect(() => {
+    if (endTime) savePoints(game.type, endTime);
     Game.steps.forEach((step: any) => {
       step.diffs.forEach((diff: any) => diff.found = false);
     });
@@ -41,8 +42,7 @@ function ImageDiff({ game, savePoints, onShowRanking, startGame }: any) {
     if (currentStep + 1 === game.steps.length) {
       setFinished(true);
       setEndTime(() => {
-        savePoints(game.type, timespent);
-        return timespent;
+        return timeSpent;
       });
       setShowNextButton(false);
     } else {
@@ -94,7 +94,7 @@ function ImageDiff({ game, savePoints, onShowRanking, startGame }: any) {
       <div className={'DiffGameInfoBox'}>
         <div className={'DiffGameInfoStepsLeft'}>
           Hátralévő különbségek: {diffs.filter((diff: any) => !diff.found).length}</div>
-        <div className={'DiffGameInfoFaults'}>Eltelt idő: {timespent}</div>
+        <div className={'DiffGameInfoFaults'}>Eltelt idő: {timeSpent}</div>
       </div>
     </div>}
     {finished && <div className={'GameSummary'}>

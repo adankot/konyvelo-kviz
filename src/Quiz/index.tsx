@@ -17,6 +17,7 @@ function Quiz2({ game, savePoints, onShowRanking, startGame }: any) {
   const [faults, setFaults] = useState(0);
   const [picked, setPicked] = useState('');
   const [finished, setFinished] = useState(false);
+  const [failed, setFailed] = useState(false);
 
   function setNextQuestion() {
     if (currentQuestion + 1 === game.steps.length) {
@@ -38,7 +39,12 @@ function Quiz2({ game, savePoints, onShowRanking, startGame }: any) {
   function selectAnswer(answer: Answer) {
     setPicked(answer.answer);
     if (!showRightAnswer && answer.correct) setPoints((oldPoints: number) => oldPoints + 1);
-    if (!showRightAnswer && !answer.correct) setFaults((oldFaults: number) => oldFaults + 1);
+    if (!showRightAnswer && !answer.correct) setFaults((oldFaults: number) => {
+      if (3 === oldFaults + 1) {
+        setFailed(true);
+      }
+      return oldFaults + 1;
+    });
     setShowRightAnswer(true);
     setShowNextButton(true);
   }
@@ -60,7 +66,7 @@ function Quiz2({ game, savePoints, onShowRanking, startGame }: any) {
         </div>
       </div> :
       <div className={`questionContainer`}>
-        {!finished && <>
+        {!finished && !failed && <>
           {!!question.imageUrl && <div className='question-image'
                                        style={{ backgroundImage: `url("${process.env.REACT_APP_ADMIN_URL}/${question.imageUrl}")` }} />}
           <div className={'GameInfoBox'}>
@@ -92,22 +98,25 @@ function Quiz2({ game, savePoints, onShowRanking, startGame }: any) {
           </div>
         </>}
         {finished && <div className={'GameSummary'}>
+          {/* TODO check if toplist*/}
           <h5>Gratulálunk felkerültél a toplistára!</h5>
           <h1>Pontjaid: {points}</h1>
           <h6>Hibák: {faults}</h6>
         </div>}
+        {/* TODO time faults*/}
+        {failed && <div className={'failed-container'}>Sajnos 3 hibát vétettél. Vesztettél!</div>}
         <div className='controls'>
           <div className={'buttonHold'}>
-            <button className={`btn ${(!showNextButton) && 'hide'}`}
+            <button className={`btn ${(!showNextButton && failed) && 'hide'}`}
                     onClick={setNextQuestion}>Tovább
             </button>
             <button className={`btn ${(!finished) && 'hide'}`}
-                    onClick={() => onShowRanking(game.type)}>Top Lista
+                    onClick={() => onShowRanking(game.type)}>Befejezem a játékot
             </button>
-            <button className={`btn ${(!finished) && 'hide'}`}
+            <button className={`btn ${(!finished && !failed) && 'hide'}`}
                     onClick={startGame}>Vissza a játékokhoz
             </button>
-            <button className={`btn ${(finished || showNextButton) && 'hide'}`}
+            <button className={`btn ${(finished || showNextButton || failed) && 'hide'}`}
                     onClick={startGame}>Feladom
             </button>
           </div>
