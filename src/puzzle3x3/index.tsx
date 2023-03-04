@@ -29,9 +29,13 @@ function Puzzle3x3({ game, savePoints, onShowRanking, startGame }: any) {
   const [endTime, setEndTime] = useState(0);
   const [finished, setFinished] = useState(false);
   const [showHelp, setShowHelp] = useState(false);
+  const [isTop, setIsTop] = useState(false);
 
   useEffect(() => {
-    if (endTime) savePoints(game.type, endTime);
+    if (endTime) {
+      const response = savePoints(game.type, endTime);
+      setIsTop(response);
+    }
   }, [endTime]);
 
   function onHelpClick() {
@@ -131,7 +135,7 @@ function Puzzle3x3({ game, savePoints, onShowRanking, startGame }: any) {
     </div>}
     <div>
       {finished && <div className={'GameSummary'}>
-        <h5>Gratulálunk felkerültél a toplistára!</h5>
+        {isTop && <h5>Gratulálunk felkerültél a toplistára!</h5>}
         <h1>Idő: {endTime}</h1>
       </div>}
       <div className='controls'>
@@ -140,7 +144,7 @@ function Puzzle3x3({ game, savePoints, onShowRanking, startGame }: any) {
                   onClick={setNextStep}>Tovább
           </button>
           <button className={`btn ${(!finished) && 'hide'}`}
-                  onClick={() => onShowRanking(game.type)}>Top Lista
+                  onClick={() => onShowRanking(game.type)}>Befejezem
           </button>
           <button className={`btn ${(!finished) && 'hide'}`}
                   onClick={startGame}>Vissza a játékokhoz

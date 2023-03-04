@@ -34,3 +34,7 @@
     font-size: 1.5em;
     margin: 0 10px;
 }
+.selected {
+    font-weight: bold;
+    color: #f7a623;
+}

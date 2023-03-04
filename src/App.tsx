@@ -6,8 +6,6 @@ import Quiz from './Quiz';
 import NameField from './NameField';
 import Rankings from './Rankings';
 
-import * as serviceWorker from './serviceWorker';
-
 import FullscreenIcon from '@mui/icons-material/Fullscreen';
 
 import './App.css';
@@ -67,7 +65,6 @@ function App() {
   }
 
   function addToRanks(type: string, points: number) {
-    console.log('ranking called');
     const name: string | null = localStorage.getItem('name');
     if (!name) return false;
     const rankingsString = localStorage.getItem('ranks');
@@ -102,7 +99,6 @@ function App() {
   }
 
   function savePoints(type: string, pointsGot: number) {
-    console.log('save called');
     const pointsAsString = localStorage.getItem('points');
     if (pointsAsString) {
       const storedPoints = JSON.parse(pointsAsString);
@@ -112,7 +108,7 @@ function App() {
       localStorage.setItem('points', JSON.stringify({ [type]: pointsGot }));
       setPoints({ [type]: pointsGot });
     }
-    addToRanks(type, pointsGot);
+    return addToRanks(type, pointsGot);
   }
 
   function startGame() {
@@ -149,7 +145,7 @@ function App() {
 
   return (
     <div className='App'>
-      <body>
+      <div className={'body'}>
       {!isFullscreen && <div className={'fs-button-container'} onClick={fullScreen}>
         <FullscreenIcon fontSize={'inherit'} />
       </div>}
@@ -178,7 +174,7 @@ function App() {
           />}
         {showRanking && <Rankings showHomePage={showHomePage} rankingType={showRanking} />}
         <div className={`main-page ${!showStartButton && 'hide'}`}>
-          <div className='title-logo'><img src='/quiz/title-logo.png' /></div>
+          <div className='title-logo'><img src='/title-logo.svg' alt='LOGO' /></div>
           <div className={'buttonHold'}>
             <button id='start-btn' className={`btn start-btn ${!showStartButton && 'hide'}`}
                     onClick={getNameField}>Kezdés
@@ -193,7 +189,7 @@ function App() {
         <div className={`main-page ${!showGameSelector && 'hide'}`}>
           <div className='title'>Válassz játékot</div>
           {games.map((game: any) =>
-            <div className={'buttonHold'}>
+            <div className={'buttonHold'} key={game.type}>
               <div className={`btn start-btn gameChooser`}
                    onClick={() => onSetSelectedGame({ ...game })}>
                 <span className={'gameChooserLabel'}>{game.label}</span>
@@ -210,14 +206,9 @@ function App() {
           </div>
         </div>
       </div>
-      </body>
+      </div>
     </div>
   );
 }
-
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
 
 export default App;

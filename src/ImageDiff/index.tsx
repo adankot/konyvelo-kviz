@@ -14,6 +14,8 @@ function ImageDiff({ game, savePoints, onShowRanking, startGame }: any) {
   const [timeSpent, setTimeSpent] = useState(0);
   const [endTime, setEndTime] = useState(0);
   const [finished, setFinished] = useState(false);
+  const [helpIndex, setHelpIndex] = useState(-1);
+  const [isTop, setIsTop] = useState(false);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -23,6 +25,7 @@ function ImageDiff({ game, savePoints, onShowRanking, startGame }: any) {
   }, [showDescription, showNextButton]);
 
   const found = (index: number) => {
+    setHelpIndex(-1);
     setDiffs((prev: any) => {
       const newDiffs = [...prev];
       newDiffs[index].found = true;
@@ -32,7 +35,10 @@ function ImageDiff({ game, savePoints, onShowRanking, startGame }: any) {
   };
 
   useEffect(() => {
-    if (endTime) savePoints(game.type, endTime);
+    if (endTime) {
+      const response = savePoints(game.type, endTime);
+      setIsTop(response);
+    }
     Game.steps.forEach((step: any) => {
       step.diffs.forEach((diff: any) => diff.found = false);
     });
@@ -51,6 +57,17 @@ function ImageDiff({ game, savePoints, onShowRanking, startGame }: any) {
       setActualDiff(Game.steps[currentStep]);
       setDiffs(Game.steps[currentStep].diffs || []);
     }
+  }
+
+  function getHelp() {
+    if (helpIndex > -1) return;
+    setTimeSpent((oldTimeSpent: number) => oldTimeSpent + 30);
+    setHelpIndex(() => {
+      const indexOfNotFound = diffs.findIndex((diff: any) => {
+        return !diff.found;
+      });
+      return indexOfNotFound;
+    });
   }
 
   return <div>
@@ -73,21 +90,33 @@ function ImageDiff({ game, savePoints, onShowRanking, startGame }: any) {
       <div className='diff-image-container'>
         {<div className='diff-image'
               style={{ backgroundImage: `url("${process.env.REACT_APP_ADMIN_URL}/${actualDiff.picture1}")` }}>
-          {diffs.map((diff: any, index: number) =>
+          {diffs.map((diff: any, index: number) => <>
+            {helpIndex === index && <div
+              className={'diff-spot-help'}
+              style={{ left: `calc(${diff.x}% - 25px)`, top: `calc(${diff.y}% - 25px)` }}
+              key={`diff-spot-help-${index}`}
+            />}
             <div className={`diff-spot${diff.found ? ' found' : ''}`}
                  style={{ left: `${diff.x}%`, top: `${diff.y}%` }}
                  onClick={() => found(index)}
-                 key={index}
-            ><CheckIcon /></div>)}
+                 key={`diff-spot-${index}`}
+            ><CheckIcon /></div>
+          </>)}
         </div>}
         {<div className='diff-image'
               style={{ backgroundImage: `url("${process.env.REACT_APP_ADMIN_URL}/${actualDiff.picture2}")` }}>
-          {diffs.map((diff: any, index: number) =>
-            <div className={`diff-spot${diff.found ? ' found' : ''}`}
-                 style={{ left: `${diff.x}%`, top: `${diff.y}%` }}
-                 onClick={() => found(index)}
-                 key={index}
-            ><CheckIcon /></div>
+          {diffs.map((diff: any, index: number) => <>
+              {helpIndex === index && <div
+                className={'diff-spot-help'}
+                style={{ left: `calc(${diff.x}% - 25px)`, top: `calc(${diff.y}% - 25px)` }}
+                key={`diff-spot-help-${index}`}
+              />}
+              <div className={`diff-spot${diff.found ? ' found' : ''}`}
+                   style={{ left: `${diff.x}%`, top: `${diff.y}%` }}
+                   onClick={() => found(index)}
+                   key={index}
+              ><CheckIcon /></div>
+            </>
           )}
         </div>}
       </div>
@@ -98,7 +127,7 @@ function ImageDiff({ game, savePoints, onShowRanking, startGame }: any) {
       </div>
     </div>}
     {finished && <div className={'GameSummary'}>
-      <h5>Gratulálunk felkerültél a toplistára!</h5>
+      {isTop && <h5>Gratulálunk felkerültél a toplistára!</h5>}
       <h1>Idő: {endTime}</h1>
     </div>}
     <div className='controls'>
@@ -107,10 +136,13 @@ function ImageDiff({ game, savePoints, onShowRanking, startGame }: any) {
                 onClick={setNextStep}>Tovább
         </button>
         <button className={`btn ${(!finished) && 'hide'}`}
-                onClick={() => onShowRanking(game.type)}>Top Lista
+                onClick={() => onShowRanking(game.type)}>Befejezem
         </button>
         <button className={`btn ${(!finished) && 'hide'}`}
                 onClick={startGame}>Vissza a játékokhoz
+        </button>
+        <button className={`btn ${(showDescription || showNextButton || finished) && 'hide'}`}
+                onClick={getHelp}>Segítség<br />(+30 másodperc)
         </button>
         <button className={`btn ${(showDescription || showNextButton || finished) && 'hide'}`}
                 onClick={startGame}>Feladom

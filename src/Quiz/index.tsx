@@ -18,14 +18,18 @@ function Quiz2({ game, savePoints, onShowRanking, startGame }: any) {
   const [picked, setPicked] = useState('');
   const [finished, setFinished] = useState(false);
   const [failed, setFailed] = useState(false);
+  const [timeSpent, setTimeSpent] = useState(20);
+  const [isTop, setIsTop] = useState(false);
 
   function setNextQuestion() {
     if (currentQuestion + 1 === game.steps.length) {
-      savePoints(game.type, points);
+      const response = savePoints(game.type, points);
+      setIsTop(response);
       setFinished(true);
       setShowNextButton(false);
     } else {
       setPicked('');
+      setTimeSpent(20);
       setShowRightAnswer(false);
       setShowNextButton(false);
       setCurrentQuestion((oldCurrentQuestion: number) => oldCurrentQuestion + 1);
@@ -33,12 +37,34 @@ function Quiz2({ game, savePoints, onShowRanking, startGame }: any) {
   }
 
   useEffect(() => {
+    if (game.type === 'quiz-4') {
+      const interval = setInterval(() => {
+        setTimeSpent((oldTimeSpent: number) => showDescription || showNextButton ? oldTimeSpent : oldTimeSpent - 1);
+      }, 1000);
+      return () => clearInterval(interval);
+    }
+  }, [showDescription, showNextButton]);
+
+  useEffect(() => {
     setQuestion(game.steps[currentQuestion]);
   }, [currentQuestion, game.steps]);
 
+  useEffect(() => {
+    if(timeSpent === 0) {
+      setFaults((oldFaults: number) => {
+        if (3 === oldFaults + 1) {
+          setFailed(true);
+        }
+        return oldFaults + 1;
+      });
+      setShowRightAnswer(true);
+      setShowNextButton(true);
+    }
+  }, [timeSpent]);
+
   function selectAnswer(answer: Answer) {
     setPicked(answer.answer);
-    if (!showRightAnswer && answer.correct) setPoints((oldPoints: number) => oldPoints + 1);
+    if (!showRightAnswer && answer.correct) setPoints((oldPoints: number) => game.type === 'quiz-4' ? oldPoints + 1 + timeSpent : oldPoints + 1);
     if (!showRightAnswer && !answer.correct) setFaults((oldFaults: number) => {
       if (3 === oldFaults + 1) {
         setFailed(true);
@@ -74,11 +100,13 @@ function Quiz2({ game, savePoints, onShowRanking, startGame }: any) {
               Kérdések: {`${currentQuestion + 1}/${game.steps.length}`}</div>
             <div className={'GameInfoPoints'}>Pontok: {points}</div>
             <div className={'GameInfoFaults'}>Hibák: {faults}</div>
+            { game.type === 'quiz-4' && <div className={'GameInfoStepsLeft'}>Hátralévő idő: {timeSpent}</div>}
+            { game.type === 'quiz-4' && timeSpent === 0 && <div className={'GameInfoPoints'}>Sajnos lejárt az időd!</div>}
           </div>
           <div className='question'>
             {question.question}
           </div>
-          <div id='answer-buttons' className='btn-grid'>
+          <div className='btn-grid answer-buttons'>
             {question.answers[0]?.answer &&
               <button
                 className={`btn ${showRightAnswer ? (question.answers[0].correct ? 'correct ' : 'wrong ') : ''} ${question.answers[0].answer === picked ? 'picked' : ''}`}
@@ -98,16 +126,14 @@ function Quiz2({ game, savePoints, onShowRanking, startGame }: any) {
           </div>
         </>}
         {finished && <div className={'GameSummary'}>
-          {/* TODO check if toplist*/}
-          <h5>Gratulálunk felkerültél a toplistára!</h5>
+          {isTop && <h5>Gratulálunk felkerültél a toplistára!</h5>}
           <h1>Pontjaid: {points}</h1>
           <h6>Hibák: {faults}</h6>
         </div>}
-        {/* TODO time faults*/}
         {failed && <div className={'failed-container'}>Sajnos 3 hibát vétettél. Vesztettél!</div>}
         <div className='controls'>
           <div className={'buttonHold'}>
-            <button className={`btn ${(!showNextButton && failed) && 'hide'}`}
+            <button className={`btn ${(!showNextButton && !failed) && 'hide'}`}
                     onClick={setNextQuestion}>Tovább
             </button>
             <button className={`btn ${(!finished) && 'hide'}`}
