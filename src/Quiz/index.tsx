@@ -150,10 +150,10 @@ function Quiz2({ game, savePoints, onShowRanking, startGame, nextGame }: any) {
         {failed && <div className={'failed-container'}>Sajnos 3 hibát vétettél. Vesztettél!</div>}
         <div className='controls'>
           <div className={'buttonHold'}>
-            <button className={`btn ${(!showNextButton && !failed) && 'hide'}`}
+            <button className={`btn ${(!showNextButton || failed) && 'hide'}`}
                     onClick={setNextQuestion}>Tovább
             </button>
-            <button className={`btn ${(!finished) && 'hide'}`}
+            <button className={`btn ${(!finished && !failed) && 'hide'}`}
                     onClick={() => onShowRanking(game.type)}>Befejezem a játékot
             </button>
             <button className={`btn ${(!finished && !failed) && 'hide'}`}

@@ -108,11 +108,11 @@ function ImageDiff({ game, savePoints, onShowRanking, startGame, nextGame }: any
           {diffs.map((diff: any, index: number) => <>
               {helpIndex === index && <div
                 className={'diff-spot-help'}
-                style={{ left: `calc(${diff.x}% - 25px)`, top: `calc(${diff.y}% - 25px)` }}
+                style={{ left: `calc(${diff.x}% - 60px)`, top: `calc(${diff.y}% - 60px)` }}
                 key={`diff-spot-help-${index}`}
               />}
               <div className={`diff-spot${diff.found ? ' found' : ''}`}
-                   style={{ left: `${diff.x}%`, top: `${diff.y}%` }}
+                   style={{ left: `calc(${diff.x}% - 30px)`, top: `calc(${diff.y}% - 30px)` }}
                    onClick={() => found(index)}
                    key={index}
               ><CheckIcon /></div>

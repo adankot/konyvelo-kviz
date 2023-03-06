@@ -59,7 +59,7 @@ function App() {
       }
       const { data: gratData } = await (
         await fetch(
-          `${process.env.REACT_APP_ADMIN_URL}/api/gratulacios-oldal`
+          `${process.env.REACT_APP_ADMIN_URL}/api/gratulacios-oldal?populate%5B0%5D=Kupon`
         )
       ).json();
       if (gratData) {
