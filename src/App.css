@@ -270,9 +270,28 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-    font-size: 2.5em;
+}
+
+.reward-title {
+    font-size: 3em;
+    margin: 25px;
 }
 
 .reward-text {
-    padding: 50px;
+    padding: 25px;
+    font-size: 2em;
+    border: 1px solid #f7a623;
+    width: 1000px;
+    margin-bottom: 50px;
+}
+
+.reward-image {
+    margin: 25px;
+    padding: 25px;
+    height: 600px;
+    font-size: 2em;
+}
+
+.reward-image img {
+    height: 100%;
 }

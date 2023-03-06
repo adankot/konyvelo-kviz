@@ -41,7 +41,7 @@ function App() {
   const [games, setGames] = useState([]);
   const [points, setPoints] = useState<any>({});
   const [showReward, setShowReward] = useState(false);
-  const [coupon, setCoupon] = useState(null);
+  const [coupon, setCoupon] = useState<any>(null);
 
   useEffect(() => {
     const dataFetch = async () => {
@@ -208,10 +208,17 @@ function App() {
             />}
           {showRanking && <Rankings showHomePage={showHomePage} rankingType={showRanking} isReward={showReward} />}
           {showReward && !showRanking && !selectedGame && !showGameSelector && <div className={'reward-page'}>
-            <div className={'reward-text'}>
-              Gratula
+            <div className={'reward-title'}>
+              {coupon.Cim}
             </div>
-            <button className={'btn'} onClick={() => setShowReward(false)}>Kösz</button>
+            <div className={'reward-image'}>
+              {coupon?.Kupon?.data?.attributes?.url &&
+                <img src={`${process.env.REACT_APP_ADMIN_URL}${coupon.Kupon.data.attributes.url}`} />}
+            </div>
+            <div className={'reward-text'}>
+              {coupon.Leiras}
+            </div>
+            <button className={'btn'} onClick={() => setShowReward(false)}>Köszönöm</button>
           </div>}
           {showStartButton && !showReward && <div className={`main-page`}>
             <div className='title-logo'><img src='/title-logo.svg' alt='LOGO' /></div>
