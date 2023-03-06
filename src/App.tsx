@@ -246,7 +246,6 @@ function App() {
           </div>
         </div>
       </div>
-      <img className={'point-map'} src={'/point_map.svg'} />
     </div>
   );
 }

@@ -131,7 +131,7 @@ function ImageDiff({ game, savePoints, onShowRanking, startGame, nextGame }: any
       <h1>Idő: {endTime}</h1>
     </div>}
     <div className='controls'>
-      <div className={'buttonHold diff-button-hold'}>
+      <div className={'diff-button-hold'}>
         <button className={`btn ${(!showNextButton) && 'hide'}`}
                 onClick={setNextStep}>Tovább
         </button>

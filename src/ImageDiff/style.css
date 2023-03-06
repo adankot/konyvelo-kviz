@@ -19,6 +19,7 @@
 .diff-image {
     position: relative;
     height: 450px;
+    width: 450px;
     background-size: cover;
 }
 
@@ -96,7 +97,10 @@
 }
 
 .diff-button-hold {
-    align-items: unset;
+    display: flex;
+    justify-content: center;
+    font-size: 40px;
+    color: white;
 }
 
 .diff-surrender {
