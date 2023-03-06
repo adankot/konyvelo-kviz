@@ -19,7 +19,6 @@
 .diff-image {
     position: relative;
     height: 450px;
-    width: 450px;
     background-size: cover;
 }
 
@@ -83,4 +82,23 @@
     text-align: right;
     font-size: 1.5em;
     margin: 5px;
+}
+
+.help-small-text {
+    font-size: 0.5em;
+    color: #f7a623;
+}
+
+.diff-help-button-container {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.diff-button-hold {
+    align-items: unset;
+}
+
+.diff-surrender {
+    height: 53px;
 }

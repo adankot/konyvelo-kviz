@@ -7,7 +7,8 @@ export type Answer = {
   correct: boolean;
 }
 
-function Quiz2({ game, savePoints, onShowRanking, startGame }: any) {
+function Quiz2({ game, savePoints, onShowRanking, startGame, nextGame }: any) {
+  let gameType = game.type;
   const [showDescription, setShowDescription] = useState(true);
   const [showNextButton, setShowNextButton] = useState(false);
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -18,7 +19,7 @@ function Quiz2({ game, savePoints, onShowRanking, startGame }: any) {
   const [picked, setPicked] = useState('');
   const [finished, setFinished] = useState(false);
   const [failed, setFailed] = useState(false);
-  const [timeSpent, setTimeSpent] = useState(20);
+  const [timeSpent, setTimeSpent] = useState(game.timeLimit);
   const [isTop, setIsTop] = useState(false);
 
   function setNextQuestion() {
@@ -29,12 +30,27 @@ function Quiz2({ game, savePoints, onShowRanking, startGame }: any) {
       setShowNextButton(false);
     } else {
       setPicked('');
-      setTimeSpent(20);
+      setTimeSpent(game.timeLimit);
       setShowRightAnswer(false);
       setShowNextButton(false);
       setCurrentQuestion((oldCurrentQuestion: number) => oldCurrentQuestion + 1);
     }
   }
+
+  useEffect(() => {
+    setShowDescription(true);
+    setShowNextButton(false);
+    setCurrentQuestion(0);
+    setQuestion(game.steps[0]);
+    setPoints(0);
+    setFaults(0);
+    setPicked('');
+    setFinished(false);
+    setFailed(false);
+    setTimeSpent(game.timeLimit);
+    setIsTop(false);
+    setShowRightAnswer(false);
+  }, [game.type]);
 
   useEffect(() => {
     if (game.type === 'quiz-4') {
@@ -50,7 +66,7 @@ function Quiz2({ game, savePoints, onShowRanking, startGame }: any) {
   }, [currentQuestion, game.steps]);
 
   useEffect(() => {
-    if(timeSpent === 0) {
+    if (timeSpent === 0) {
       setFaults((oldFaults: number) => {
         if (3 === oldFaults + 1) {
           setFailed(true);
@@ -94,14 +110,15 @@ function Quiz2({ game, savePoints, onShowRanking, startGame }: any) {
       <div className={`questionContainer`}>
         {!finished && !failed && <>
           {!!question.imageUrl && <div className='question-image'
-                                       style={{ backgroundImage: `url("${process.env.REACT_APP_ADMIN_URL}/${question.imageUrl}")` }} />}
+                                       style={{ backgroundImage: `url("${process.env.REACT_APP_ADMIN_URL}${question.imageUrl}")` }} />}
           <div className={'GameInfoBox'}>
             <div className={'GameInfoStepsLeft'}>
               Kérdések: {`${currentQuestion + 1}/${game.steps.length}`}</div>
             <div className={'GameInfoPoints'}>Pontok: {points}</div>
             <div className={'GameInfoFaults'}>Hibák: {faults}</div>
-            { game.type === 'quiz-4' && <div className={'GameInfoStepsLeft'}>Hátralévő idő: {timeSpent}</div>}
-            { game.type === 'quiz-4' && timeSpent === 0 && <div className={'GameInfoPoints'}>Sajnos lejárt az időd!</div>}
+            {game.type === 'quiz-4' && <div className={'GameInfoStepsLeft'}>Hátralévő idő: {timeSpent}</div>}
+            {game.type === 'quiz-4' && timeSpent === 0 &&
+              <div className={'GameInfoPoints'}>Sajnos lejárt az időd!</div>}
           </div>
           <div className='question'>
             {question.question}
@@ -142,6 +159,9 @@ function Quiz2({ game, savePoints, onShowRanking, startGame }: any) {
             <button className={`btn ${(!finished && !failed) && 'hide'}`}
                     onClick={startGame}>Vissza a játékokhoz
             </button>
+            {nextGame && <button className={`btn high-button ${(!finished) && 'hide'}`}
+                                 onClick={nextGame}>Következő játék
+            </button>}
             <button className={`btn ${(finished || showNextButton || failed) && 'hide'}`}
                     onClick={startGame}>Feladom
             </button>

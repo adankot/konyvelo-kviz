@@ -19,9 +19,9 @@ const lastNumbers: any = {
 
 let currentStep = 0;
 
-function Puzzle3x3({ game, savePoints, onShowRanking, startGame }: any) {
+function Puzzle3x3({ game, savePoints, onShowRanking, startGame, nextGame }: any) {
   const [series, setSeries] = useState(game.steps[0].series);
-  const [picture, setPicture] = useState(game.steps[0].picture);
+  const [picture, setPicture] = useState(game.steps[0].imageUrl);
   const [div, setDiv] = useState(game.steps[0].div);
   const [showDescription, setShowDescription] = useState(true);
   const [showNextButton, setShowNextButton] = useState(false);
@@ -53,7 +53,7 @@ function Puzzle3x3({ game, savePoints, onShowRanking, startGame }: any) {
     } else {
       setShowNextButton(false);
       currentStep += 1;
-      setPicture(game.steps[currentStep].picture);
+      setPicture(game.steps[currentStep].imageUrl);
       setSeries(game.steps[currentStep].series || []);
       setDiv(game.steps[currentStep].div);
     }
@@ -99,12 +99,12 @@ function Puzzle3x3({ game, savePoints, onShowRanking, startGame }: any) {
         </div>
       </div>}
     {!showDescription && !finished && <div className={'puzzle-game-container'}>
-      <div>
+      <div style={{marginLeft: 'auto', marginRight: 0}}>
         <div
           className={'puzzle-help'}
           onClick={onHelpClick}
           style={{
-            backgroundImage: showHelp ? `url("${process.env.REACT_APP_ADMIN_URL}/${picture}")` : '',
+            backgroundImage: showHelp ? `url("${process.env.REACT_APP_ADMIN_URL}${picture}")` : '',
             backgroundSize: 'cover'
           }}
         >{!showHelp && <p>Segítség<br />(+30 másodperc)</p>}</div>
@@ -118,7 +118,7 @@ function Puzzle3x3({ game, savePoints, onShowRanking, startGame }: any) {
         {series.map((id: number) =>
           <div className='puzzle-image'
                style={{
-                 backgroundImage: id !== lastNumbers[div] ? `url("${process.env.REACT_APP_ADMIN_URL}/${picture}")` : '',
+                 backgroundImage: id !== lastNumbers[div] ? `url("${process.env.REACT_APP_ADMIN_URL}${picture}")` : '',
                  backgroundPosition: getBackgroundPosition(id, div),
                  height: `${600 / div}px`,
                  width: `${600 / div}px`
@@ -149,6 +149,9 @@ function Puzzle3x3({ game, savePoints, onShowRanking, startGame }: any) {
           <button className={`btn ${(!finished) && 'hide'}`}
                   onClick={startGame}>Vissza a játékokhoz
           </button>
+          {nextGame && <button className={`btn ${(!finished) && 'hide'}`}
+                               onClick={nextGame}>Következő játék
+          </button>}
           <button className={`btn ${(showDescription || showNextButton || finished) && 'hide'}`}
                   onClick={startGame}>Feladom
           </button>

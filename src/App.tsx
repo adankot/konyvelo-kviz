@@ -11,9 +11,9 @@ import FullscreenIcon from '@mui/icons-material/Fullscreen';
 import './App.css';
 
 const difficulties: any = {
-  easy: 'Fegyverhodozó',
-  medium: 'Harcos',
-  hard: 'Lovag'
+  'könnyű': 'Fegyverhodozó',
+  'közepes': 'Harcos',
+  'nehéz': 'Lovag'
 };
 
 function App() {
@@ -40,12 +40,14 @@ function App() {
   const [showNameField, setShowNameField] = useState(false);
   const [games, setGames] = useState([]);
   const [points, setPoints] = useState<any>({});
+  const [showReward, setShowReward] = useState(false);
+  const [coupon, setCoupon] = useState(null);
 
   useEffect(() => {
     const dataFetch = async () => {
-      const data = await (
+      const { data } = await (
         await fetch(
-          `${process.env.REACT_APP_ADMIN_URL}/api/games`
+          `${process.env.REACT_APP_ADMIN_URL}/api/jatek/load-games`
         )
       ).json();
       if (data) {
@@ -55,6 +57,19 @@ function App() {
       if (storedGames) {
         setGames(JSON.parse(storedGames));
       }
+      const { data: gratData } = await (
+        await fetch(
+          `${process.env.REACT_APP_ADMIN_URL}/api/gratulacios-oldal`
+        )
+      ).json();
+      if (gratData) {
+        localStorage.setItem('coupon', JSON.stringify(gratData.attributes));
+      }
+      const storedCoupon = localStorage.getItem('coupon');
+      if (storedCoupon) {
+        setCoupon(JSON.parse(storedCoupon));
+      }
+
     };
 
     dataFetch();
@@ -70,6 +85,7 @@ function App() {
     const rankingsString = localStorage.getItem('ranks');
     if (!rankingsString) {
       localStorage.setItem('ranks', JSON.stringify({ [type]: [{ name, points }] }));
+      setShowReward(true);
       return true;
     }
     type Rank = {
@@ -79,6 +95,7 @@ function App() {
     const rankings: { [key: string]: Array<Rank> } = JSON.parse(rankingsString);
     if (!rankings[type]) {
       localStorage.setItem('ranks', JSON.stringify({ [type]: [{ name, points }], ...rankings }));
+      setShowReward(true);
       return true;
     }
     rankings[type].push({ name, points });
@@ -94,6 +111,7 @@ function App() {
       }
     }
     localStorage.setItem('ranks', JSON.stringify(rankings));
+    setShowReward(true);
     return true;
 
   }
@@ -132,9 +150,9 @@ function App() {
 
   function showHomePage() {
     setShowRanking(false);
-    setShowStartButton(true);
     setShowGameSelector(false);
     setSelectedGame(null);
+    setShowStartButton(true);
   }
 
   function onSetSelectedGame(game: any) {
@@ -143,70 +161,92 @@ function App() {
     setSelectedGame(game);
   }
 
+  function getNextGameFunction() {
+    const gameTypes = games.map((game: any) => game.type);
+    const playedGames = Object.keys(points);
+
+    const gamesLeft = gameTypes.filter((gameType: string) => !playedGames.includes(gameType));
+    if (gamesLeft.length > 0) {
+      return () => {
+        setSelectedGame(games.find((game: any) => game.type === gamesLeft[0]));
+      };
+    }
+    return false;
+  }
+
   return (
     <div className='App'>
       <div className={'body'}>
-      {!isFullscreen && <div className={'fs-button-container'} onClick={fullScreen}>
-        <FullscreenIcon fontSize={'inherit'} />
-      </div>}
-      <div className='container'>
-        {showNameField && <NameField startGame={startGame} setStorageName={setName} />}
-        {selectedGame?.type && selectedGame.type === 'diff' &&
-          <ImageDiff
-            game={{ ...selectedGame }}
-            savePoints={savePoints}
-            onShowRanking={onShowRanking}
-            startGame={startGame}
-          />}
-        {selectedGame?.type && (['quiz-2', 'quiz-3', 'quiz-4'].includes(selectedGame.type)) &&
-          <Quiz
-            game={{ ...selectedGame }}
-            savePoints={savePoints}
-            onShowRanking={onShowRanking}
-            startGame={startGame}
-          />}
-        {selectedGame?.type && selectedGame.type === 'puzzle' &&
-          <Puzzle3x3
-            game={{ ...selectedGame }}
-            savePoints={savePoints}
-            onShowRanking={onShowRanking}
-            startGame={startGame}
-          />}
-        {showRanking && <Rankings showHomePage={showHomePage} rankingType={showRanking} />}
-        <div className={`main-page ${!showStartButton && 'hide'}`}>
-          <div className='title-logo'><img src='/title-logo.svg' alt='LOGO' /></div>
-          <div className={'buttonHold'}>
-            <button id='start-btn' className={`btn start-btn ${!showStartButton && 'hide'}`}
-                    onClick={getNameField}>Kezdés
-            </button>
-          </div>
-          <div className={'buttonHold'}>
-            <button id='start-btn' className={`btn start-btn ${!showStartButton && 'hide'}`}
-                    onClick={() => onShowRanking('quiz-2')}>Rangsor
-            </button>
-          </div>
-        </div>
-        <div className={`main-page ${!showGameSelector && 'hide'}`}>
-          <div className='title'>Válassz játékot</div>
-          {games.map((game: any) =>
-            <div className={'buttonHold'} key={game.type}>
-              <div className={`btn start-btn gameChooser`}
-                   onClick={() => onSetSelectedGame({ ...game })}>
-                <span className={'gameChooserLabel'}>{game.label}</span>
-                <span className={'gameChooserDifficulty'}>Szint: {difficulties[game.difficulty]}</span>
-                {points.hasOwnProperty(game.type) &&
-                  <span className={'gameChooserDifficulty'}>Elért pontok: {points[game.type]}</span>}
-              </div>
+        {!isFullscreen && <div className={'fs-button-container'} onClick={fullScreen}>
+          <FullscreenIcon fontSize={'inherit'} />
+        </div>}
+        <div className='container'>
+          {showNameField && <NameField startGame={startGame} setStorageName={setName} />}
+          {selectedGame?.type && selectedGame.type === 'diff' &&
+            <ImageDiff
+              game={{ ...selectedGame }}
+              savePoints={savePoints}
+              onShowRanking={onShowRanking}
+              startGame={startGame}
+              nextGame={getNextGameFunction()}
+            />}
+          {selectedGame?.type && (['quiz-2', 'quiz-3', 'quiz-4'].includes(selectedGame.type)) &&
+            <Quiz
+              game={{ ...selectedGame }}
+              savePoints={savePoints}
+              onShowRanking={onShowRanking}
+              startGame={startGame}
+              nextGame={getNextGameFunction()}
+            />}
+          {selectedGame?.type && selectedGame.type === 'puzzle' &&
+            <Puzzle3x3
+              game={{ ...selectedGame }}
+              savePoints={savePoints}
+              onShowRanking={onShowRanking}
+              startGame={startGame}
+              nextGame={getNextGameFunction()}
+            />}
+          {showRanking && <Rankings showHomePage={showHomePage} rankingType={showRanking} isReward={showReward} />}
+          {showReward && !showRanking && !selectedGame && !showGameSelector && <div className={'reward-page'}>
+            <div className={'reward-text'}>
+              Gratula
             </div>
-          )}
-          <div className={'buttonHold'}>
-            <button className={`btn start-btn`}
-                    onClick={showHomePage}>Vissza
-            </button>
+            <button className={'btn'} onClick={() => setShowReward(false)}>Kösz</button>
+          </div>}
+          {showStartButton && !showReward && <div className={`main-page`}>
+            <div className='title-logo'><img src='/title-logo.svg' alt='LOGO' /></div>
+            <div className='title-art'><img src='/art_board.png' alt='LOGO' /></div>
+            <div className={'title-controls'}>
+              <button id='start-btn' className={`btn start-btn`}
+                      onClick={getNameField}>Kezdés
+              </button>
+              <button id='start-btn' className={`btn start-btn`}
+                      onClick={() => onShowRanking('quiz-2')}>Rangsor
+              </button>
+            </div>
+          </div>}
+          <div className={`main-page ${!showGameSelector && 'hide'}`}>
+            <div className='title'>Válassz játékot</div>
+            {games.map((game: any) =>
+              <div className={'buttonHold'} key={game.type}>
+                <div className={`btn start-btn gameChooser`}
+                     onClick={() => onSetSelectedGame({ ...game })}>
+                  <span className={'gameChooserLabel'}>{game.label}</span>
+                  <span className={'gameChooserDifficulty'}>Szint: {difficulties[game.difficulty]}</span>
+                  {points.hasOwnProperty(game.type) &&
+                    <span className={'gameChooserDifficulty'}>Elért pontok: {points[game.type]}</span>}
+                </div>
+              </div>
+            )}
+            <div className={'buttonHold'}>
+              <button className={`btn start-btn`}
+                      onClick={showHomePage}>Vissza
+              </button>
+            </div>
           </div>
         </div>
       </div>
-      </div>
+      <img className={'point-map'} src={'/point_map.svg'} />
     </div>
   );
 }

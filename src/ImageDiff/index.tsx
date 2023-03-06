@@ -5,7 +5,7 @@ import './style.css';
 
 let currentStep = 0;
 
-function ImageDiff({ game, savePoints, onShowRanking, startGame }: any) {
+function ImageDiff({ game, savePoints, onShowRanking, startGame, nextGame }: any) {
   const Game = { ...game };
   const [showDescription, setShowDescription] = useState(true);
   const [actualDiff, setActualDiff] = useState(Game.steps[currentStep]);
@@ -89,7 +89,7 @@ function ImageDiff({ game, savePoints, onShowRanking, startGame }: any) {
     {!finished && !showDescription && <div className={'diff-container'}>
       <div className='diff-image-container'>
         {<div className='diff-image'
-              style={{ backgroundImage: `url("${process.env.REACT_APP_ADMIN_URL}/${actualDiff.picture1}")` }}>
+              style={{ backgroundImage: `url("${process.env.REACT_APP_ADMIN_URL}${actualDiff.picture1}")` }}>
           {diffs.map((diff: any, index: number) => <>
             {helpIndex === index && <div
               className={'diff-spot-help'}
@@ -104,7 +104,7 @@ function ImageDiff({ game, savePoints, onShowRanking, startGame }: any) {
           </>)}
         </div>}
         {<div className='diff-image'
-              style={{ backgroundImage: `url("${process.env.REACT_APP_ADMIN_URL}/${actualDiff.picture2}")` }}>
+              style={{ backgroundImage: `url("${process.env.REACT_APP_ADMIN_URL}${actualDiff.picture2}")` }}>
           {diffs.map((diff: any, index: number) => <>
               {helpIndex === index && <div
                 className={'diff-spot-help'}
@@ -131,7 +131,7 @@ function ImageDiff({ game, savePoints, onShowRanking, startGame }: any) {
       <h1>Idő: {endTime}</h1>
     </div>}
     <div className='controls'>
-      <div className={'buttonHold'}>
+      <div className={'buttonHold diff-button-hold'}>
         <button className={`btn ${(!showNextButton) && 'hide'}`}
                 onClick={setNextStep}>Tovább
         </button>
@@ -141,10 +141,16 @@ function ImageDiff({ game, savePoints, onShowRanking, startGame }: any) {
         <button className={`btn ${(!finished) && 'hide'}`}
                 onClick={startGame}>Vissza a játékokhoz
         </button>
-        <button className={`btn ${(showDescription || showNextButton || finished) && 'hide'}`}
-                onClick={getHelp}>Segítség<br />(+30 másodperc)
-        </button>
-        <button className={`btn ${(showDescription || showNextButton || finished) && 'hide'}`}
+        {nextGame && <button className={`btn ${(!finished) && 'hide'}`}
+                             onClick={nextGame}>Következő játék
+        </button>}
+        <div className={`diff-help-button-container ${(showDescription || showNextButton || finished) && 'hide'}`}>
+          <button className={'btn'}
+                  onClick={getHelp}><span>Segítség</span><br />
+          </button>
+          <span className={'help-small-text'}>(+30 másodperc)</span>
+        </div>
+        <button className={`btn diff-surrender ${(showDescription || showNextButton || finished) && 'hide'}`}
                 onClick={startGame}>Feladom
         </button>
       </div>
