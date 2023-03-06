@@ -53,7 +53,7 @@ function Quiz2({ game, savePoints, onShowRanking, startGame, nextGame }: any) {
   }, [game.type]);
 
   useEffect(() => {
-    if (game.type === 'quiz-4') {
+    if (game.timeLimit) {
       const interval = setInterval(() => {
         setTimeSpent((oldTimeSpent: number) => showDescription || showNextButton ? oldTimeSpent : oldTimeSpent - 1);
       }, 1000);
@@ -80,7 +80,7 @@ function Quiz2({ game, savePoints, onShowRanking, startGame, nextGame }: any) {
 
   function selectAnswer(answer: Answer) {
     setPicked(answer.answer);
-    if (!showRightAnswer && answer.correct) setPoints((oldPoints: number) => game.type === 'quiz-4' ? oldPoints + 1 + timeSpent : oldPoints + 1);
+    if (!showRightAnswer && answer.correct) setPoints((oldPoints: number) => game.timeLimit ? oldPoints + 1 + timeSpent : oldPoints + 1);
     if (!showRightAnswer && !answer.correct) setFaults((oldFaults: number) => {
       if (3 === oldFaults + 1) {
         setFailed(true);
@@ -116,8 +116,8 @@ function Quiz2({ game, savePoints, onShowRanking, startGame, nextGame }: any) {
               Kérdések: {`${currentQuestion + 1}/${game.steps.length}`}</div>
             <div className={'GameInfoPoints'}>Pontok: {points}</div>
             <div className={'GameInfoFaults'}>Hibák: {faults}</div>
-            {game.type === 'quiz-4' && <div className={'GameInfoStepsLeft'}>Hátralévő idő: {timeSpent}</div>}
-            {game.type === 'quiz-4' && timeSpent === 0 &&
+            {game.timeLimit && <div className={'GameInfoStepsLeft'}>Hátralévő idő: {timeSpent}</div>}
+            {game.timeLimit && timeSpent === 0 &&
               <div className={'GameInfoPoints'}>Sajnos lejárt az időd!</div>}
           </div>
           <div className='question'>
