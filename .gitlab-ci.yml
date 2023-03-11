@@ -15,7 +15,7 @@ build-dev-image:
   before_script:
     - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
   script:
-    - docker build --build-arg REACT_APP_ADMIN_URL=https://strapi.quiz.dev.smartbits.hu --build-arg REACT_APP_PUBLIC_URL=https://quiz.dev.smartbits.hu --pull -t "$CI_REGISTRY_IMAGE/dev:$CI_COMMIT_SHORT_SHA" -t "$CI_REGISTRY_IMAGE/dev:latest" .
+    - docker build --build-arg REACT_APP_ADMIN_URL=https://admin.quiz.dev.smartbits.hu --build-arg REACT_APP_PUBLIC_URL=https://quiz.dev.smartbits.hu --pull -t "$CI_REGISTRY_IMAGE/dev:$CI_COMMIT_SHORT_SHA" -t "$CI_REGISTRY_IMAGE/dev:latest" .
     - docker push "$CI_REGISTRY_IMAGE/dev:$CI_COMMIT_SHORT_SHA"
     - docker push "$CI_REGISTRY_IMAGE/dev:latest"
   only:
@@ -34,7 +34,7 @@ build-prod-image:
   before_script:
     - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
   script:
-    - docker build --build-arg REACT_APP_ADMIN_URL=https://strapi.quiz.smartbits.hu --build-arg REACT_APP_PUBLIC_URL=https://quiz.smartbits.hu --pull -t "$CI_REGISTRY_IMAGE/prod:$CI_COMMIT_SHORT_SHA" -t "$CI_REGISTRY_IMAGE/prod:latest" .
+    - docker build --build-arg REACT_APP_ADMIN_URL=https://admin.quiz.smartbits.hu --build-arg REACT_APP_PUBLIC_URL=https://quiz.smartbits.hu --pull -t "$CI_REGISTRY_IMAGE/prod:$CI_COMMIT_SHORT_SHA" -t "$CI_REGISTRY_IMAGE/prod:latest" .
     - docker push "$CI_REGISTRY_IMAGE/prod:$CI_COMMIT_SHORT_SHA"
     - docker push "$CI_REGISTRY_IMAGE/prod:latest"
   only:
@@ -58,6 +58,7 @@ development:
 
   environment: development
   script:
-    - ssh museum@museum-api.smartbits.hu "cd /home/museum/szfv-game/orchestration && git pull && sudo docker-compose pull && sudo docker-compose up -d"
+    - ssh museum@museum-api.smartbits.hu "cd /home/museum/szfv-game/orchestration_dev && git pull && sudo ./deploy.sh"
   only:
     - main
+  when: manual
