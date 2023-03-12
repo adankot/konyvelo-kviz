@@ -58,7 +58,29 @@ development:
 
   environment: development
   script:
-    - ssh museum@museum-api.smartbits.hu "cd /home/museum/szfv-game/orchestration_dev && git pull && sudo ./deploy.sh"
+    - ssh museum@museum-api.smartbits.hu "cd /home/museum/szfv-game/orchestration-dev && git pull && sudo ./deploy.sh dev"
+  only:
+    - develop
+
+production:
+  image: ubuntu
+  stage: deploy
+  before_script:
+    - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client git -y )'
+
+    - eval $(ssh-agent -s)
+
+    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
+
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+
+    - ssh-keyscan museum-api.smartbits.hu >> ~/.ssh/known_hosts
+    - chmod 644 ~/.ssh/known_hosts
+
+  environment: production
+  script:
+    - ssh museum@museum-api.smartbits.hu "cd /home/museum/szfv-game/orchestration-prod && git pull && sudo ./deploy.sh prod"
   only:
     - main
   when: manual
