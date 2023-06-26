@@ -1,8 +1,8 @@
 {
   "name": "aws-quiz",
   "version": "0.1.0",
-  "private": true,
-  "main": "public/electron.js",
+  "private": false,
+  "homepage": "https://adankot.github.io/aws-quiz/",
   "dependencies": {
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
