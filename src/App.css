@@ -33,14 +33,13 @@
     height: 100vh;
     justify-content: center;
     align-items: center;
-    background-color: hsl(var(--hue), 90%, 0%);
+    background-color: #3b3e40;
     color: white;
 }
 
 .container {
-    transform: scale(0.7);
     width: 100%;
-    background-color: black;
+    background-color: #3b3e40;
     border-radius: 5px;
     padding: 10px;
     display: grid;
@@ -58,7 +57,7 @@
 }
 
 .btn {
-    --bg-color: black;
+    --bg-color: #3b3e40;
     --color: white;
     border: 3px solid white;
     background-color: var(--bg-color);
@@ -67,13 +66,9 @@
     outline: none;
     font-family: sans-serif;
     width: 375px;
-    font-size: 2rem;
+    font-size: 1.5rem;
     text-align: center;
     margin: 5px;
-}
-
-.high-button {
-    height: 90px;
 }
 
 .gameChooser {
@@ -95,15 +90,6 @@
     cursor: pointer;
 }
 
-.btn.correct {
-    --bg-color: white;
-    --color: black;
-}
-
-.btn.wrong {
-    --bg-color: grey;
-}
-
 .start-btn, .next-btn {
     width: 500px;
     font-size: 2.5rem;
@@ -122,7 +108,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 100px;
+    font-size: 3rem;
     color: white;
     padding-bottom: 50px;
     font-family: Stencilia;
@@ -161,11 +147,11 @@
 .title-controls {
     margin-left: auto;
     margin-right: auto;
-    width: 1050px;
+    width: 100%;
     margin-top: 25px;
-    display: grid;
-    grid-template-columns: 4fr 4fr;
-    gap: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .rankings-container {
@@ -180,7 +166,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 40px;
+    font-size: 1.5rem;
     color: white;
 }
 
@@ -188,21 +174,16 @@
     display: none;
 }
 
-.question {
-    margin: 25px 5px;
-    font-size: 2rem;
-}
-
 .GameDescription {
-    display: flex;
+    display: inline-block;
     justify-content: center;
     align-items: center;
-    width: 1000px;
+    max-width: 1000px;
     border: 3px solid #f7a623;
-    padding: 50px;
-    margin: 100px auto 50px auto;
+    padding: 25px;
+    margin: 50px 15px 30px 15px;
     flex-direction: column;
-    font-size: 1.5em;
+    font-size: 1.5rem;
 }
 
 .GameDescriptionButtonHold {
@@ -210,7 +191,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 25px 0 25px 0;
+    margin: 5px 0 5px 0;
 }
 .GameDescriptionTitle {
     width: 100%;
@@ -218,30 +199,6 @@
     font-size: 1.2em;
     font-weight: bold;
     margin-bottom: 25px;
-}
-
-.GameInfoBox {
-    margin-top: 25px;
-    display: grid;
-    grid-template-columns: 4fr 4fr 4fr;
-    font-size: 1em;
-}
-
-.GameInfoStepsLeft {
-    font-size: 1.5em;
-    margin: 5px;
-}
-
-.GameInfoPoints {
-    text-align: center;
-    font-size: 1.5em;
-    margin: 5px;
-}
-
-.GameInfoFaults {
-    text-align: right;
-    font-size: 1.5em;
-    margin: 5px;
 }
 
 .fs-button-container {

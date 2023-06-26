@@ -7,6 +7,7 @@ function NameField({ setStorageName, startGame }: any) {
   const [showWarning, setShowWarning] = useState(false);
 
   localStorage.removeItem('name');
+  localStorage.removeItem('sessionId');
   localStorage.removeItem('points');
 
   function onNext() {

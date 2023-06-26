@@ -7,8 +7,7 @@ export type Answer = {
   correct: boolean;
 }
 
-function Quiz2({ game, savePoints, onShowRanking, startGame, nextGame }: any) {
-  let gameType = game.type;
+function Quiz({ game, onShowRanking, startGame, nextGame }: any) {
   const [showDescription, setShowDescription] = useState(true);
   const [showNextButton, setShowNextButton] = useState(false);
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -24,8 +23,6 @@ function Quiz2({ game, savePoints, onShowRanking, startGame, nextGame }: any) {
 
   function setNextQuestion() {
     if (currentQuestion + 1 === game.steps.length) {
-      const response = savePoints(game.type, points);
-      setIsTop(response);
       setFinished(true);
       setShowNextButton(false);
     } else {
@@ -95,35 +92,36 @@ function Quiz2({ game, savePoints, onShowRanking, startGame, nextGame }: any) {
     {showDescription ?
       <div className={'GameDescriptionContainer'}>
         <div className={'GameDescription'}>
-          <div className={'GameDescriptionTitle'}>LEÍRÁS</div>
+          <div className={'GameDescriptionTitle'}>Description</div>
           <div>
             {game.description}
           </div>
         </div>
         <div className={'GameDescriptionButtonHold'}>
-          <button className={'btn start-btn'} onClick={() => setShowDescription(false)}>Tovább</button>
+          <button className={'btn'} onClick={() => setShowDescription(false)}>Next</button>
         </div>
         <div className={'GameDescriptionButtonHold'}>
-          <button className={'btn start-btn'} onClick={startGame}>Vissza</button>
+          <button className={'btn'} onClick={startGame}>Back</button>
         </div>
       </div> :
       <div className={`questionContainer`}>
-        {!finished && !failed && <>
-          {!!question.imageUrl && <div className='question-image'
-                                       style={{ backgroundImage: `url("${process.env.REACT_APP_ADMIN_URL}${question.imageUrl}")` }} />}
-          <div className={'GameInfoBox'}>
-            <div className={'GameInfoStepsLeft'}>
-              Kérdések: {`${currentQuestion + 1}/${game.steps.length}`}</div>
-            <div className={'GameInfoPoints'}>Pontok: {points}</div>
-            <div className={'GameInfoFaults'}>Hibák: {faults}</div>
-            {game.timeLimit && <div className={'GameInfoStepsLeft'}>Hátralévő idő: {timeSpent}</div>}
-            {game.timeLimit && timeSpent === 0 &&
-              <div className={'GameInfoPoints'}>Sajnos lejárt az időd!</div>}
+        {!finished && <>
+          <div className={'GameInfoBox top'}>
+            <div className={'GameInfoLeft'}>
+              Questions: {`${currentQuestion + 1}/${game.steps.length}`}</div>
+            <div className={'GameInfoRight'}>Faults: {faults}</div>
+            <div className={'GameInfoLeft'}>Time left: {timeSpent}</div>
+            <div className={'GameInfoRight'}>Points: {points}</div>
+          </div>
+          <div className={'GameInfoBox bottom'}>
+            <div className={'GameInfoLeft'}>Category: {question.category || 'Common'}</div>
+            <div className={'GameInfoRight'}>ID: {question.id}</div>
+            <div className={'GameInfoLeft'}>Difficulty: {question.difficulty}</div>
           </div>
           <div className='question'>
             {question.question}
           </div>
-          <div className='btn-grid answer-buttons'>
+          <div className=' answer-buttons'>
             {question.answers[0]?.answer &&
               <button
                 className={`btn ${showRightAnswer ? (question.answers[0].correct ? 'correct ' : 'wrong ') : ''} ${question.answers[0].answer === picked ? 'picked' : ''}`}
@@ -142,28 +140,16 @@ function Quiz2({ game, savePoints, onShowRanking, startGame, nextGame }: any) {
                 onClick={() => selectAnswer(question.answers[3])}>{question.answers[3].answer}</button>}
           </div>
         </>}
-        {finished && <div className={'GameSummary'}>
-          {isTop && <h5>Gratulálunk felkerültél a toplistára!</h5>}
-          <h1>Pontjaid: {points}</h1>
-          <h6>Hibák: {faults}</h6>
-        </div>}
-        {failed && <div className={'failed-container'}>Sajnos 3 hibát vétettél. Vesztettél!</div>}
         <div className='controls'>
           <div className={'buttonHold'}>
-            <button className={`btn ${(!showNextButton || failed) && 'hide'}`}
-                    onClick={setNextQuestion}>Tovább
+            <button className={`btn ${(!showNextButton) && 'hide'}`}
+                    onClick={setNextQuestion}>Next
             </button>
-            <button className={`btn ${(!finished && !failed) && 'hide'}`}
-                    onClick={() => onShowRanking(game.type)}>Befejezem a játékot
+            <button className={`btn ${(!finished) && 'hide'}`}
+                    onClick={startGame}>Finish
             </button>
-            <button className={`btn ${(!finished && !failed) && 'hide'}`}
-                    onClick={startGame}>Vissza a játékokhoz
-            </button>
-            {nextGame && <button className={`btn high-button ${(!finished) && 'hide'}`}
-                                 onClick={nextGame}>Következő játék
-            </button>}
-            <button className={`btn ${(finished || showNextButton || failed) && 'hide'}`}
-                    onClick={startGame}>Feladom
+            <button className={`btn ${(finished || showNextButton) && 'hide'}`}
+                    onClick={startGame}>Give up
             </button>
           </div>
         </div>
@@ -172,4 +158,4 @@ function Quiz2({ game, savePoints, onShowRanking, startGame, nextGame }: any) {
   </div>;
 }
 
-export default Quiz2;
+export default Quiz;

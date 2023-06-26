@@ -3,10 +3,9 @@
 }
 
 .questionContainer{
-    margin: 50px auto 10px auto;
-    width: 850px;
-    max-width: 80%;
-    background-color: black;
+    margin: 10px auto 10px auto;
+    max-width: 1000px;
+    background-color: #3b3e40;
     border-radius: 5px;
     padding: 10px;
 }
@@ -28,4 +27,72 @@
 
 .answer-buttons {
     padding: 5px;
+}
+
+.btn.correct {
+    --bg-color: #f7a623;
+    --color: #3b3e40;
+}
+
+.btn.wrong {
+    --bg-color: #8a8a8a;
+}
+
+.answer-buttons button {
+    width: 100%;
+    margin: 5px 0;
+    font-size: 1rem;
+    padding: 10px;
+    border-radius: 5px;
+    border: 2px solid white;
+    color: white;
+}
+
+.GameInfoBox {
+    left: 0;
+    position: fixed;
+    display: grid;
+    grid-template-columns: 4fr 4fr;
+    font-size: 1em;
+    width: 100%;
+    padding: 5px;
+}
+
+.GameInfoBox.top {
+    top: 0;
+}
+
+.GameInfoBox.bottom {
+    bottom: 0;
+    font-size: .8rem;
+}
+
+.GameInfoBoxBottom {
+    position: fixed;
+    bottom: 0;
+    display: grid;
+    grid-template-columns: 4fr 4fr;
+    font-size: 1em;
+}
+
+.GameInfoLeft {
+    font-size: 1em;
+    margin: 5px;
+}
+
+.GameInfoPoints {
+    text-align: center;
+    font-size: 1em;
+    margin: 5px;
+}
+
+.GameInfoRight {
+    text-align: right;
+    font-size: 1em;
+    margin: 5px;
+}
+
+.question {
+    margin: 25px 5px;
+    font-size: 1.5rem;
 }
