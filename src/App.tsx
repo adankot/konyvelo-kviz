@@ -24,7 +24,7 @@ function pickRandomObjects(array: Array<Question>, count: number) {
 function App() {
   const [selectedGame, setSelectedGame] = useState<any>({
     type: 'quiz-4',
-    description: 'A quiz game to help you prepare for the AWS Certified Developer Associate exam. It always contains 10 questions, and you have 45 minutes to answer them. Good luck!',
+    description: 'A quiz game to help you prepare for the AWS Certified Developer Associate exam. It always contains 10 questions, and you have 45 minutes to answer them. You get points for the remaining time. Good luck!',
     timeLimit: 45,
     steps: steps
   });
@@ -33,7 +33,7 @@ function App() {
   function startGame() {
     setSelectedGame({
       type: 'quiz-4',
-      description: 'A quiz game to help you prepare for the AWS Certified Developer Associate exam. It always contains 10 questions, and you have 45 seconds for each. Good luck!',
+      description: 'A quiz game to help you prepare for the AWS Certified Developer Associate exam. It always contains 10 questions, and you have 45 seconds for each. You get points for the remaining time. Good luck!',
       timeLimit: 45,
       steps: pickRandomObjects(steps, 10)
     });

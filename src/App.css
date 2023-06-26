@@ -65,6 +65,22 @@
     color: var(--color);
     outline: none;
     font-family: sans-serif;
+    max-width: 375px;
+    min-width: 250px;
+    font-size: 1.5rem;
+    text-align: center;
+    margin: 5px;
+}
+
+.qbtn {
+    --bg-color: #3b3e40;
+    --color: white;
+    border: 3px solid white;
+    background-color: var(--bg-color);
+    padding: 5px 10px;
+    color: var(--color);
+    outline: none;
+    font-family: sans-serif;
     width: 375px;
     font-size: 1.5rem;
     text-align: center;
@@ -172,6 +188,14 @@
 
 .hide {
     display: none;
+}
+
+.GameDescriptionContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 0 15px 0 15px;
 }
 
 .GameDescription {

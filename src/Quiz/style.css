@@ -29,12 +29,12 @@
     padding: 5px;
 }
 
-.btn.correct {
+.qbtn.correct {
     --bg-color: #f7a623;
     --color: #3b3e40;
 }
 
-.btn.wrong {
+.qbtn.wrong {
     --bg-color: #8a8a8a;
 }
 
@@ -76,6 +76,7 @@
 }
 
 .GameInfoLeft {
+    text-align: left;
     font-size: 1em;
     margin: 5px;
 }
@@ -95,4 +96,29 @@
 .question {
     margin: 25px 5px;
     font-size: 1.5rem;
+}
+
+.GameFinishContainer {
+    width: 100%;
+    text-align: center;
+    font-size: 2rem;
+}
+
+.GameFinishBox {
+    display: grid;
+    grid-template-columns: 4fr 4fr;
+    font-size: 1em;
+    margin-bottom: 25px;
+}
+
+.GameFinishTitle {
+    text-align: center;
+    font-size: 2rem;
+    margin: 25px 5px;
+}
+
+.GameFinishData {
+    text-align: center;
+    font-size: 1.5rem;
+    margin: 25px 5px;
 }

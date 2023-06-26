@@ -2208,18 +2208,6 @@ export const questions: Question[] =[
     category: 'VPC'
   },
   {
-    id: 203,
-    question: 'Which of the following is true about an Amazon VPC peering connection?',
-    answers: [
-      { id: 1, answer: 'It allows communication between VPCs in different AWS accounts', correct: true },
-      { id: 2, answer: 'It allows communication between VPCs in the same AWS account', correct: true },
-      { id: 3, answer: 'It allows communication between on-premises and AWS VPCs', correct: false },
-      { id: 4, answer: 'It allows communication between VPCs in different AWS regions', correct: false }
-    ],
-    difficulty: 'medium',
-    category: 'VPC'
-  },
-  {
     id: 204,
     question: 'What is an Amazon VPC security group?',
     answers: [

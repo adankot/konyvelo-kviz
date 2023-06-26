@@ -124,19 +124,19 @@ function Quiz({ game, onShowRanking, startGame, nextGame }: any) {
           <div className=' answer-buttons'>
             {question.answers[0]?.answer &&
               <button
-                className={`btn ${showRightAnswer ? (question.answers[0].correct ? 'correct ' : 'wrong ') : ''} ${question.answers[0].answer === picked ? 'picked' : ''}`}
+                className={`qbtn ${showRightAnswer ? (question.answers[0].correct ? 'correct ' : 'wrong ') : ''} ${question.answers[0].answer === picked ? 'picked' : ''}`}
                 onClick={() => selectAnswer(question.answers[0])}>{question.answers[0].answer}</button>}
             {question.answers[1]?.answer &&
               <button
-                className={`btn ${showRightAnswer ? (question.answers[1].correct ? 'correct ' : 'wrong ') : ''} ${question.answers[1].answer === picked ? 'picked' : ''}`}
+                className={`qbtn ${showRightAnswer ? (question.answers[1].correct ? 'correct ' : 'wrong ') : ''} ${question.answers[1].answer === picked ? 'picked' : ''}`}
                 onClick={() => selectAnswer(question.answers[1])}>{question.answers[1].answer}</button>}
             {question.answers[2]?.answer &&
               <button
-                className={`btn ${showRightAnswer ? (question.answers[2].correct ? 'correct ' : 'wrong ') : ''} ${question.answers[2].answer === picked ? 'picked' : ''}`}
+                className={`qbtn ${showRightAnswer ? (question.answers[2].correct ? 'correct ' : 'wrong ') : ''} ${question.answers[2].answer === picked ? 'picked' : ''}`}
                 onClick={() => selectAnswer(question.answers[2])}>{question.answers[2].answer}</button>}
             {question.answers[3]?.answer &&
               <button
-                className={`btn ${showRightAnswer ? (question.answers[3].correct ? 'correct ' : 'wrong ') : ''} ${question.answers[3].answer === picked ? 'picked' : ''}`}
+                className={`qbtn ${showRightAnswer ? (question.answers[3].correct ? 'correct ' : 'wrong ') : ''} ${question.answers[3].answer === picked ? 'picked' : ''}`}
                 onClick={() => selectAnswer(question.answers[3])}>{question.answers[3].answer}</button>}
           </div>
         </>}
@@ -145,12 +145,21 @@ function Quiz({ game, onShowRanking, startGame, nextGame }: any) {
             <button className={`btn ${(!showNextButton) && 'hide'}`}
                     onClick={setNextQuestion}>Next
             </button>
-            <button className={`btn ${(!finished) && 'hide'}`}
-                    onClick={startGame}>Finish
-            </button>
-            <button className={`btn ${(finished || showNextButton) && 'hide'}`}
-                    onClick={startGame}>Give up
-            </button>
+            {finished && <div className='GameFinishContainer'>
+              <div className='GameFinishTitle'>Game finished</div>
+                <div className='GameFinishData'>
+                  points: {points}
+                </div>
+                <div className='GameFinishData'>
+                  faults: {faults}
+                </div>
+              <button className='btn'
+                      onClick={startGame}>Finish
+              </button>
+            </div>}
+            {(!finished && !showNextButton) && <button className='btn'
+                                                       onClick={() => setFinished(true)}>Give up
+            </button>}
           </div>
         </div>
       </div>
