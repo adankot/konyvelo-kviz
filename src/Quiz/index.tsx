@@ -19,7 +19,6 @@ function Quiz({ game, onShowRanking, startGame, nextGame }: any) {
   const [finished, setFinished] = useState(false);
   const [failed, setFailed] = useState(false);
   const [timeSpent, setTimeSpent] = useState(game.timeLimit);
-  const [isTop, setIsTop] = useState(false);
 
   function setNextQuestion() {
     if (currentQuestion + 1 === game.steps.length) {
@@ -45,9 +44,8 @@ function Quiz({ game, onShowRanking, startGame, nextGame }: any) {
     setFinished(false);
     setFailed(false);
     setTimeSpent(game.timeLimit);
-    setIsTop(false);
     setShowRightAnswer(false);
-  }, [game.type]);
+  }, [game.type, game.steps, game.timeLimit]);
 
   useEffect(() => {
     if (game.timeLimit) {
@@ -56,11 +54,11 @@ function Quiz({ game, onShowRanking, startGame, nextGame }: any) {
       }, 1000);
       return () => clearInterval(interval);
     }
-  }, [showDescription, showNextButton]);
+  }, [showDescription, showNextButton, game.steps, game.timeLimit]);
 
   useEffect(() => {
     setQuestion(game.steps[currentQuestion]);
-  }, [currentQuestion, game.steps]);
+  }, [currentQuestion, game.steps, game.timelimit]);
 
   useEffect(() => {
     if (timeSpent === 0) {
@@ -76,6 +74,7 @@ function Quiz({ game, onShowRanking, startGame, nextGame }: any) {
   }, [timeSpent]);
 
   function selectAnswer(answer: Answer) {
+    if (failed) return;
     setPicked(answer.answer);
     if (!showRightAnswer && answer.correct) setPoints((oldPoints: number) => game.timeLimit ? oldPoints + 1 + timeSpent : oldPoints + 1);
     if (!showRightAnswer && !answer.correct) setFaults((oldFaults: number) => {
