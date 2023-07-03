@@ -2430,6 +2430,136 @@ export const questions: Question[] =[
     ],
     difficulty: "medium",
     category: "VPC"
+  },
+  {
+    id: 230,
+    question: "What is the maximum number of Amazon VPCs per AWS account per AWS Region?",
+    answers: [
+      { id: 1, answer: "5", correct: false },
+      { id: 2, answer: "10", correct: false },
+      { id: 3, answer: "20", correct: false },
+      { id: 4, answer: "50", correct: true }
+    ],
+    difficulty: "medium",
+    category: "VPC",
+    factChecked: false
+  },
+  {
+    id: 221,
+    question: "Which type of subnet allows inbound and outbound traffic from the internet?",
+    answers: [
+      { id: 1, answer: "Public subnet", correct: true },
+      { id: 2, answer: "Private subnet", correct: false },
+      { id: 3, answer: "Isolated subnet", correct: false },
+      { id: 4, answer: "NAT subnet", correct: false }
+    ],
+    difficulty: "medium",
+    category: "VPC",
+    factChecked: false
+  },
+  {
+    id: 222,
+    question: "What is the purpose of an Amazon VPC flow log?",
+    answers: [
+      { id: 1, answer: "To monitor the performance of VPC endpoints", correct: false },
+      { id: 2, answer: "To track changes to VPC security groups", correct: false },
+      { id: 3, answer: "To capture information about IP traffic going to and from network interfaces in a VPC", correct: true },
+      { id: 4, answer: "To redirect traffic between VPCs using VPC peering", correct: false }
+    ],
+    difficulty: "medium",
+    category: "VPC",
+    factChecked: false
+  },
+  {
+    id: 223,
+    question: "What is the purpose of an Amazon VPC network access control list (ACL)?",
+    answers: [
+      { id: 1, answer: "To manage access and permissions for EC2 instances", correct: false },
+      { id: 2, answer: "To create a virtual private network connection between VPCs", correct: false },
+      { id: 3, answer: "To provide additional security at the subnet level", correct: true },
+      { id: 4, answer: "To launch instances with pre-configured operating systems and software", correct: false }
+    ],
+    difficulty: "medium",
+    category: "VPC",
+    factChecked: false
+  },
+  {
+    id: 224,
+    question: "Which Amazon VPC component is used to connect VPCs in different AWS accounts?",
+    answers: [
+      { id: 1, answer: "VPC peering connection", correct: true },
+      { id: 2, answer: "Internet gateway", correct: false },
+      { id: 3, answer: "NAT gateway", correct: false },
+      { id: 4, answer: "Virtual private gateway", correct: false }
+    ],
+    difficulty: "medium",
+    category: "VPC",
+    factChecked: false
+  },
+  {
+    id: 225,
+    question: "Which Amazon VPC feature allows you to control the flow of traffic between subnets?",
+    answers: [
+      { id: 1, answer: "VPC peering connection", correct: false },
+      { id: 2, answer: "Internet gateway", correct: false },
+      { id: 3, answer: "NAT gateway", correct: false },
+      { id: 4, answer: "Network ACL", correct: true }
+    ],
+    difficulty: "medium",
+    category: "VPC",
+    factChecked: false
+  },
+  {
+    id: 226,
+    question: "Which of the following is true about an Amazon VPC endpoint?",
+    answers: [
+      { id: 1, answer: "It provides secure communication between on-premises and AWS VPCs", correct: false },
+      { id: 2, answer: "It provides a virtual private network connection between VPCs in different AWS accounts", correct: false },
+      { id: 3, answer: "It enables private connectivity to AWS services from within a VPC", correct: true },
+      { id: 4, answer: "It provides load balancing of traffic to multiple EC2 instances", correct: false }
+    ],
+    difficulty: "medium",
+    category: "VPC",
+    factChecked: false
+  },
+  {
+    id: 227,
+    question: "Which Amazon VPC feature allows you to provide an additional layer of security for inbound and outbound traffic?",
+    answers: [
+      { id: 1, answer: "VPC peering connection", correct: false },
+      { id: 2, answer: "Internet gateway", correct: false },
+      { id: 3, answer: "NAT gateway", correct: false },
+      { id: 4, answer: "Network ACL", correct: true }
+    ],
+    difficulty: "medium",
+    category: "VPC",
+    factChecked: false
+  },
+  {
+    id: 228,
+    question: "Which of the following is true about Amazon VPC security groups?",
+    answers: [
+      { id: 1, answer: "They are stateful, meaning that return traffic is automatically allowed", correct: true },
+      { id: 2, answer: "They are stateless, meaning that return traffic must be explicitly allowed", correct: false },
+      { id: 3, answer: "They can span multiple VPCs within the same AWS account", correct: false },
+      { id: 4, answer: "They can be used to control traffic between VPCs in different AWS accounts", correct: false }
+    ],
+    difficulty: "medium",
+    category: "VPC",
+    factChecked: false
+  },
+  {
+    id: 229,
+    question: "What is the purpose of an Amazon VPC endpoint service?",
+    answers: [
+      { id: 1, answer: "It provides secure communication between on-premises and AWS VPCs", correct: false },
+      { id: 2, answer: "It provides a virtual private network connection between VPCs in different AWS accounts", correct: false },
+      { id: 3, answer: "It enables private connectivity to AWS services from within a VPC", correct: false },
+      { id: 4, answer: "It allows access to AWS services using private IP addresses without traversing the internet", correct: true }
+    ],
+    difficulty: "medium",
+    category: "VPC",
+    factChecked: false
   }
 ];
 
