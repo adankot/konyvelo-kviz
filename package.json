@@ -1,6 +1,6 @@
 {
   "name": "aws-quiz",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": false,
   "homepage": "https://adankot.github.io/aws-quiz/",
   "dependencies": {
