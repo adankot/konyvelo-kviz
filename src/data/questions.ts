@@ -833,9 +833,9 @@ export const questions: Question[] =[
     question: 'What is the maximum number of characters allowed for an S3 bucket name?',
     answers: [
       { id: 1, answer: '50', correct: false },
-      { id: 2, answer: '63', correct: false },
+      { id: 2, answer: '63', correct: true },
       { id: 3, answer: '128', correct: false },
-      { id: 4, answer: '255', correct: true }
+      { id: 4, answer: '255', correct: false }
     ],
     difficulty: 'medium'
   },
