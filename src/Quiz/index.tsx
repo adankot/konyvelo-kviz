@@ -116,6 +116,7 @@ function Quiz({ game, onShowRanking, startGame, nextGame }: any) {
             <div className={'GameInfoLeft'}>Category: {question.category || 'Common'}</div>
             <div className={'GameInfoRight'}>ID: {question.id}</div>
             <div className={'GameInfoLeft'}>Difficulty: {question.difficulty}</div>
+            <div className={'GameInfoRight'}>Version: {`${process.env.REACT_APP_VERSION}`}</div>
           </div>
           <div className='question'>
             {question.question}
