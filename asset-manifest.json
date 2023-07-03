@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/aws-quiz/static/css/main.bd33dd10.css",
-    "main.js": "/aws-quiz/static/js/main.00ed51e7.js",
+    "main.js": "/aws-quiz/static/js/main.1608ad31.js",
     "static/js/787.c74ed14d.chunk.js": "/aws-quiz/static/js/787.c74ed14d.chunk.js",
     "service-worker.js": "/aws-quiz/service-worker.js",
     "static/media/Stencilia-A.ttf": "/aws-quiz/static/media/Stencilia-A.bb89079a72a7ab5e32bb.ttf",
     "index.html": "/aws-quiz/index.html",
     "main.bd33dd10.css.map": "/aws-quiz/static/css/main.bd33dd10.css.map",
-    "main.00ed51e7.js.map": "/aws-quiz/static/js/main.00ed51e7.js.map",
+    "main.1608ad31.js.map": "/aws-quiz/static/js/main.1608ad31.js.map",
     "787.c74ed14d.chunk.js.map": "/aws-quiz/static/js/787.c74ed14d.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.bd33dd10.css",
-    "static/js/main.00ed51e7.js"
+    "static/js/main.1608ad31.js"
   ]
 }
