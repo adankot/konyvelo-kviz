@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/konyvelo-quiz/static/css/main.263fa9e9.css",
-    "main.js": "/konyvelo-quiz/static/js/main.d4f428dc.js",
-    "static/js/787.fc387b03.chunk.js": "/konyvelo-quiz/static/js/787.fc387b03.chunk.js",
-    "service-worker.js": "/konyvelo-quiz/service-worker.js",
-    "static/media/Stencilia-A.ttf": "/konyvelo-quiz/static/media/Stencilia-A.bb89079a72a7ab5e32bb.ttf",
-    "index.html": "/konyvelo-quiz/index.html",
-    "main.263fa9e9.css.map": "/konyvelo-quiz/static/css/main.263fa9e9.css.map",
-    "main.d4f428dc.js.map": "/konyvelo-quiz/static/js/main.d4f428dc.js.map",
-    "787.fc387b03.chunk.js.map": "/konyvelo-quiz/static/js/787.fc387b03.chunk.js.map"
+    "main.css": "/konyvelo-kviz/static/css/main.122ed8a7.css",
+    "main.js": "/konyvelo-kviz/static/js/main.19532db2.js",
+    "static/js/787.fcd237f0.chunk.js": "/konyvelo-kviz/static/js/787.fcd237f0.chunk.js",
+    "service-worker.js": "/konyvelo-kviz/service-worker.js",
+    "static/media/Stencilia-A.ttf": "/konyvelo-kviz/static/media/Stencilia-A.bb89079a72a7ab5e32bb.ttf",
+    "index.html": "/konyvelo-kviz/index.html",
+    "main.122ed8a7.css.map": "/konyvelo-kviz/static/css/main.122ed8a7.css.map",
+    "main.19532db2.js.map": "/konyvelo-kviz/static/js/main.19532db2.js.map",
+    "787.fcd237f0.chunk.js.map": "/konyvelo-kviz/static/js/787.fcd237f0.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.263fa9e9.css",
-    "static/js/main.d4f428dc.js"
+    "static/css/main.122ed8a7.css",
+    "static/js/main.19532db2.js"
   ]
 }
