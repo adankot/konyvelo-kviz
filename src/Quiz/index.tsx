@@ -91,16 +91,16 @@ function Quiz({ game, onShowRanking, startGame, nextGame }: any) {
     {showDescription ?
       <div className={'GameDescriptionContainer'}>
         <div className={'GameDescription'}>
-          <div className={'GameDescriptionTitle'}>Description</div>
+          <div className={'GameDescriptionTitle'}>Leírás</div>
           <div>
             {game.description}
           </div>
         </div>
         <div className={'GameDescriptionButtonHold'}>
-          <button className={'btn'} onClick={() => setShowDescription(false)}>Next</button>
+          <button className={'btn'} onClick={() => setShowDescription(false)}>Tovább</button>
         </div>
         <div className={'GameDescriptionButtonHold'}>
-          <button className={'btn'} onClick={startGame}>Back</button>
+          <button className={'btn'} onClick={startGame}>Vissza</button>
         </div>
       </div> :
       <div className={`questionContainer`}>
@@ -143,7 +143,7 @@ function Quiz({ game, onShowRanking, startGame, nextGame }: any) {
         <div className='controls'>
           <div className={'buttonHold'}>
             <button className={`btn ${(!showNextButton) && 'hide'}`}
-                    onClick={setNextQuestion}>Next
+                    onClick={setNextQuestion}>Tovább
             </button>
             {finished && <div className='GameFinishContainer'>
               <div className='GameFinishTitle'>Game finished</div>
@@ -158,7 +158,7 @@ function Quiz({ game, onShowRanking, startGame, nextGame }: any) {
               </button>
             </div>}
             {(!finished && !showNextButton) && <button className='btn'
-                                                       onClick={() => setFinished(true)}>Give up
+                                                       onClick={() => setFinished(true)}>Feladom
             </button>}
           </div>
         </div>

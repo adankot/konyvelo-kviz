@@ -21,6 +21,23 @@ function pickRandomObjects(array: Array<Question>, count: number) {
   return pickedObjects;
 }
 
+function shuffle(array: Array<any>) {
+  let currentIndex = array.length;
+
+  // While there remain elements to shuffle...
+  while (currentIndex !== 0) {
+
+    // Pick a remaining element...
+    let randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+
+    // And swap it with the current element.
+    [array[currentIndex], array[randomIndex]] = [
+      array[randomIndex], array[currentIndex]];
+  }
+  return array;
+}
+
 function App() {
   const [selectedGame, setSelectedGame] = useState<any>({
     type: 'quiz-4',
@@ -33,9 +50,12 @@ function App() {
   function startGame() {
     setSelectedGame({
       type: 'quiz-4',
-      description: 'A quiz game to help you prepare for the AWS Certified Developer Associate exam. It always contains 10 questions, and you have 45 seconds for each. You get points for the remaining time. Good luck!',
+      description: 'Ez egy kvíz ami segít felkészülni a könyvelői vizsgára. Mindig 10 kérdés van, és 45 másodperced van válaszolni. A megmaradt időért pontokat kapsz. Sok sikert!',
       timeLimit: 45,
-      steps: pickRandomObjects(steps, 10)
+      steps: pickRandomObjects(steps, 10).map(step => ({
+        ...step,
+        answers: shuffle(step.answers)
+      }))
     });
     setRunning(true);
   }
@@ -46,10 +66,10 @@ function App() {
         <div className='container'>
           {!running && <div className='main-page'>
             <div className={'title'}>
-              AWS Developer Associate Quiz
+              Könyvelöi vizsga kvíz
             </div>
             <div className={'title-controls'}>
-              <div className='btn' onClick={startGame}> Start Quiz</div>
+              <div className='btn' onClick={startGame}> Kezdés</div>
             </div>
           </div>}
           {running && <Quiz

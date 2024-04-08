@@ -8,2558 +8,1831 @@ export type Question = {
   id: number;
   question: string;
   answers: Answer[];
-  difficulty: 'easy' | 'medium' | 'hard';
+  difficulty?: 'easy' | 'medium' | 'hard';
   category?: string;
   factChecked?: boolean;
 };
 
-export const questions: Question[] =[
-  {
-    id: 1,
-    question: 'What is the maximum size of an AWS Lambda deployment package?',
-    answers: [
-      { id: 1, answer: '50 MB', correct: false },
-      { id: 2, answer: '100 MB', correct: true },
-      { id: 3, answer: '250 MB', correct: false },
-      { id: 4, answer: '500 MB', correct: false }
-    ],
-    difficulty: 'easy'
-  },
-  {
-    id: 2,
-    question: 'Which AWS service enables developers to deploy and manage applications using Docker containers?',
-    answers: [
-      { id: 1, answer: 'AWS Elastic Beanstalk', correct: false },
-      { id: 2, answer: 'AWS CloudFormation', correct: false },
-      { id: 3, answer: 'AWS CodeDeploy', correct: false },
-      { id: 4, answer: 'AWS Elastic Container Service (ECS)', correct: true }
-    ],
-    difficulty: 'easy'
-  },
-  {
-    id: 3,
-    question: 'What is the maximum retention period for Amazon CloudWatch Logs?',
-    answers: [
-      { id: 1, answer: '30 days', correct: false },
-      { id: 2, answer: '60 days', correct: false },
-      { id: 3, answer: '90 days', correct: true },
-      { id: 4, answer: '120 days', correct: false }
-    ],
-    difficulty: 'medium'
-  },
-  {
-    id: 4,
-    question: 'Which AWS service provides a fully managed message queuing service?',
-    answers: [
-      { id: 1, answer: 'Amazon SQS', correct: true },
-      { id: 2, answer: 'Amazon SNS', correct: false },
-      { id: 3, answer: 'Amazon MQ', correct: false },
-      { id: 4, answer: 'Amazon Kinesis', correct: false }
-    ],
-    difficulty: 'easy'
-  },
-  {
-    id: 5,
-    question: 'What does Amazon S3 stand for?',
-    answers: [
-      { id: 1, answer: 'Simple Storage Service', correct: true },
-      { id: 2, answer: 'Secure Storage Service', correct: false },
-      { id: 3, answer: 'Structured Storage Service', correct: false },
-      { id: 4, answer: 'Standard Storage Service', correct: false }
-    ],
-    difficulty: 'easy'
-  },
-  {
-    id: 6,
-    question: 'What is the maximum number of tags that can be assigned to an Amazon EC2 instance?',
-    answers: [
-      { id: 1, answer: '10', correct: false },
-      { id: 2, answer: '50', correct: true },
-      { id: 3, answer: '100', correct: false },
-      { id: 4, answer: '100+', correct: false }
-    ],
-    difficulty: 'medium'
-  },
-  {
-    id: 7,
-    question: 'Which AWS service can be used to deploy a serverless web application?',
-    answers: [
-      { id: 1, answer: 'Amazon RDS', correct: false },
-      { id: 2, answer: 'Amazon EC2', correct: false },
-      { id: 3, answer: 'AWS Lambda', correct: true },
-      { id: 4, answer: 'Amazon Redshift', correct: false }
-    ],
-    difficulty: 'medium'
-  },
-  {
-    id: 8,
-    question: 'What is the maximum execution duration for an AWS Lambda function?',
-    answers: [
-      { id: 1, answer: '5 minutes', correct: false },
-      { id: 2, answer: '10 minutes', correct: false },
-      { id: 3, answer: '15 minutes', correct: true },
-      { id: 4, answer: '20 minutes', correct: false }
-    ],
-    difficulty: 'easy'
-  },
-  {
-    id: 9,
-    question: 'Which AWS service provides a serverless database?',
-    answers: [
-      { id: 1, answer: 'Amazon RDS', correct: false },
-      { id: 2, answer: 'Amazon DynamoDB', correct: true },
-      { id: 3, answer: 'Amazon Redshift', correct: false },
-      { id: 4, answer: 'Amazon ElastiCache', correct: false }
-    ],
-    difficulty: 'medium'
-  },
-  {
-    id: 10,
-    question: 'Which AWS service can be used to monitor and collect metrics from various AWS resources?',
-    answers: [
-      { id: 1, answer: 'AWS CloudTrail', correct: false },
-      { id: 2, answer: 'Amazon CloudFront', correct: false },
-      { id: 3, answer: 'Amazon CloudWatch', correct: true },
-      { id: 4, answer: 'AWS Config', correct: false }
-    ],
-    difficulty: 'easy'
-  },
-  {
-    id: 11,
-    question: 'What is the maximum number of tags that can be assigned to an Amazon S3 bucket?',
-    answers: [
-      { id: 1, answer: '10', correct: false },
-      { id: 2, answer: '20', correct: false },
-      { id: 3, answer: '50', correct: true },
-      { id: 4, answer: '100', correct: false }
-    ],
-    difficulty: 'easy'
-  },
-  {
-    id: 12,
-    question: 'Which AWS service provides a managed Apache Hadoop framework?',
-    answers: [
-      { id: 1, answer: 'Amazon EMR', correct: true },
-      { id: 2, answer: 'Amazon Kinesis', correct: false },
-      { id: 3, answer: 'AWS Glue', correct: false },
-      { id: 4, answer: 'AWS Snowball', correct: false }
-    ],
-    difficulty: 'medium'
-  },
-  {
-    id: 13,
-    question: 'What is the maximum number of characters allowed in an Amazon S3 bucket name?',
-    answers: [
-      { id: 1, answer: '32', correct: false },
-      { id: 2, answer: '63', correct: true },
-      { id: 3, answer: '128', correct: false },
-      { id: 4, answer: '256', correct: false }
-    ],
-    difficulty: 'easy'
-  },
-  {
-    id: 14,
-    question: 'Which AWS service can be used to deploy containerized applications using Kubernetes?',
-    answers: [
-      { id: 1, answer: 'Amazon EKS', correct: true },
-      { id: 2, answer: 'AWS Batch', correct: false },
-      { id: 3, answer: 'AWS Lambda', correct: false },
-      { id: 4, answer: 'AWS Elastic Beanstalk', correct: false }
-    ],
-    difficulty: 'medium'
-  },
-  {
-    id: 15,
-    question: 'Which AWS service provides an object-level storage tier that automatically moves data between different storage classes based on access patterns?',
-    answers: [
-      { id: 1, answer: 'Amazon S3', correct: true },
-      { id: 2, answer: 'Amazon EBS', correct: false },
-      { id: 3, answer: 'Amazon Glacier', correct: false },
-      { id: 4, answer: 'Amazon RDS', correct: false }
-    ],
-    difficulty: 'medium'
-  },
-  {
-    id: 16,
-    question: 'What is the maximum number of security groups allowed per network interface in Amazon VPC?',
-    answers: [
-      { id: 1, answer: '3', correct: false },
-      { id: 2, answer: '5', correct: false },
-      { id: 3, answer: '10', correct: true },
-      { id: 4, answer: '20', correct: false }
-    ],
-    difficulty: 'easy'
-  },
-  {
-    id: 17,
-    question: 'Which AWS service provides a fully managed Apache Kafka-compatible streaming platform?',
-    answers: [
-      { id: 1, answer: 'Amazon SNS', correct: false },
-      { id: 2, answer: 'Amazon Kinesis', correct: true },
-      { id: 3, answer: 'Amazon MQ', correct: false },
-      { id: 4, answer: 'AWS Data Pipeline', correct: false }
-    ],
-    difficulty: 'medium'
-  },
-  {
-    id: 18,
-    question: 'What is the maximum number of attributes allowed per item in Amazon DynamoDB?',
-    answers: [
-      { id: 1, answer: '50', correct: false },
-      { id: 2, answer: '100', correct: false },
-      { id: 3, answer: '256', correct: true },
-      { id: 4, answer: '1000', correct: false }
-    ],
-    difficulty: 'medium'
-  },
-  {
-    id: 19,
-    question: 'Which AWS service provides a fully managed, in-memory data store and cache?',
-    answers: [
-      { id: 1, answer: 'Amazon RDS', correct: false },
-      { id: 2, answer: 'Amazon ElastiCache', correct: true },
-      { id: 3, answer: 'Amazon Redshift', correct: false },
-      { id: 4, answer: 'Amazon Neptune', correct: false }
-    ],
-    difficulty: 'easy'
-  },
-  {
-    id: 20,
-    question: 'What is the maximum duration for an Amazon EC2 spot instance request?',
-    answers: [
-      { id: 1, answer: '4 hours', correct: false },
-      { id: 2, answer: '6 hours', correct: false },
-      { id: 3, answer: '12 hours', correct: true },
-      { id: 4, answer: '24 hours', correct: false }
-    ],
-    difficulty: 'easy'
-  },
-  {
-    id: 21,
-    question: 'Which AWS service allows you to run your code without provisioning or managing servers?',
-    answers: [
-      { id: 1, answer: 'Amazon S3', correct: false },
-      { id: 2, answer: 'AWS Lambda', correct: true },
-      { id: 3, answer: 'Amazon EC2', correct: false },
-      { id: 4, answer: 'AWS Elastic Beanstalk', correct: false }
-    ],
-    difficulty: 'easy'
-  },
-  {
-    id: 22,
-    question: 'Which AWS service provides a fully managed NoSQL database?',
-    answers: [
-      { id: 1, answer: 'Amazon RDS', correct: false },
-      { id: 2, answer: 'Amazon Redshift', correct: false },
-      { id: 3, answer: 'Amazon DynamoDB', correct: true },
-      { id: 4, answer: 'Amazon Neptune', correct: false }
-    ],
-    difficulty: 'medium'
-  },
-  {
-    id: 23,
-    question: 'What is the maximum number of subnets per Amazon VPC?',
-    answers: [
-      { id: 1, answer: '5', correct: false },
-      { id: 2, answer: '10', correct: false },
-      { id: 3, answer: '20', correct: false },
-      { id: 4, answer: '200', correct: true }
-    ],
-    difficulty: 'medium'
-  },
-  {
-    id: 24,
-    question: 'Which AWS service provides a fully managed message queue for microservices-based architectures?',
-    answers: [
-      { id: 1, answer: 'Amazon Kinesis', correct: false },
-      { id: 2, answer: 'Amazon SQS', correct: true },
-      { id: 3, answer: 'AWS Step Functions', correct: false },
-      { id: 4, answer: 'AWS Glue', correct: false }
-    ],
-    difficulty: 'medium'
-  },
-  {
-    id: 25,
-    question: 'Which AWS service enables you to perform real-time analytics on streaming data?',
-    answers: [
-      { id: 1, answer: 'Amazon CloudFront', correct: false },
-      { id: 2, answer: 'Amazon S3', correct: false },
-      { id: 3, answer: 'Amazon Kinesis', correct: true },
-      { id: 4, answer: 'Amazon RDS', correct: false }
-    ],
-    difficulty: 'easy'
-  },
-  {
-    id: 26,
-    question: 'What is the maximum size of an Amazon RDS database snapshot?',
-    answers: [
-      { id: 1, answer: '5 TB', correct: false },
-      { id: 2, answer: '10 TB', correct: false },
-      { id: 3, answer: '16 TB', correct: true },
-      { id: 4, answer: '20 TB', correct: false }
-    ],
-    difficulty: 'hard'
-  },
-  {
-    id: 27,
-    question: 'Which AWS service allows you to create private, dedicated connections between your data centers and Amazon VPC?',
-    answers: [
-      { id: 1, answer: 'AWS Direct Connect', correct: true },
-      { id: 2, answer: 'Amazon CloudFront', correct: false },
-      { id: 3, answer: 'Amazon Route 53', correct: false },
-      { id: 4, answer: 'Amazon Elastic File System', correct: false }
-    ],
-    difficulty: 'medium'
-  },
-  {
-    id: 28,
-    question: 'What is the maximum number of EBS volumes that can be attached to an Amazon EC2 instance?',
-    answers: [
-      { id: 1, answer: '5', correct: false },
-      { id: 2, answer: '10', correct: false },
-      { id: 3, answer: '20', correct: true },
-      { id: 4, answer: '50', correct: false }
-    ],
-    difficulty: 'easy'
-  },
-  {
-    id: 29,
-    question: 'Which AWS service enables you to create and manage a virtual private network (VPN) connection to your Amazon VPC?',
-    answers: [
-      { id: 1, answer: 'AWS Direct Connect', correct: false },
-      { id: 2, answer: 'Amazon VPC', correct: false },
-      { id: 3, answer: 'Amazon Route 53', correct: false },
-      { id: 4, answer: 'Amazon VPN', correct: true }
-    ],
-    difficulty: 'medium'
-  },
-  {
-    id: 30,
-    question: 'What is the maximum duration for an Amazon RDS automated backup retention period?',
-    answers: [
-      { id: 1, answer: '7 days', correct: false },
-      { id: 2, answer: '14 days', correct: false },
-      { id: 3, answer: '35 days', correct: true },
-      { id: 4, answer: '60 days', correct: false }
-    ],
-    difficulty: 'medium'
-  },
-  {
-    id: 31,
-    question: 'Which AWS service provides a fully managed, scalable data warehousing solution?',
-    answers: [
-      { id: 1, answer: 'Amazon RDS', correct: false },
-      { id: 2, answer: 'Amazon Redshift', correct: true },
-      { id: 3, answer: 'Amazon DynamoDB', correct: false },
-      { id: 4, answer: 'Amazon Aurora', correct: false }
-    ],
-    difficulty: 'medium'
-  },
-  {
-    id: 32,
-    question: 'What is the maximum size of an Amazon S3 object that can be uploaded in a single PUT operation?',
-    answers: [
-      { id: 1, answer: '1 GB', correct: false },
-      { id: 2, answer: '5 GB', correct: true },
-      { id: 3, answer: '10 GB', correct: false },
-      { id: 4, answer: '20 GB', correct: false }
-    ],
-    difficulty: 'easy'
-  },
-  {
-    id: 33,
-    question: 'Which AWS service enables you to automate infrastructure provisioning and management using code?',
-    answers: [
-      { id: 1, answer: 'AWS Elastic Beanstalk', correct: false },
-      { id: 2, answer: 'AWS CloudFormation', correct: true },
-      { id: 3, answer: 'Amazon EC2', correct: false },
-      { id: 4, answer: 'AWS Lambda', correct: false }
-    ],
-    difficulty: 'easy'
-  },
-  {
-    id: 34,
-    question: 'What is the maximum number of CloudFront distributions allowed per AWS account?',
-    answers: [
-      { id: 1, answer: '5', correct: false },
-      { id: 2, answer: '10', correct: false },
-      { id: 3, answer: '25', correct: false },
-      { id: 4, answer: '50', correct: true }
-    ],
-    difficulty: 'medium'
-  },
-  {
-    id: 35,
-    question: 'Which AWS service provides a scalable, fully managed, and serverless database for applications?',
-    answers: [
-      { id: 1, answer: 'Amazon RDS', correct: false },
-      { id: 2, answer: 'Amazon DynamoDB', correct: false },
-      { id: 3, answer: 'Amazon Neptune', correct: false },
-      { id: 4, answer: 'Amazon Aurora Serverless', correct: true }
-    ],
-    difficulty: 'medium'
-  },
-  {
-    id: 36,
-    question: 'What is the maximum number of CloudWatch Alarms allowed per AWS account?',
-    answers: [
-      { id: 1, answer: '10', correct: false },
-      { id: 2, answer: '50', correct: false },
-      { id: 3, answer: '100', correct: false },
-      { id: 4, answer: '5000', correct: true }
-    ],
-    difficulty: 'easy'
-  },
-  {
-    id: 37,
-    question: 'Which AWS service provides a scalable and fully managed data integration service?',
-    answers: [
-      { id: 1, answer: 'AWS Glue', correct: true },
-      { id: 2, answer: 'AWS Data Pipeline', correct: false },
-      { id: 3, answer: 'Amazon Kinesis', correct: false },
-      { id: 4, answer: 'Amazon SQS', correct: false }
-    ],
-    difficulty: 'medium'
-  },
-  {
-    id: 38,
-    question: 'What is the maximum number of security groups allowed per Amazon EC2 instance?',
-    answers: [
-      { id: 1, answer: '1', correct: false },
-      { id: 2, answer: '5', correct: false },
-      { id: 3, answer: '10', correct: true },
-      { id: 4, answer: '20', correct: false }
-    ],
-    difficulty: 'easy'
-  },
-  {
-    id: 39,
-    question: 'Which AWS service provides a managed message broker for building event-driven architectures?',
-    answers: [
-      { id: 1, answer: 'Amazon SQS', correct: false },
-      { id: 2, answer: 'Amazon SNS', correct: false },
-      { id: 3, answer: 'Amazon MQ', correct: true },
-      { id: 4, answer: 'AWS Lambda', correct: false }
-    ],
-    difficulty: 'medium'
-  },
-  {
-    id: 40,
-    question: 'What is the maximum number of requests per second per partition key in Amazon DynamoDB?',
-    answers: [
-      { id: 1, answer: '1000', correct: false },
-      { id: 2, answer: '3000', correct: false },
-      { id: 3, answer: '5000', correct: true },
-      { id: 4, answer: '10000', correct: false }
-    ],
-    difficulty: 'hard'
-  },
-  {
-    id: 41,
-    question: 'Which AWS service provides a fully managed, serverless stream processing service?',
-    answers: [
-      { id: 1, answer: 'Amazon Kinesis Data Firehose', correct: false },
-      { id: 2, answer: 'Amazon Kinesis Data Analytics', correct: false },
-      { id: 3, answer: 'Amazon Kinesis Data Streams', correct: false },
-      { id: 4, answer: 'Amazon Managed Streaming for Apache Kafka (MSK)', correct: true }
-    ],
-    difficulty: 'hard'
-  },
-  {
-    id: 42,
-    question: 'What is the maximum number of active rules per AWS WAF web ACL?',
-    answers: [
-      { id: 1, answer: '10', correct: false },
-      { id: 2, answer: '25', correct: false },
-      { id: 3, answer: '50', correct: false },
-      { id: 4, answer: '100', correct: true }
-    ],
-    difficulty: 'hard'
-  },
-  {
-    id: 43,
-    question: 'Which AWS service provides a fully managed graph database?',
-    answers: [
-      { id: 1, answer: 'Amazon RDS', correct: false },
-      { id: 2, answer: 'Amazon Redshift', correct: false },
-      { id: 3, answer: 'Amazon DynamoDB', correct: false },
-      { id: 4, answer: 'Amazon Neptune', correct: true }
-    ],
-    difficulty: 'hard'
-  },
-  {
-    id: 44,
-    question: 'What is the maximum number of distribution groups allowed per AWS Elemental MediaPackage channel?',
-    answers: [
-      { id: 1, answer: '10', correct: false },
-      { id: 2, answer: '20', correct: false },
-      { id: 3, answer: '50', correct: false },
-      { id: 4, answer: '100', correct: true }
-    ],
-    difficulty: 'hard'
-  },
-  {
-    id: 45,
-    question: 'Which AWS service provides a fully managed, in-memory cache service?',
-    answers: [
-      { id: 1, answer: 'Amazon ElastiCache', correct: true },
-      { id: 2, answer: 'Amazon S3', correct: false },
-      { id: 3, answer: 'Amazon RDS', correct: false },
-      { id: 4, answer: 'Amazon DynamoDB', correct: false }
-    ],
-    difficulty: 'hard'
-  },
-  {
-    id: 56,
-    question: 'What is the maximum number of EBS volumes that can be attached to an Amazon EC2 instance at once?',
-    answers: [
-      { id: 1, answer: '5', correct: false },
-      { id: 2, answer: '10', correct: false },
-      { id: 3, answer: '15', correct: false },
-      { id: 4, answer: '20', correct: true }
-    ],
-    difficulty: 'medium'
-  },
-  {
-    id: 57,
-    question: 'What is the maximum number of IAM roles that can be attached to an IAM user?',
-    answers: [
-      { id: 1, answer: '1', correct: false },
-      { id: 2, answer: '5', correct: false },
-      { id: 3, answer: '10', correct: false },
-      { id: 4, answer: 'Unlimited', correct: true }
-    ],
-    difficulty: 'medium'
-  },
-  {
-    id: 59,
-    question: 'What is the maximum duration for an AWS Lambda function execution?',
-    answers: [
-      { id: 1, answer: '1 minute', correct: false },
-      { id: 2, answer: '5 minutes', correct: false },
-      { id: 3, answer: '15 minutes', correct: false },
-      { id: 4, answer: 'Depends on the invocation type (synchronous or asynchronous)', correct: true }
-    ],
-    difficulty: 'medium'
-  },
-  {
-    id: 60,
-    question: 'What is the maximum number of AWS Regions that an IAM user can create resources in?',
-    answers: [
-      { id: 1, answer: 'All available AWS Regions', correct: false },
-      { id: 2, answer: '5', correct: false },
-      { id: 3, answer: '10', correct: false },
-      { id: 4, answer: 'All AWS Regions except the AWS GovCloud (US) Regions', correct: true }
-    ],
-    difficulty: 'medium'
-  },
-  {
-    id: 61,
-    question: 'Which AWS service provides a fully managed database service for PostgreSQL?',
-    answers: [
-      { id: 1, answer: 'Amazon EC2', correct: false },
-      { id: 2, answer: 'Amazon RDS', correct: true },
-      { id: 3, answer: 'Amazon S3', correct: false },
-      { id: 4, answer: 'Amazon DynamoDB', correct: false }
-    ],
-    difficulty: 'medium'
-  },
-  {
-    id: 62,
-    question: 'What is the default region for an Amazon S3 bucket when no region is specified?',
-    answers: [
-      { id: 1, answer: 'us-east-1', correct: true },
-      { id: 2, answer: 'us-west-2', correct: false },
-      { id: 3, answer: 'eu-west-1', correct: false },
-      { id: 4, answer: 'ap-southeast-1', correct: false }
-    ],
-    difficulty: 'medium'
-  },
-  {
-    id: 63,
-    question: 'What is the maximum size of an Amazon S3 object that can be uploaded in a single PUT request?',
-    answers: [
-      { id: 1, answer: '5 TB', correct: false },
-      { id: 2, answer: '10 TB', correct: false },
-      { id: 3, answer: '5 GB', correct: true },
-      { id: 4, answer: '5 GB for single-part upload and 5 TB for multipart upload', correct: false }
-    ],
-    difficulty: 'medium'
-  },
-  {
-    id: 64,
-    question: 'Which AWS service is used to automatically scale EC2 instances based on demand?',
-    answers: [
-      { id: 1, answer: 'Amazon EC2 Auto Scaling', correct: true },
-      { id: 2, answer: 'AWS Elastic Beanstalk', correct: false },
-      { id: 3, answer: 'Amazon CloudFront', correct: false },
-      { id: 4, answer: 'Amazon Route 53', correct: false }
-    ],
-    difficulty: 'medium'
-  },
-  {
-    id: 65,
-    question: 'Which AWS service is used to monitor and collect logs from various AWS resources?',
-    answers: [
-      { id: 1, answer: 'Amazon EC2', correct: false },
-      { id: 2, answer: 'Amazon S3', correct: false },
-      { id: 3, answer: 'Amazon CloudWatch', correct: true },
-      { id: 4, answer: 'AWS Lambda', correct: false }
-    ],
-    difficulty: 'medium'
-  },
-  {
-    id: 66,
-    question: 'Which AWS service provides a fully managed message queuing service?',
-    answers: [
-      { id: 1, answer: 'Amazon EC2', correct: false },
-      { id: 2, answer: 'Amazon SNS', correct: false },
-      { id: 3, answer: 'Amazon SQS', correct: true },
-      { id: 4, answer: 'Amazon RDS', correct: false }
-    ],
-    difficulty: 'medium'
-  },
-  {
-    id: 67,
-    question: 'What is the maximum number of security groups that can be associated with an EC2 instance?',
-    answers: [
-      { id: 1, answer: '1', correct: false },
-      { id: 2, answer: '5', correct: false },
-      { id: 3, answer: '10', correct: false },
-      { id: 4, answer: '50', correct: true }
-    ],
-    difficulty: 'medium'
-  },
-  {
-    id: 68,
-    question: 'Which AWS service is used to monitor and troubleshoot network connectivity between EC2 instances?',
-    answers: [
-      { id: 1, answer: 'Amazon CloudFront', correct: false },
-      { id: 2, answer: 'Amazon CloudWatch', correct: false },
-      { id: 3, answer: 'Amazon VPC', correct: false },
-      { id: 4, answer: 'AWS Elastic Beanstalk', correct: true }
-    ],
-    difficulty: 'medium'
-  },
-  {
-    id: 69,
-    question: 'What is the maximum duration for an AWS Lambda function execution?',
-    answers: [
-      { id: 1, answer: '1 minute', correct: false },
-      { id: 2, answer: '5 minutes', correct: false },
-      { id: 3, answer: '15 minutes', correct: false },
-      { id: 4, answer: 'Depends on the function configuration, up to 15 minutes', correct: true }
-    ],
-    difficulty: 'medium'
-  },
-  {
-    id: 70,
-    question: 'Which AWS service is used to create and manage a virtual private cloud (VPC)?',
-    answers: [
-      { id: 1, answer: 'Amazon EC2', correct: false },
-      { id: 2, answer: 'Amazon S3', correct: false },
-      { id: 3, answer: 'Amazon VPC', correct: true },
-      { id: 4, answer: 'Amazon RDS', correct: false }
-    ],
-    difficulty: 'medium'
-  },
-  {
-    id: 71,
-    question: 'Which AWS service is used to store and manage relational databases?',
-    answers: [
-      { id: 1, answer: 'Amazon EC2', correct: false },
-      { id: 2, answer: 'Amazon S3', correct: false },
-      { id: 3, answer: 'Amazon RDS', correct: true },
-      { id: 4, answer: 'Amazon DynamoDB', correct: false }
-    ],
-    difficulty: 'medium'
-  },
-  {
-    id: 72,
-    question: 'What is the maximum number of subnets that can be created within an Amazon VPC?',
-    answers: [
-      { id: 1, answer: '5', correct: false },
-      { id: 2, answer: '10', correct: false },
-      { id: 3, answer: '200', correct: false },
-      { id: 4, answer: '500', correct: true }
-    ],
-    difficulty: 'medium'
-  },
-  {
-    id: 73,
-    question: 'Which AWS service provides a fully managed message broker service for event-driven architectures?',
-    answers: [
-      { id: 1, answer: 'Amazon EC2', correct: false },
-      { id: 2, answer: 'Amazon SNS', correct: false },
-      { id: 3, answer: 'Amazon MQ', correct: true },
-      { id: 4, answer: 'Amazon RDS', correct: false }
-    ],
-    difficulty: 'medium'
-  },
-  {
-    id: 74,
-    question: 'What is the maximum number of Lambda functions that can be associated with an Amazon API Gateway stage?',
-    answers: [
-      { id: 1, answer: '10', correct: false },
-      { id: 2, answer: '25', correct: false },
-      { id: 3, answer: '50', correct: false },
-      { id: 4, answer: '1000', correct: true }
-    ],
-    difficulty: 'medium'
-  },
-  {
-    id: 75,
-    question: 'Which AWS service is used to distribute incoming application traffic across multiple targets?',
-    answers: [
-      { id: 1, answer: 'Amazon EC2', correct: false },
-      { id: 2, answer: 'Amazon S3', correct: false },
-      { id: 3, answer: 'Amazon CloudFront', correct: false },
-      { id: 4, answer: 'Amazon ELB (Elastic Load Balancer)', correct: true }
-    ],
-    difficulty: 'medium'
-  },
-  {
-    id: 76,
-    question: 'Which AWS service is used to create and manage containerized applications?',
-    answers: [
-      { id: 1, answer: 'Amazon EC2', correct: false },
-      { id: 2, answer: 'Amazon S3', correct: false },
-      { id: 3, answer: 'Amazon ECS (Elastic Container Service)', correct: true },
-      { id: 4, answer: 'Amazon RDS', correct: false }
-    ],
-    difficulty: 'medium'
-  },
-  {
-    id: 77,
-    question: 'What is the maximum duration for an Amazon EC2 spot instance?',
-    answers: [
-      { id: 1, answer: '1 hour', correct: false },
-      { id: 2, answer: '6 hours', correct: false },
-      { id: 3, answer: '12 hours', correct: false },
-      { id: 4, answer: 'Until the spot instance is interrupted by the system or terminated by the user', correct: true }
-    ],
-    difficulty: 'medium'
-  },
-  {
-    id: 78,
-    question: 'Which AWS service provides a scalable NoSQL database?',
-    answers: [
-      { id: 1, answer: 'Amazon EC2', correct: false },
-      { id: 2, answer: 'Amazon S3', correct: false },
-      { id: 3, answer: 'Amazon DynamoDB', correct: true },
-      { id: 4, answer: 'Amazon RDS', correct: false }
-    ],
-    difficulty: 'medium'
-  },
-  {
-    id: 79,
-    question: 'What is the maximum number of CloudFront distributions that can be created per AWS account?',
-    answers: [
-      { id: 1, answer: '10', correct: false },
-      { id: 2, answer: '50', correct: false },
-      { id: 3, answer: '100', correct: false },
-      { id: 4, answer: '200', correct: true }
-    ],
-    difficulty: 'medium'
-  },
-  {
-    id: 80,
-    question: 'Which AWS service is used to automate the deployment of applications?',
-    answers: [
-      { id: 1, answer: 'AWS Elastic Beanstalk', correct: true },
-      { id: 2, answer: 'Amazon CloudWatch', correct: false },
-      { id: 3, answer: 'Amazon VPC', correct: false },
-      { id: 4, answer: 'AWS Lambda', correct: false }
-    ],
-    difficulty: 'medium'
-  },
-  {
-    id: 81,
-    question: 'Which AWS service provides serverless compute capacity for running code without provisioning or managing servers?',
-    answers: [
-      { id: 1, answer: 'Amazon EC2', correct: false },
-      { id: 2, answer: 'Amazon S3', correct: false },
-      { id: 3, answer: 'AWS Lambda', correct: true },
-      { id: 4, answer: 'Amazon RDS', correct: false }
-    ],
-    difficulty: 'medium'
-  },
-  {
-    id: 82,
-    question: 'What is the maximum number of items that can be retrieved in a single query from Amazon DynamoDB?',
-    answers: [
-      { id: 1, answer: '100', correct: false },
-      { id: 2, answer: '500', correct: false },
-      { id: 3, answer: '1000', correct: false },
-      { id: 4, answer: 'No limit, but retrieval is limited to 1 MB of data', correct: true }
-    ],
-    difficulty: 'medium'
-  },
-  {
-    id: 83,
-    question: 'Which AWS service is used to create and manage virtual machines in the cloud?',
-    answers: [
-      { id: 1, answer: 'Amazon EC2', correct: true },
-      { id: 2, answer: 'Amazon S3', correct: false },
-      { id: 3, answer: 'Amazon CloudFront', correct: false },
-      { id: 4, answer: 'AWS Elastic Beanstalk', correct: false }
-    ],
-    difficulty: 'medium'
-  },
-  {
-    id: 84,
-    question: 'What is the maximum number of attributes that can be defined for an item in Amazon DynamoDB?',
-    answers: [
-      { id: 1, answer: '10', correct: false },
-      { id: 2, answer: '25', correct: false },
-      { id: 3, answer: '50', correct: false },
-      { id: 4, answer: 'No limit', correct: true }
-    ],
-    difficulty: 'medium'
-  },
-  {
-    id: 85,
-    question: 'Which AWS service is used to deliver streaming content to viewers globally with low latency and high transfer speeds?',
-    answers: [
-      { id: 1, answer: 'Amazon EC2', correct: false },
-      { id: 2, answer: 'Amazon S3', correct: false },
-      { id: 3, answer: 'Amazon CloudFront', correct: true },
-      { id: 4, answer: 'Amazon RDS', correct: false }
-    ],
-    difficulty: 'medium'
-  },
-  {
-    id: 86,
-    question: 'What is the maximum number of characters allowed for an S3 bucket name?',
-    answers: [
-      { id: 1, answer: '50', correct: false },
-      { id: 2, answer: '63', correct: true },
-      { id: 3, answer: '128', correct: false },
-      { id: 4, answer: '255', correct: false }
-    ],
-    difficulty: 'medium'
-  },
-  {
-    id: 87,
-    question: 'Which AWS service provides a fully managed database service for MongoDB?',
-    answers: [
-      { id: 1, answer: 'Amazon EC2', correct: false },
-      { id: 2, answer: 'Amazon RDS', correct: false },
-      { id: 3, answer: 'Amazon DocumentDB', correct: false },
-      { id: 4, answer: 'Amazon DocumentDB with MongoDB compatibility', correct: true }
-    ],
-    difficulty: 'medium'
-  },
-  {
-    id: 88,
-    question: 'What is the maximum size of an object that can be uploaded to Amazon S3?',
-    answers: [
-      { id: 1, answer: '1 GB', correct: false },
-      { id: 2, answer: '5 GB', correct: false },
-      { id: 3, answer: '10 GB', correct: false },
-      { id: 4, answer: '5 TB', correct: true }
-    ],
-    difficulty: 'medium'
-  },
-  {
-    id: 89,
-    question: 'Which AWS service is used to automate resource provisioning and management across multiple AWS accounts?',
-    answers: [
-      { id: 1, answer: 'AWS CloudFormation', correct: true },
-      { id: 2, answer: 'AWS Step Functions', correct: false },
-      { id: 3, answer: 'Amazon API Gateway', correct: false },
-      { id: 4, answer: 'AWS Glue', correct: false }
-    ],
-    difficulty: 'medium'
-  },
-  {
-    id: 90,
-    question: 'What is the maximum number of characters allowed for an AWS IAM user name?',
-    answers: [
-      { id: 1, answer: '32', correct: false },
-      { id: 2, answer: '64', correct: false },
-      { id: 3, answer: '128', correct: false },
-      { id: 4, answer: '255', correct: true }
-    ],
-    difficulty: 'medium'
-  },
-  {
-    id: 91,
-    question: 'Which AWS service is used to deliver email communications to customers?',
-    answers: [
-      { id: 1, answer: 'Amazon EC2', correct: false },
-      { id: 2, answer: 'Amazon S3', correct: false },
-      { id: 3, answer: 'Amazon SES (Simple Email Service)', correct: true },
-      { id: 4, answer: 'Amazon RDS', correct: false }
-    ],
-    difficulty: 'medium'
-  },
-  {
-    id: 92,
-    question: 'What is the maximum number of rules that can be configured in an AWS WAF web access control list (ACL)?',
-    answers: [
-      { id: 1, answer: '10', correct: false },
-      { id: 2, answer: '25', correct: false },
-      { id: 3, answer: '50', correct: false },
-      { id: 4, answer: '100', correct: true }
-    ],
-    difficulty: 'medium'
-  },
-  {
-    id: 93,
-    question: 'Which AWS service provides a fully managed service for real-time messaging and streaming?',
-    answers: [
-      { id: 1, answer: 'Amazon EC2', correct: false },
-      { id: 2, answer: 'Amazon SNS', correct: false },
-      { id: 3, answer: 'Amazon Kinesis', correct: true },
-      { id: 4, answer: 'Amazon RDS', correct: false }
-    ],
-    difficulty: 'medium'
-  },
-  {
-    id: 95,
-    question: 'Which AWS service is used to store and manage non-relational databases?',
-    answers: [
-      { id: 1, answer: 'Amazon EC2', correct: false },
-      { id: 2, answer: 'Amazon S3', correct: false },
-      { id: 3, answer: 'Amazon DynamoDB', correct: false },
-      { id: 4, answer: 'Amazon DocumentDB', correct: true }
-    ],
-    difficulty: 'medium'
-  },
-  {
-    id: 96,
-    question: 'What is the maximum number of active load balancers per AWS account for the Elastic Load Balancing service?',
-    answers: [
-      { id: 1, answer: '5', correct: false },
-      { id: 2, answer: '10', correct: false },
-      { id: 3, answer: '20', correct: false },
-      { id: 4, answer: '100', correct: true }
-    ],
-    difficulty: 'medium'
-  },
-  {
-    id: 97,
-    question: 'Which AWS service provides a fully managed data warehousing solution?',
-    answers: [
-      { id: 1, answer: 'Amazon EC2', correct: false },
-      { id: 2, answer: 'Amazon S3', correct: false },
-      { id: 3, answer: 'Amazon Redshift', correct: true },
-      { id: 4, answer: 'Amazon RDS', correct: false }
-    ],
-    difficulty: 'medium'
-  },
-  {
-    id: 98,
-    question: 'What is the maximum number of subnets that can be created per VPC (Virtual Private Cloud)?',
-    answers: [
-      { id: 1, answer: '5', correct: false },
-      { id: 2, answer: '10', correct: false },
-      { id: 3, answer: '20', correct: false },
-      { id: 4, answer: '200', correct: true }
-    ],
-    difficulty: 'medium'
-  },
-  {
-    id: 99,
-    question: 'Which AWS service is used to deploy and manage containerized applications?',
-    answers: [
-      { id: 1, answer: 'Amazon EC2', correct: false },
-      { id: 2, answer: 'Amazon ECS (Elastic Container Service)', correct: true },
-      { id: 3, answer: 'Amazon S3', correct: false },
-      { id: 4, answer: 'Amazon RDS', correct: false }
-    ],
-    difficulty: 'medium'
-  },
-  {
-    id: 100,
-    question: 'What is the maximum number of attributes that can be defined for a document in Amazon DynamoDB?',
-    answers: [
-      { id: 1, answer: '10', correct: false },
-      { id: 2, answer: '25', correct: false },
-      { id: 3, answer: '50', correct: false },
-      { id: 4, answer: '400', correct: true }
-    ],
-    difficulty: 'medium'
-  },
-  {
-    id: 101,
-    question: 'What is the primary purpose of AWS IAM?',
-    answers: [
-      { id: 1, answer: 'To manage AWS billing and payment information', correct: false },
-      { id: 2, answer: 'To monitor and log AWS service activities', correct: false },
-      { id: 3, answer: 'To create and manage AWS user accounts and permissions', correct: true },
-      { id: 4, answer: 'To provision and manage AWS resources', correct: false }
-    ],
-    difficulty: 'medium',
-    category: 'IAM'
-  },
-  {
-    id: 102,
-    question: 'Which of the following is NOT an IAM entity?',
-    answers: [
-      { id: 1, answer: 'User', correct: false },
-      { id: 2, answer: 'Group', correct: false },
-      { id: 3, answer: 'Role', correct: false },
-      { id: 4, answer: 'Bucket', correct: true }
-    ],
-    difficulty: 'medium',
-    category: 'IAM'
-  },
-  {
-    id: 103,
-    question: 'What is the maximum number of IAM users that can be created per AWS account by default?',
-    answers: [
-      { id: 1, answer: '10', correct: false },
-      { id: 2, answer: '50', correct: false },
-      { id: 3, answer: '100', correct: false },
-      { id: 4, answer: '5000', correct: true }
-    ],
-    difficulty: 'medium',
-    category: 'IAM'
-  },
-  {
-    id: 104,
-    question: 'Which statement is true about IAM roles?',
-    answers: [
-      { id: 1, answer: 'Roles are associated with AWS accounts', correct: false },
-      { id: 2, answer: 'Roles are used to grant access to IAM users', correct: false },
-      { id: 3, answer: 'Roles can be assigned to AWS resources', correct: true },
-      { id: 4, answer: 'Roles are used for multi-factor authentication', correct: false }
-    ],
-    difficulty: 'medium',
-    category: 'IAM'
-  },
-  {
-    id: 105,
-    question: 'Which AWS service is used to grant temporary access to AWS resources to users or applications?',
-    answers: [
-      { id: 1, answer: 'Amazon S3', correct: false },
-      { id: 2, answer: 'Amazon EC2', correct: false },
-      { id: 3, answer: 'AWS IAM', correct: false },
-      { id: 4, answer: 'AWS Security Token Service (STS)', correct: true }
-    ],
-    difficulty: 'medium',
-    category: 'IAM'
-  },
-  {
-    id: 106,
-    question: 'What is the main purpose of IAM policies?',
-    answers: [
-      { id: 1, answer: 'To define user names and passwords', correct: false },
-      { id: 2, answer: 'To enable multi-factor authentication', correct: false },
-      { id: 3, answer: 'To define permissions for AWS resources', correct: true },
-      { id: 4, answer: 'To create security groups for VPC', correct: false }
-    ],
-    difficulty: 'medium',
-    category: 'IAM'
-  },
-  {
-    id: 107,
-    question: 'Which action is NOT allowed by an IAM policy?',
-    answers: [
-      { id: 1, answer: 'Allow', correct: false },
-      { id: 2, answer: 'Deny', correct: false },
-      { id: 3, answer: 'Grant', correct: true },
-      { id: 4, answer: 'PassRole', correct: false }
-    ],
-    difficulty: 'medium',
-    category: 'IAM'
-  },
-  {
-    id: 108,
-    question: 'What is the purpose of an IAM group?',
-    answers: [
-      { id: 1, answer: 'To define permissions for IAM users', correct: true },
-      { id: 2, answer: 'To manage AWS billing information', correct: false },
-      { id: 3, answer: 'To provide secure access to S3 buckets', correct: false },
-      { id: 4, answer: 'To define cross-account access policies', correct: false }
-    ],
-    difficulty: 'medium',
-    category: 'IAM'
-  },
-  {
-    id: 109,
-    question: 'What is the maximum number of IAM roles that can be created per AWS account by default?',
-    answers: [
-      { id: 1, answer: '10', correct: false },
-      { id: 2, answer: '50', correct: false },
-      { id: 3, answer: '100', correct: false },
-      { id: 4, answer: '250', correct: true }
-    ],
-    difficulty: 'medium',
-    category: 'IAM'
-  },
-  {
-    id: 110,
-    question: 'Which AWS service is used to enable federated access to AWS resources using existing corporate credentials?',
-    answers: [
-      { id: 1, answer: 'AWS Single Sign-On (SSO)', correct: true },
-      { id: 2, answer: 'Amazon RDS', correct: false },
-      { id: 3, answer: 'Amazon CloudFront', correct: false },
-      { id: 4, answer: 'Amazon S3', correct: false }
-    ],
-    difficulty: 'medium',
-    category: 'IAM'
-  },
-  {
-    id: 111,
-    question: 'What is the purpose of an IAM instance profile?',
-    answers: [
-      { id: 1, answer: 'To define permissions for IAM users', correct: false },
-      { id: 2, answer: 'To provide secure access to S3 buckets', correct: false },
-      { id: 3, answer: 'To grant temporary access to AWS resources', correct: false },
-      { id: 4, answer: 'To grant permissions to EC2 instances', correct: true }
-    ],
-    difficulty: 'medium',
-    category: 'IAM'
-  },
-  {
-    id: 112,
-    question: 'Which AWS service is used to centralize and manage IAM access across multiple accounts?',
-    answers: [
-      { id: 1, answer: 'AWS Organizations', correct: true },
-      { id: 2, answer: 'AWS CloudTrail', correct: false },
-      { id: 3, answer: 'Amazon S3', correct: false },
-      { id: 4, answer: 'AWS Config', correct: false }
-    ],
-    difficulty: 'medium',
-    category: 'IAM'
-  },
-  {
-    id: 113,
-    question: 'What is the primary purpose of an IAM password policy?',
-    answers: [
-      { id: 1, answer: 'To enforce multi-factor authentication', correct: false },
-      { id: 2, answer: 'To allow users to reset their passwords', correct: false },
-      { id: 3, answer: 'To define the password requirements for IAM users', correct: true },
-      { id: 4, answer: 'To generate secure passwords for IAM users', correct: false }
-    ],
-    difficulty: 'medium',
-    category: 'IAM'
-  },
-  {
-    id: 114,
-    question: 'What is the maximum number of IAM groups that can be created per AWS account?',
-    answers: [
-      { id: 1, answer: '10', correct: false },
-      { id: 2, answer: '50', correct: false },
-      { id: 3, answer: '100', correct: false },
-      { id: 4, answer: '300', correct: true }
-    ],
-    difficulty: 'medium',
-    category: 'IAM'
-  },
-  {
-    id: 115,
-    question: 'Which AWS service is used to automate the rotation of IAM user access keys?',
-    answers: [
-      { id: 1, answer: 'Amazon CloudWatch', correct: false },
-      { id: 2, answer: 'AWS Config', correct: false },
-      { id: 3, answer: 'AWS Secrets Manager', correct: true },
-      { id: 4, answer: 'Amazon S3', correct: false }
-    ],
-    difficulty: 'medium',
-    category: 'IAM'
-  },
-  {
-    id: 116,
-    question: 'What is the purpose of an IAM policy simulator?',
-    answers: [
-      { id: 1, answer: 'To generate access keys for IAM users', correct: false },
-      { id: 2, answer: 'To simulate IAM policy evaluation', correct: true },
-      { id: 3, answer: 'To enable multi-factor authentication', correct: false },
-      { id: 4, answer: 'To create security groups for VPC', correct: false }
-    ],
-    difficulty: 'medium',
-    category: 'IAM'
-  },
-  {
-    id: 117,
-    question: 'Which statement is true about IAM access keys?',
-    answers: [
-      { id: 1, answer: 'Access keys are used for console login', correct: false },
-      { id: 2, answer: 'Access keys are created and managed by AWS Support', correct: false },
-      { id: 3, answer: 'Access keys consist of an access key ID and a secret access key', correct: true },
-      { id: 4, answer: 'Access keys can only be associated with IAM roles', correct: false }
-    ],
-    difficulty: 'medium',
-    category: 'IAM'
-  },
-  {
-    id: 118,
-    question: 'What is the purpose of an IAM identity provider?',
-    answers: [
-      { id: 1, answer: 'To grant access to AWS resources', correct: false },
-      { id: 2, answer: 'To enable multi-factor authentication', correct: false },
-      { id: 3, answer: 'To define the password policy for IAM users', correct: false },
-      { id: 4, answer: 'To establish trust and enable federated access', correct: true }
-    ],
-    difficulty: 'medium',
-    category: 'IAM'
-  },
-  {
-    id: 119,
-    question: 'Which AWS service is used to track and analyze IAM policy changes?',
-    answers: [
-      { id: 1, answer: 'AWS CloudTrail', correct: true },
-      { id: 2, answer: 'AWS Config', correct: false },
-      { id: 3, answer: 'Amazon S3', correct: false },
-      { id: 4, answer: 'Amazon CloudFront', correct: false }
-    ],
-    difficulty: 'medium',
-    category: 'IAM'
-  },
-  {
-    id: 120,
-    question: 'What is the purpose of an IAM role session?',
-    answers: [
-      { id: 1, answer: 'To define the trust policy for an IAM role', correct: false },
-      { id: 2, answer: 'To enable cross-account access to AWS resources', correct: false },
-      { id: 3, answer: 'To define the permissions for an IAM user', correct: false },
-      { id: 4, answer: 'To establish temporary credentials for a user or application', correct: true }
-    ],
-    difficulty: 'medium',
-    category: 'IAM'
-  },
-  {
-    id: 121,
-    question: 'What is the purpose of an IAM role?',
-    answers: [
-      { id: 1, answer: 'To define permissions for IAM users', correct: false },
-      { id: 2, answer: 'To provide secure access to S3 buckets', correct: false },
-      { id: 3, answer: 'To enable multi-factor authentication', correct: false },
-      { id: 4, answer: 'To delegate permissions to AWS services or applications', correct: true }
-    ],
-    difficulty: 'medium',
-    category: 'IAM'
-  },
-  {
-    id: 122,
-    question: 'Which AWS service allows you to assign an IAM role to an EC2 instance?',
-    answers: [
-      { id: 1, answer: 'Amazon S3', correct: false },
-      { id: 2, answer: 'Amazon RDS', correct: false },
-      { id: 3, answer: 'Amazon EC2', correct: true },
-      { id: 4, answer: 'Amazon DynamoDB', correct: false }
-    ],
-    difficulty: 'medium',
-    category: 'IAM'
-  },
-  {
-    id: 123,
-    question: 'What is the purpose of IAM conditions?',
-    answers: [
-      { id: 1, answer: 'To enforce password policies', correct: false },
-      { id: 2, answer: 'To enable multi-factor authentication', correct: false },
-      { id: 3, answer: 'To define the password requirements for IAM users', correct: false },
-      { id: 4, answer: 'To further restrict access based on specified conditions', correct: true }
-    ],
-    difficulty: 'medium',
-    category: 'IAM'
-  },
-  {
-    id: 124,
-    question: 'Which action is required to enable IAM access analyzer?',
-    answers: [
-      { id: 1, answer: 'Attach an IAM policy to a user', correct: false },
-      { id: 2, answer: 'Enable IAM role session logging', correct: false },
-      { id: 3, answer: 'Enable AWS CloudTrail in the AWS account', correct: false },
-      { id: 4, answer: 'Enable IAM Access Analyzer in the AWS Management Console', correct: true }
-    ],
-    difficulty: 'medium',
-    category: 'IAM'
-  },
-  {
-    id: 125,
-    question: 'What is the purpose of the IAM credential report?',
-    answers: [
-      { id: 1, answer: 'To track changes to IAM policies', correct: false },
-      { id: 2, answer: 'To monitor IAM user login activity', correct: false },
-      { id: 3, answer: 'To identify unused IAM access keys', correct: true },
-      { id: 4, answer: 'To generate temporary credentials for IAM users', correct: false }
-    ],
-    difficulty: 'medium',
-    category: 'IAM'
-  },
-  {
-    id: 126,
-    question: 'Which AWS service provides a web-based interface for managing IAM resources?',
-    answers: [
-      { id: 1, answer: 'Amazon EC2', correct: false },
-      { id: 2, answer: 'Amazon S3', correct: false },
-      { id: 3, answer: 'AWS Identity and Access Management (IAM)', correct: true },
-      { id: 4, answer: 'Amazon VPC', correct: false }
-    ],
-    difficulty: 'medium',
-    category: 'IAM'
-  },
-  {
-    id: 127,
-    question: 'What is the purpose of the AWS Security Token Service (STS)?',
-    answers: [
-      { id: 1, answer: 'To enable multi-factor authentication for IAM users', correct: false },
-      { id: 2, answer: 'To generate temporary credentials for IAM users', correct: true },
-      { id: 3, answer: 'To encrypt data stored in Amazon S3', correct: false },
-      { id: 4, answer: 'To manage access to AWS resources across accounts', correct: false }
-    ],
-    difficulty: 'medium',
-    category: 'IAM'
-  },
-  {
-    id: 128,
-    question: 'Which IAM policy element is used to specify the resources on which the policy applies?',
-    answers: [
-      { id: 1, answer: 'Effect', correct: false },
-      { id: 2, answer: 'Principal', correct: false },
-      { id: 3, answer: 'Action', correct: false },
-      { id: 4, answer: 'Resource', correct: true }
-    ],
-    difficulty: 'medium',
-    category: 'IAM'
-  },
-  {
-    id: 129,
-    question: 'What is the purpose of an IAM boundary policy?',
-    answers: [
-      { id: 1, answer: 'To set the maximum permissions for an IAM user', correct: true },
-      { id: 2, answer: 'To enable cross-account access to AWS resources', correct: false },
-      { id: 3, answer: 'To define the trust policy for an IAM role', correct: false },
-      { id: 4, answer: 'To enforce password policies for IAM users', correct: false }
-    ],
-    difficulty: 'medium',
-    category: 'IAM'
-  },
-  {
-    id: 130,
-    question: 'Which AWS service is used to manage AWS Secrets Manager?',
-    answers: [
-      { id: 1, answer: 'AWS CloudFormation', correct: false },
-      { id: 2, answer: 'AWS Secrets Manager', correct: true },
-      { id: 3, answer: 'AWS Identity and Access Management (IAM)', correct: false },
-      { id: 4, answer: 'AWS Key Management Service (KMS)', correct: false }
-    ],
-    difficulty: 'medium',
-    category: 'IAM'
-  },
-  {
-    id: 131,
-    question: 'What is the purpose of IAM roles for Amazon EC2?',
-    answers: [
-      { id: 1, answer: 'To define permissions for IAM users', correct: false },
-      { id: 2, answer: 'To provide secure access to S3 buckets', correct: false },
-      { id: 3, answer: 'To delegate permissions to EC2 instances', correct: true },
-      { id: 4, answer: 'To enable multi-factor authentication', correct: false }
-    ],
-    difficulty: 'medium',
-    category: 'IAM'
-  },
-  {
-    id: 132,
-    question: 'Which AWS service provides a global view of IAM permissions across all accounts?',
-    answers: [
-      { id: 1, answer: 'AWS Organizations', correct: false },
-      { id: 2, answer: 'AWS CloudTrail', correct: false },
-      { id: 3, answer: 'AWS Security Hub', correct: false },
-      { id: 4, answer: 'AWS IAM Access Analyzer', correct: true }
-    ],
-    difficulty: 'medium',
-    category: 'IAM'
-  },
-  {
-    id: 133,
-    question: 'What is the purpose of an IAM role policy?',
-    answers: [
-      { id: 1, answer: 'To define the permissions for an IAM user', correct: false },
-      { id: 2, answer: 'To set the maximum permissions for an IAM role', correct: true },
-      { id: 3, answer: 'To enable cross-account access to AWS resources', correct: false },
-      { id: 4, answer: 'To enforce password policies for IAM users', correct: false }
-    ],
-    difficulty: 'medium',
-    category: 'IAM'
-  },
-  {
-    id: 134,
-    question: 'What is the purpose of the AWS Managed Policy?',
-    answers: [
-      { id: 1, answer: 'To enforce password policies for IAM users', correct: false },
-      { id: 2, answer: 'To enable multi-factor authentication for IAM users', correct: false },
-      { id: 3, answer: 'To set the maximum permissions for an IAM user', correct: false },
-      { id: 4, answer: 'To provide pre-defined permissions for common AWS services', correct: true }
-    ],
-    difficulty: 'medium',
-    category: 'IAM'
-  },
-  {
-    id: 135,
-    question: 'Which AWS service provides a visual editor for creating and managing IAM policies?',
-    answers: [
-      { id: 1, answer: 'Amazon S3', correct: false },
-      { id: 2, answer: 'AWS Config', correct: false },
-      { id: 3, answer: 'AWS Identity and Access Management (IAM) Policy Editor', correct: true },
-      { id: 4, answer: 'Amazon EC2', correct: false }
-    ],
-    difficulty: 'medium',
-    category: 'IAM'
-  },
-  {
-    id: 136,
-    question: 'What is the purpose of an IAM role assumption?',
-    answers: [
-      { id: 1, answer: 'To define the trust policy for an IAM role', correct: false },
-      { id: 2, answer: 'To enable cross-account access to AWS resources', correct: false },
-      { id: 3, answer: 'To establish temporary credentials for a user or application', correct: true },
-      { id: 4, answer: 'To enforce password policies for IAM users', correct: false }
-    ],
-    difficulty: 'medium',
-    category: 'IAM'
-  },
-  {
-    id: 137,
-    question: 'Which AWS service is used to automate the rotation of IAM access keys?',
-    answers: [
-      { id: 1, answer: 'AWS Secrets Manager', correct: false },
-      { id: 2, answer: 'AWS Identity and Access Management (IAM)', correct: true },
-      { id: 3, answer: 'AWS CloudFormation', correct: false },
-      { id: 4, answer: 'AWS Key Management Service (KMS)', correct: false }
-    ],
-    difficulty: 'medium',
-    category: 'IAM'
-  },
-  {
-    id: 138,
-    question: 'What is the purpose of an IAM policy simulator?',
-    answers: [
-      { id: 1, answer: 'To track changes to IAM policies', correct: false },
-      { id: 2, answer: 'To simulate IAM policy evaluations', correct: true },
-      { id: 3, answer: 'To enforce password policies for IAM users', correct: false },
-      { id: 4, answer: 'To manage access to AWS resources across accounts', correct: false }
-    ],
-    difficulty: 'medium',
-    category: 'IAM'
-  },
-  {
-    id: 139,
-    question: 'Which AWS service provides a unified view of IAM permissions across AWS accounts?',
-    answers: [
-      { id: 1, answer: 'AWS Organizations', correct: true },
-      { id: 2, answer: 'AWS CloudTrail', correct: false },
-      { id: 3, answer: 'AWS Security Hub', correct: false },
-      { id: 4, answer: 'AWS IAM Access Analyzer', correct: false }
-    ],
-    difficulty: 'medium',
-    category: 'IAM'
-  },
-  {
-    id: 140,
-    question: 'What is the purpose of the IAM role trust policy?',
-    answers: [
-      { id: 1, answer: 'To define the permissions for IAM users', correct: false },
-      { id: 2, answer: 'To enable multi-factor authentication', correct: false },
-      { id: 3, answer: 'To establish trust and enable federated access', correct: true },
-      { id: 4, answer: 'To provide secure access to S3 buckets', correct: false }
-    ],
-    difficulty: 'medium',
-    category: 'IAM'
-  },
-  {
-    id: 141,
-    question: 'What is the purpose of IAM roles for AWS Lambda functions?',
-    answers: [
-      { id: 1, answer: 'To define permissions for IAM users', correct: false },
-      { id: 2, answer: 'To provide secure access to S3 buckets', correct: false },
-      { id: 3, answer: 'To delegate permissions to Lambda functions', correct: true },
-      { id: 4, answer: 'To enable multi-factor authentication', correct: false }
-    ],
-    difficulty: 'medium',
-    category: 'IAM'
-  },
-  {
-    id: 142,
-    question: 'Which AWS service is used to manage IAM access keys?',
-    answers: [
-      { id: 1, answer: 'Amazon S3', correct: false },
-      { id: 2, answer: 'AWS Secrets Manager', correct: false },
-      { id: 3, answer: 'AWS Identity and Access Management (IAM)', correct: false },
-      { id: 4, answer: 'AWS IAM Access Analyzer', correct: true }
-    ],
-    difficulty: 'medium',
-    category: 'IAM'
-  },
-  {
-    id: 143,
-    question: 'What is the purpose of an IAM policy version?',
-    answers: [
-      { id: 1, answer: 'To define the permissions for an IAM user', correct: false },
-      { id: 2, answer: 'To set the maximum permissions for an IAM role', correct: false },
-      { id: 3, answer: 'To track changes to IAM policies over time', correct: true },
-      { id: 4, answer: 'To enforce password policies for IAM users', correct: false }
-    ],
-    difficulty: 'medium',
-    category: 'IAM'
-  },
-  {
-    id: 144,
-    question: 'Which action is required to enable IAM access key rotation?',
-    answers: [
-      { id: 1, answer: 'Attach an IAM policy to a user', correct: false },
-      { id: 2, answer: 'Enable IAM role session logging', correct: false },
-      { id: 3, answer: 'Enable AWS CloudTrail in the AWS account', correct: false },
-      { id: 4, answer: 'Enable access key rotation for an IAM user in IAM settings', correct: true }
-    ],
-    difficulty: 'medium',
-    category: 'IAM'
-  },
-  {
-    id: 145,
-    question: 'What is the purpose of the AWS Security Token Service (STS)?',
-    answers: [
-      { id: 1, answer: 'To enable multi-factor authentication for IAM users', correct: false },
-      { id: 2, answer: 'To generate temporary credentials for IAM users', correct: true },
-      { id: 3, answer: 'To encrypt data stored in Amazon S3', correct: false },
-      { id: 4, answer: 'To manage access to AWS resources across accounts', correct: false }
-    ],
-    difficulty: 'medium',
-    category: 'IAM'
-  },
-  {
-    id: 146,
-    question: 'Which IAM policy element is used to specify the actions that are allowed or denied?',
-    answers: [
-      { id: 1, answer: 'Effect', correct: false },
-      { id: 2, answer: 'Principal', correct: false },
-      { id: 3, answer: 'Action', correct: true },
-      { id: 4, answer: 'Resource', correct: false }
-    ],
-    difficulty: 'medium',
-    category: 'IAM'
-  },
-  {
-    id: 147,
-    question: 'What is the purpose of an IAM role?',
-    answers: [
-      { id: 1, answer: 'To define the trust policy for an IAM user', correct: false },
-      { id: 2, answer: 'To enable cross-account access to AWS resources', correct: false },
-      { id: 3, answer: 'To delegate permissions to AWS services or users', correct: true },
-      { id: 4, answer: 'To enforce password policies for IAM users', correct: false }
-    ],
-    difficulty: 'medium',
-    category: 'IAM'
-  },
-  {
-    id: 148,
-    question: 'Which AWS service is used to manage IAM groups?',
-    answers: [
-      { id: 1, answer: 'AWS Identity and Access Management (IAM)', correct: true },
-      { id: 2, answer: 'AWS Secrets Manager', correct: false },
-      { id: 3, answer: 'Amazon S3', correct: false },
-      { id: 4, answer: 'Amazon EC2', correct: false }
-    ],
-    difficulty: 'medium',
-    category: 'IAM'
-  },
-  {
-    id: 149,
-    question: 'What is the purpose of IAM policies?',
-    answers: [
-      { id: 1, answer: 'To define the permissions for an IAM user', correct: false },
-      { id: 2, answer: 'To set the maximum permissions for an IAM role', correct: false },
-      { id: 3, answer: 'To enable cross-account access to AWS resources', correct: false },
-      { id: 4, answer: 'All of the above', correct: true }
-    ],
-    difficulty: 'medium',
-    category: 'IAM'
-  },
-  {
-    id: 150,
-    question: 'Which AWS service provides a web-based user interface for managing IAM?',
-    answers: [
-      { id: 1, answer: 'Amazon S3', correct: false },
-      { id: 2, answer: 'AWS CloudTrail', correct: false },
-      { id: 3, answer: 'AWS Management Console', correct: true },
-      { id: 4, answer: 'Amazon EC2', correct: false }
-    ],
-    difficulty: 'medium',
-    category: 'IAM'
-  },
-  {
-    id: 151,
-    question: 'What is an Amazon EC2 instance?',
-    answers: [
-      { id: 1, answer: 'A scalable storage service provided by AWS', correct: false },
-      { id: 2, answer: 'A managed relational database service', correct: false },
-      { id: 3, answer: 'A virtual server in the cloud', correct: true },
-      { id: 4, answer: 'A serverless computing platform', correct: false }
-    ],
-    difficulty: 'medium',
-    category: 'EC2'
-  },
-  {
-    id: 152,
-    question: 'Which Amazon EC2 feature allows you to launch instances on a recurring schedule?',
-    answers: [
-      { id: 1, answer: 'Spot Instances', correct: false },
-      { id: 2, answer: 'Reserved Instances', correct: false },
-      { id: 3, answer: 'Dedicated Hosts', correct: false },
-      { id: 4, answer: 'Scheduled Instances', correct: true }
-    ],
-    difficulty: 'medium',
-    category: 'EC2'
-  },
-  {
-    id: 153,
-    question: 'What is the purpose of an Amazon Machine Image (AMI) in EC2?',
-    answers: [
-      { id: 1, answer: 'To store data in a highly durable manner', correct: false },
-      { id: 2, answer: 'To manage access and permissions for EC2 instances', correct: false },
-      { id: 3, answer: 'To launch instances with pre-configured operating systems and software', correct: true },
-      { id: 4, answer: 'To scale EC2 instances based on demand', correct: false }
-    ],
-    difficulty: 'medium',
-    category: 'EC2'
-  },
-  {
-    id: 154,
-    question: 'What is the purpose of an Amazon Elastic IP address?',
-    answers: [
-      { id: 1, answer: 'To provide secure access to S3 buckets', correct: false },
-      { id: 2, answer: 'To attach additional storage volumes to EC2 instances', correct: false },
-      { id: 3, answer: 'To provide a static IPv4 address for EC2 instances', correct: true },
-      { id: 4, answer: 'To distribute incoming traffic across multiple EC2 instances', correct: false }
-    ],
-    difficulty: 'medium',
-    category: 'EC2'
-  },
-  {
-    id: 155,
-    question: 'Which AWS service provides a way to monitor the performance of EC2 instances?',
-    answers: [
-      { id: 1, answer: 'AWS CloudTrail', correct: false },
-      { id: 2, answer: 'AWS Config', correct: false },
-      { id: 3, answer: 'Amazon CloudWatch', correct: true },
-      { id: 4, answer: 'Amazon S3', correct: false }
-    ],
-    difficulty: 'medium',
-    category: 'EC2'
-  },
-  {
-    id: 156,
-    question: 'What is the purpose of an Amazon EC2 security group?',
-    answers: [
-      { id: 1, answer: 'To manage access and permissions for EC2 instances', correct: true },
-      { id: 2, answer: 'To store data in a highly durable manner', correct: false },
-      { id: 3, answer: 'To scale EC2 instances based on demand', correct: false },
-      { id: 4, answer: 'To launch instances with pre-configured operating systems and software', correct: false }
-    ],
-    difficulty: 'medium',
-    category: 'EC2'
-  },
-  {
-    id: 157,
-    question: 'Which Amazon EC2 feature allows you to distribute incoming traffic across multiple EC2 instances?',
-    answers: [
-      { id: 1, answer: 'Auto Scaling', correct: false },
-      { id: 2, answer: 'Elastic Load Balancer', correct: true },
-      { id: 3, answer: 'Elastic Block Store', correct: false },
-      { id: 4, answer: 'Elastic IP address', correct: false }
-    ],
-    difficulty: 'medium',
-    category: 'EC2'
-  },
-  {
-    id: 158,
-    question: 'What is the purpose of Amazon EC2 placement groups?',
-    answers: [
-      { id: 1, answer: 'To store data in a highly durable manner', correct: false },
-      { id: 2, answer: 'To manage access and permissions for EC2 instances', correct: false },
-      { id: 3, answer: 'To launch instances with pre-configured operating systems and software', correct: false },
-      { id: 4, answer: 'To influence the placement of instances within an Availability Zone', correct: true }
-    ],
-    difficulty: 'medium',
-    category: 'EC2'
-  },
-  {
-    id: 159,
-    question: 'Which Amazon EC2 instance type is optimized for applications that require low-latency, high-throughput access to storage?',
-    answers: [
-      { id: 1, answer: 'Compute-optimized instances', correct: false },
-      { id: 2, answer: 'Memory-optimized instances', correct: false },
-      { id: 3, answer: 'Storage-optimized instances', correct: true },
-      { id: 4, answer: 'GPU instances', correct: false }
-    ],
-    difficulty: 'medium',
-    category: 'EC2'
-  },
-  {
-    id: 160,
-    question: 'Which AWS service allows you to create a virtual private cloud (VPC) for your EC2 instances?',
-    answers: [
-      { id: 1, answer: 'Amazon S3', correct: false },
-      { id: 2, answer: 'Amazon VPC', correct: true },
-      { id: 3, answer: 'AWS CloudTrail', correct: false },
-      { id: 4, answer: 'AWS Identity and Access Management (IAM)', correct: false }
-    ],
-    difficulty: 'medium',
-    category: 'EC2'
-  },
-  {
-    id: 161,
-    question: 'Which Amazon EC2 feature allows you to automatically scale your EC2 capacity based on demand?',
-    answers: [
-      { id: 1, answer: 'Auto Scaling', correct: true },
-      { id: 2, answer: 'Elastic Load Balancer', correct: false },
-      { id: 3, answer: 'Elastic Block Store', correct: false },
-      { id: 4, answer: 'Elastic IP address', correct: false }
-    ],
-    difficulty: 'medium',
-    category: 'EC2'
-  },
-  {
-    id: 162,
-    question: 'What is the maximum number of Elastic IP addresses that can be associated with an EC2 instance?',
-    answers: [
-      { id: 1, answer: '1', correct: false },
-      { id: 2, answer: '5', correct: false },
-      { id: 3, answer: '10', correct: false },
-      { id: 4, answer: '50', correct: true }
-    ],
-    difficulty: 'medium',
-    category: 'EC2'
-  },
-  {
-    id: 163,
-    question: 'Which AWS service can be used to automatically replace unhealthy EC2 instances?',
-    answers: [
-      { id: 1, answer: 'AWS Elastic Beanstalk', correct: false },
-      { id: 2, answer: 'AWS Lambda', correct: false },
-      { id: 3, answer: 'Amazon ECS', correct: false },
-      { id: 4, answer: 'Auto Scaling', correct: true }
-    ],
-    difficulty: 'medium',
-    category: 'EC2'
-  },
-  {
-    id: 164,
-    question: 'What is the purpose of an Amazon EC2 instance profile?',
-    answers: [
-      { id: 1, answer: 'To store data in a highly durable manner', correct: false },
-      { id: 2, answer: 'To manage access and permissions for EC2 instances', correct: false },
-      { id: 3, answer: 'To launch instances with pre-configured operating systems and software', correct: false },
-      { id: 4, answer: 'To provide AWS credentials to EC2 instances', correct: true }
-    ],
-    difficulty: 'medium',
-    category: 'EC2'
-  },
-  {
-    id: 165,
-    question: 'Which Amazon EC2 feature allows you to control traffic to and from your EC2 instances?',
-    answers: [
-      { id: 1, answer: 'Amazon VPC', correct: false },
-      { id: 2, answer: 'Elastic Load Balancer', correct: false },
-      { id: 3, answer: 'Security groups', correct: true },
-      { id: 4, answer: 'Elastic IP address', correct: false }
-    ],
-    difficulty: 'medium',
-    category: 'EC2'
-  },
-  {
-    id: 166,
-    question: 'What is the purpose of Amazon Elastic Block Store (EBS) in EC2?',
-    answers: [
-      { id: 1, answer: 'To store data in a highly durable manner', correct: true },
-      { id: 2, answer: 'To manage access and permissions for EC2 instances', correct: false },
-      { id: 3, answer: 'To launch instances with pre-configured operating systems and software', correct: false },
-      { id: 4, answer: 'To provide a static IPv4 address for EC2 instances', correct: false }
-    ],
-    difficulty: 'medium',
-    category: 'EC2'
-  },
-  {
-    id: 167,
-    question: 'Which Amazon EC2 instance type is optimized for applications that require a balance of compute, memory, and network resources?',
-    answers: [
-      { id: 1, answer: 'General-purpose instances', correct: true },
-      { id: 2, answer: 'Compute-optimized instances', correct: false },
-      { id: 3, answer: 'Memory-optimized instances', correct: false },
-      { id: 4, answer: 'Storage-optimized instances', correct: false }
-    ],
-    difficulty: 'medium',
-    category: 'EC2'
-  },
-  {
-    id: 168,
-    question: 'What is the purpose of an Amazon EC2 key pair?',
-    answers: [
-      { id: 1, answer: 'To store data in a highly durable manner', correct: false },
-      { id: 2, answer: 'To manage access and permissions for EC2 instances', correct: true },
-      { id: 3, answer: 'To launch instances with pre-configured operating systems and software', correct: false },
-      { id: 4, answer: 'To provide a static IPv4 address for EC2 instances', correct: false }
-    ],
-    difficulty: 'medium',
-    category: 'EC2'
-  },
-  {
-    id: 169,
-    factChecked: true,
-    question: 'Which Amazon service allows you to run applications without the need to provision or manage servers?',
-    answers: [
-      { id: 1, answer: 'Amazon VPC', correct: false },
-      { id: 2, answer: 'Amazon RDS', correct: false },
-      { id: 3, answer: 'AWS Lambda', correct: true },
-      { id: 4, answer: 'Elastic Load Balancer', correct: false }
-    ],
-    difficulty: 'medium',
-    category: 'EC2'
-  },
-  {
-    id: 170,
-    question: 'What is the purpose of Amazon EC2 user data?',
-    answers: [
-      { id: 1, answer: 'To store data in a highly durable manner', correct: false },
-      { id: 2, answer: 'To manage access and permissions for EC2 instances', correct: false },
-      { id: 3, answer: 'To launch instances with pre-configured operating systems and software', correct: false },
-      { id: 4, answer: 'To provide additional configuration information to EC2 instances', correct: true }
-    ],
-    difficulty: 'medium',
-    category: 'EC2'
-  },
-  {
-    id: 171,
-    question: 'What is the purpose of an Amazon Machine Image (AMI) in Amazon EC2?',
-    answers: [
-      { id: 1, answer: 'To store data in a highly durable manner', correct: false },
-      { id: 2, answer: 'To manage access and permissions for EC2 instances', correct: false },
-      { id: 3, answer: 'To launch instances with pre-configured operating systems and software', correct: true },
-      { id: 4, answer: 'To provide a static IPv4 address for EC2 instances', correct: false }
-    ],
-    difficulty: 'medium',
-    category: 'EC2'
-  },
-  {
-    id: 172,
-    question: 'Which Amazon EC2 feature allows you to capture a backup of your EC2 instance\'s root volume?',
-    answers: [
-      { id: 1, answer: 'Elastic Load Balancer', correct: false },
-      { id: 2, answer: 'Elastic Block Store', correct: false },
-      { id: 3, answer: 'Elastic IP address', correct: false },
-      { id: 4, answer: 'Amazon EC2 Instance Store-backed AMIs', correct: true }
-    ],
-    difficulty: 'medium',
-    category: 'EC2'
-  },
-  {
-    id: 173,
-    question: 'What is the purpose of an Amazon EC2 security group?',
-    answers: [
-      { id: 1, answer: 'To store data in a highly durable manner', correct: false },
-      { id: 2, answer: 'To manage access and permissions for EC2 instances', correct: true },
-      { id: 3, answer: 'To launch instances with pre-configured operating systems and software', correct: false },
-      { id: 4, answer: 'To provide a static IPv4 address for EC2 instances', correct: false }
-    ],
-    difficulty: 'medium',
-    category: 'EC2'
-  },
-  {
-    id: 174,
-    question: 'Which Amazon EC2 instance type is optimized for applications that require a balance of compute, memory, and storage resources?',
-    answers: [
-      { id: 1, answer: 'General-purpose instances', correct: false },
-      { id: 2, answer: 'Compute-optimized instances', correct: false },
-      { id: 3, answer: 'Memory-optimized instances', correct: false },
-      { id: 4, answer: 'Storage-optimized instances', correct: true }
-    ],
-    difficulty: 'medium',
-    category: 'EC2'
-  },
-  {
-    id: 175,
-    question: 'What is the purpose of an Amazon EC2 security group?',
-    answers: [
-      { id: 1, answer: 'To store data in a highly durable manner', correct: false },
-      { id: 2, answer: 'To manage access and permissions for EC2 instances', correct: true },
-      { id: 3, answer: 'To launch instances with pre-configured operating systems and software', correct: false },
-      { id: 4, answer: 'To provide a static IPv4 address for EC2 instances', correct: false }
-    ],
-    difficulty: 'medium',
-    category: 'EC2'
-  },
-  {
-    id: 176,
-    question: 'Which Amazon EC2 instance type is optimized for applications that require low-latency, high-throughput access to storage?',
-    answers: [
-      { id: 1, answer: 'General-purpose instances', correct: false },
-      { id: 2, answer: 'Compute-optimized instances', correct: false },
-      { id: 3, answer: 'Memory-optimized instances', correct: false },
-      { id: 4, answer: 'Storage-optimized instances', correct: true }
-    ],
-    difficulty: 'medium',
-    category: 'EC2'
-  },
-  {
-    id: 177,
-    question: 'What is the purpose of an Amazon EC2 placement group?',
-    answers: [
-      { id: 1, answer: 'To store data in a highly durable manner', correct: false },
-      { id: 2, answer: 'To manage access and permissions for EC2 instances', correct: false },
-      { id: 3, answer: 'To launch instances with pre-configured operating systems and software', correct: false },
-      { id: 4, answer: 'To ensure low-latency and high-bandwidth connectivity between instances', correct: true }
-    ],
-    difficulty: 'medium',
-    category: 'EC2'
-  },
-  {
-    id: 178,
-    question: 'Which Amazon EC2 instance type is optimized for applications that require high-performance computing (HPC)?',
-    answers: [
-      { id: 1, answer: 'General-purpose instances', correct: false },
-      { id: 2, answer: 'Compute-optimized instances', correct: false },
-      { id: 3, answer: 'Memory-optimized instances', correct: false },
-      { id: 4, answer: 'Accelerated computing instances', correct: true }
-    ],
-    difficulty: 'medium',
-    category: 'EC2'
-  },
-  {
-    id: 179,
-    question: 'What is the purpose of an Amazon EC2 instance store?',
-    answers: [
-      { id: 1, answer: 'To store data in a highly durable manner', correct: false },
-      { id: 2, answer: 'To manage access and permissions for EC2 instances', correct: false },
-      { id: 3, answer: 'To launch instances with pre-configured operating systems and software', correct: false },
-      { id: 4, answer: 'To provide temporary block-level storage for EC2 instances', correct: true }
-    ],
-    difficulty: 'medium',
-    category: 'EC2'
-  },
-  {
-    id: 180,
-    question: 'Which Amazon EC2 feature allows you to run Windows-based applications on EC2 instances?',
-    answers: [
-      { id: 1, answer: 'AWS Elastic Beanstalk', correct: false },
-      { id: 2, answer: 'Amazon EFS', correct: false },
-      { id: 3, answer: 'AWS Lambda', correct: false },
-      { id: 4, answer: 'Amazon EC2 Windows instances', correct: true }
-    ],
-    difficulty: 'medium',
-    category: 'EC2'
-  },
-  {
-    id: 181,
-    question: 'What is the purpose of an Amazon EC2 instance profile?',
-    answers: [
-      { id: 1, answer: 'To store data in a highly durable manner', correct: false },
-      { id: 2, answer: 'To manage access and permissions for EC2 instances', correct: false },
-      { id: 3, answer: 'To launch instances with pre-configured operating systems and software', correct: false },
-      { id: 4, answer: 'To provide AWS credentials to EC2 instances', correct: true }
-    ],
-    difficulty: 'medium',
-    category: 'EC2'
-  },
-  {
-    id: 182,
-    question: 'Which Amazon EC2 feature allows you to automatically distribute incoming application traffic across multiple instances?',
-    answers: [
-      { id: 1, answer: 'Amazon RDS', correct: false },
-      { id: 2, answer: 'AWS Lambda', correct: false },
-      { id: 3, answer: 'Elastic Load Balancer', correct: true },
-      { id: 4, answer: 'Amazon CloudFront', correct: false }
-    ],
-    difficulty: 'medium',
-    category: 'EC2'
-  },
-  {
-    id: 183,
-    question: 'What is the purpose of an Amazon EC2 auto scaling group?',
-    answers: [
-      { id: 1, answer: 'To store data in a highly durable manner', correct: false },
-      { id: 2, answer: 'To manage access and permissions for EC2 instances', correct: false },
-      { id: 3, answer: 'To launch instances with pre-configured operating systems and software', correct: false },
-      { id: 4, answer: 'To automatically adjust the number of EC2 instances based on demand', correct: true }
-    ],
-    difficulty: 'medium',
-    category: 'EC2'
-  },
-  {
-    id: 184,
-    question: 'Which Amazon EC2 instance type is optimized for applications that require low-latency, high-frequency compute power?',
-    answers: [
-      { id: 1, answer: 'General-purpose instances', correct: false },
-      { id: 2, answer: 'Compute-optimized instances', correct: true },
-      { id: 3, answer: 'Memory-optimized instances', correct: false },
-      { id: 4, answer: 'Storage-optimized instances', correct: false }
-    ],
-    difficulty: 'medium',
-    category: 'EC2'
-  },
-  {
-    id: 185,
-    question: 'What is the purpose of an Amazon EC2 instance store-backed AMI?',
-    answers: [
-      { id: 1, answer: 'To store data in a highly durable manner', correct: false },
-      { id: 2, answer: 'To manage access and permissions for EC2 instances', correct: false },
-      { id: 3, answer: 'To launch instances with pre-configured operating systems and software', correct: false },
-      { id: 4, answer: 'To provide an Amazon EBS-backed root volume for EC2 instances', correct: true }
-    ],
-    difficulty: 'medium',
-    category: 'EC2'
-  },
-  {
-    id: 186,
-    question: 'Which Amazon EC2 instance type is optimized for applications that require high-performance network I/O?',
-    answers: [
-      { id: 1, answer: 'General-purpose instances', correct: false },
-      { id: 2, answer: 'Compute-optimized instances', correct: false },
-      { id: 3, answer: 'Memory-optimized instances', correct: false },
-      { id: 4, answer: 'Network-optimized instances', correct: true }
-    ],
-    difficulty: 'medium',
-    category: 'EC2'
-  },
-  {
-    id: 187,
-    question: 'What is the purpose of an Amazon EC2 key pair?',
-    answers: [
-      { id: 1, answer: 'To store data in a highly durable manner', correct: false },
-      { id: 2, answer: 'To manage access and permissions for EC2 instances', correct: false },
-      { id: 3, answer: 'To launch instances with pre-configured operating systems and software', correct: false },
-      { id: 4, answer: 'To securely connect to EC2 instances using SSH', correct: true }
-    ],
-    difficulty: 'medium',
-    category: 'EC2'
-  },
-  {
-    id: 188,
-    question: 'Which Amazon EC2 feature allows you to encrypt the root volume of your EC2 instance?',
-    answers: [
-      { id: 1, answer: 'Elastic Load Balancer', correct: false },
-      { id: 2, answer: 'Elastic Block Store', correct: true },
-      { id: 3, answer: 'Elastic IP address', correct: false },
-      { id: 4, answer: 'Amazon EC2 Instance Store-backed AMIs', correct: false }
-    ],
-    difficulty: 'medium',
-    category: 'EC2'
-  },
-  {
-    id: 189,
-    question: 'What is the purpose of an Amazon EC2 dedicated host?',
-    answers: [
-      { id: 1, answer: 'To store data in a highly durable manner', correct: false },
-      { id: 2, answer: 'To manage access and permissions for EC2 instances', correct: false },
-      { id: 3, answer: 'To launch instances with pre-configured operating systems and software', correct: false },
-      { id: 4, answer: 'To provide a physical server for your exclusive use', correct: true }
-    ],
-    difficulty: 'medium',
-    category: 'EC2'
-  },
-  {
-    id: 190,
-    question: 'Which Amazon EC2 instance type is optimized for applications that require high-performance storage subsystems?',
-    answers: [
-      { id: 1, answer: 'General-purpose instances', correct: false },
-      { id: 2, answer: 'Compute-optimized instances', correct: false },
-      { id: 3, answer: 'Memory-optimized instances', correct: false },
-      { id: 4, answer: 'I/O-optimized instances', correct: true }
-    ],
-    difficulty: 'medium',
-    category: 'EC2'
-  },
-  {
-    id: 191,
-    question: 'What is the purpose of an Amazon EC2 security group?',
-    answers: [
-      { id: 1, answer: 'To store data in a highly durable manner', correct: false },
-      { id: 2, answer: 'To manage access and permissions for EC2 instances', correct: true },
-      { id: 3, answer: 'To launch instances with pre-configured operating systems and software', correct: false },
-      { id: 4, answer: 'To provide temporary block-level storage for EC2 instances', correct: false }
-    ],
-    difficulty: 'medium',
-    category: 'EC2'
-  },
-  {
-    id: 192,
-    question: 'Which Amazon EC2 feature allows you to schedule the start and stop of your instances?',
-    answers: [
-      { id: 1, answer: 'Amazon CloudFront', correct: false },
-      { id: 2, answer: 'Elastic Load Balancer', correct: false },
-      { id: 3, answer: 'Amazon EC2 Auto Scaling', correct: false },
-      { id: 4, answer: 'Amazon EC2 Instance Scheduler', correct: true }
-    ],
-    difficulty: 'medium',
-    category: 'EC2'
-  },
-  {
-    id: 193,
-    question: 'What is the purpose of an Amazon EC2 instance metadata service?',
-    answers: [
-      { id: 1, answer: 'To store data in a highly durable manner', correct: false },
-      { id: 2, answer: 'To manage access and permissions for EC2 instances', correct: false },
-      { id: 3, answer: 'To launch instances with pre-configured operating systems and software', correct: false },
-      { id: 4, answer: 'To provide instance-specific metadata to EC2 instances', correct: true }
-    ],
-    difficulty: 'medium',
-    category: 'EC2'
-  },
-  {
-    id: 194,
-    question: 'Which Amazon EC2 instance type is optimized for applications that require a balance of compute, memory, and network resources?',
-    answers: [
-      { id: 1, answer: 'General-purpose instances', correct: true },
-      { id: 2, answer: 'Compute-optimized instances', correct: false },
-      { id: 3, answer: 'Memory-optimized instances', correct: false },
-      { id: 4, answer: 'Storage-optimized instances', correct: false }
-    ],
-    difficulty: 'medium',
-    category: 'EC2'
-  },
-  {
-    id: 195,
-    question: 'What is the purpose of an Amazon EC2 placement group?',
-    answers: [
-      { id: 1, answer: 'To store data in a highly durable manner', correct: false },
-      { id: 2, answer: 'To manage access and permissions for EC2 instances', correct: false },
-      { id: 3, answer: 'To launch instances with pre-configured operating systems and software', correct: false },
-      { id: 4, answer: 'To ensure low-latency and high-bandwidth connectivity between instances', correct: true }
-    ],
-    difficulty: 'medium',
-    category: 'EC2'
-  },
-  {
-    id: 196,
-    question: 'Which Amazon EC2 instance type is optimized for applications that require high-performance computing (HPC)?',
-    answers: [
-      { id: 1, answer: 'General-purpose instances', correct: false },
-      { id: 2, answer: 'Compute-optimized instances', correct: false },
-      { id: 3, answer: 'Memory-optimized instances', correct: false },
-      { id: 4, answer: 'GPU instances', correct: true }
-    ],
-    difficulty: 'medium',
-    category: 'EC2'
-  },
-  {
-    id: 197,
-    question: 'What is the purpose of an Amazon EC2 instance reservation?',
-    answers: [
-      { id: 1, answer: 'To store data in a highly durable manner', correct: false },
-      { id: 2, answer: 'To manage access and permissions for EC2 instances', correct: false },
-      { id: 3, answer: 'To launch instances with pre-configured operating systems and software', correct: false },
-      { id: 4, answer: 'To reserve capacity and receive a significant discount on instance usage', correct: true }
-    ],
-    difficulty: 'medium',
-    category: 'EC2'
-  },
-  {
-    id: 198,
-    question: 'Which Amazon EC2 feature allows you to attach additional block-level storage volumes to your instances?',
-    answers: [
-      { id: 1, answer: 'Elastic IP address', correct: false },
-      { id: 2, answer: 'Elastic Load Balancer', correct: false },
-      { id: 3, answer: 'Elastic Block Store', correct: true },
-      { id: 4, answer: 'Amazon EC2 Instance Store', correct: false }
-    ],
-    difficulty: 'medium',
-    category: 'EC2'
-  },
-  {
-    id: 199,
-    question: 'What is the purpose of an Amazon EC2 instance family?',
-    answers: [
-      { id: 1, answer: 'To store data in a highly durable manner', correct: false },
-      { id: 2, answer: 'To manage access and permissions for EC2 instances', correct: false },
-      { id: 3, answer: 'To launch instances with pre-configured operating systems and software', correct: false },
-      { id: 4, answer: 'To group instances with similar instance characteristics', correct: true }
-    ],
-    difficulty: 'medium',
-    category: 'EC2'
-  },
-  {
-    id: 200,
-    question: 'Which Amazon EC2 instance type is optimized for applications that require a balance of compute, memory, and storage resources?',
-    answers: [
-      { id: 1, answer: 'General-purpose instances', correct: false },
-      { id: 2, answer: 'Compute-optimized instances', correct: false },
-      { id: 3, answer: 'Memory-optimized instances', correct: false },
-      { id: 4, answer: 'Burstable instances', correct: true }
-    ],
-    difficulty: 'medium',
-    category: 'EC2'
-  },
-  {
-    id: 201,
-    question: 'What is the primary purpose of an Amazon VPC?',
-    answers: [
-      { id: 1, answer: 'To store data in a highly durable manner', correct: false },
-      { id: 2, answer: 'To manage access and permissions for EC2 instances', correct: false },
-      { id: 3, answer: 'To launch instances with pre-configured operating systems and software', correct: false },
-      { id: 4, answer: 'To create a virtual network in the AWS cloud', correct: true }
-    ],
-    difficulty: 'medium',
-    category: 'VPC'
-  },
-  {
-    id: 202,
-    question: 'What is an Amazon VPC subnet?',
-    answers: [
-      { id: 1, answer: 'A range of IP addresses in the AWS cloud', correct: true },
-      { id: 2, answer: 'A virtual private network connection between on-premises and AWS', correct: false },
-      { id: 3, answer: 'A firewall for controlling inbound and outbound traffic to EC2 instances', correct: false },
-      { id: 4, answer: 'A load balancer for distributing traffic to multiple EC2 instances', correct: false }
-    ],
-    difficulty: 'medium',
-    category: 'VPC'
-  },
-  {
-    id: 204,
-    question: 'What is an Amazon VPC security group?',
-    answers: [
-      { id: 1, answer: 'A range of IP addresses in the AWS cloud', correct: false },
-      { id: 2, answer: 'A virtual private network connection between on-premises and AWS', correct: false },
-      { id: 3, answer: 'A firewall for controlling inbound and outbound traffic to EC2 instances', correct: true },
-      { id: 4, answer: 'A load balancer for distributing traffic to multiple EC2 instances', correct: false }
-    ],
-    difficulty: 'medium',
-    category: 'VPC'
-  },
-  {
-    id: 205,
-    question: 'Which of the following is true about an Amazon VPC endpoint?',
-    answers: [
-      { id: 1, answer: 'It provides secure communication between on-premises and AWS VPCs', correct: false },
+export const questions: Question[] = [
+  {
+    "id": 1,
+    "question": "Mit jelent a jogforrási hierarchia?",
+    "answers": [
       {
-        id: 2,
-        answer: 'It provides a virtual private network connection between VPCs in different AWS accounts',
-        correct: false
+        "id": 1,
+        "answer": "Lényege, hogy az egyes jogforrások között alá-fölérendeltségi viszony áll fenn, a magasabb szinten elhelyezkedő szabállyal az alacsonyabb szinten elhelyezkedő szabály nem lehet ellentétes, azt nem módosíthatja vagy helyezheti hatályon kívül.",
+        "correct": true
       },
-      { id: 3, answer: 'It enables private connectivity to AWS services from within a VPC', correct: true },
-      { id: 4, answer: 'It provides load balancing of traffic to multiple EC2 instances', correct: false }
-    ],
-    difficulty: 'medium',
-    category: 'VPC'
-  },
-  {
-    id: 206,
-    question: 'What is an Amazon VPC internet gateway?',
-    answers: [
-      { id: 1, answer: 'A range of IP addresses in the AWS cloud', correct: false },
-      { id: 2, answer: 'A virtual private network connection between on-premises and AWS', correct: false },
-      { id: 3, answer: 'A firewall for controlling inbound and outbound traffic to EC2 instances', correct: false },
       {
-        id: 4,
-        answer: 'A horizontally scalable, redundant, and highly available VPC component that allows communication between instances in the VPC and the internet',
-        correct: true
+        "id": 2,
+        "answer": "Azt jelenti, hogy minden jogszabály, amit a Magyar Közlönyben kihirdetnek.",
+        "correct": false
+      },
+      {
+        "id": 3,
+        "answer": "Azt jelenti, hogy az országgyűlés törvényeket és rendeleteket hoz.",
+        "correct": false
+      },
+      {
+        "id": 4,
+        "answer": "A jogszabályok alkalmazhatóságát, végrehajthatóságát jelenti.",
+        "correct": false
       }
-    ],
-    difficulty: 'medium',
-    category: 'VPC'
+    ]
   },
   {
-    id: 207,
-    question: 'Which of the following is true about an Amazon VPC NAT gateway?',
-    answers: [
-      { id: 1, answer: 'It provides secure communication between on-premises and AWS VPCs', correct: false },
+    "id": 2,
+    "question": "Válassza ki, hogy melyik NEM a jogi személy jellemzője:",
+    "answers": [
       {
-        id: 2,
-        answer: 'It provides a virtual private network connection between VPCs in different AWS accounts',
-        correct: false
+        "id": 1,
+        "answer": "jogi személyiséggel nem bír",
+        "correct": true
       },
-      { id: 3, answer: 'It enables private connectivity to AWS services from within a VPC', correct: false },
-      { id: 4, answer: 'It allows instances in a private subnet to connect to the internet', correct: true }
-    ],
-    difficulty: 'medium',
-    category: 'VPC'
-  },
-  {
-    id: 208,
-    question: 'Which Amazon VPC component is used to connect an on-premises network to an Amazon VPC?',
-    answers: [
-      { id: 1, answer: 'VPC peering connection', correct: false },
-      { id: 2, answer: 'Internet gateway', correct: false },
-      { id: 3, answer: 'NAT gateway', correct: false },
-      { id: 4, answer: 'Virtual private gateway', correct: true }
-    ],
-    difficulty: 'medium',
-    category: 'VPC'
-  },
-  {
-    id: 209,
-    question: 'What is an Amazon VPC route table?',
-    answers: [
-      { id: 1, answer: 'A range of IP addresses in the AWS cloud', correct: false },
-      { id: 2, answer: 'A virtual private network connection between on-premises and AWS', correct: false },
-      { id: 3, answer: 'A firewall for controlling inbound and outbound traffic to EC2 instances', correct: false },
-      { id: 4, answer: 'A set of rules that determine where network traffic is directed within a VPC', correct: true }
-    ],
-    difficulty: 'medium',
-    category: 'VPC'
-  },
-  {
-    id: 210,
-    question: 'Which of the following is true about an Amazon VPC endpoint service?',
-    answers: [
-      { id: 1, answer: 'It provides secure communication between on-premises and AWS VPCs', correct: false },
       {
-        id: 2,
-        answer: 'It provides a virtual private network connection between VPCs in different AWS accounts',
-        correct: false
+        "id": 2,
+        "answer": "törvényben meghatározott típusban, törvény által nem tiltott tevékenység folytatására és cél elérése érdekében alapítható és működtethető",
+        "correct": false
       },
-      { id: 3, answer: 'It enables private connectivity to AWS services from within a VPC', correct: false },
       {
-        id: 4,
-        answer: 'It allows access to AWS services using private IP addresses without traversing the internet',
-        correct: true
+        "id": 3,
+        "answer": "saját névvel, székhellyel, tagja(i)tól, alapítójától elkülönített vagyonnal, az ügyvezetését és képviseletét ellátó szervezettel bír",
+        "correct": false
+      },
+      {
+        "id": 4,
+        "answer": "kötelezettségeiért saját vagyonával áll hely",
+        "correct": false
       }
-    ],
-    difficulty: 'medium',
-    category: 'VPC'
+    ]
   },
   {
-    id: 211,
-    question: "What is the maximum number of Amazon VPCs per AWS account per AWS Region?",
-    answers: [
-      { id: 1, answer: "5", correct: false },
-      { id: 2, answer: "10", correct: false },
-      { id: 3, answer: "20", correct: false },
-      { id: 4, answer: "50", correct: true }
-    ],
-    difficulty: "medium",
-    category: "VPC"
+    "id": 3,
+    "question": "Az alábbi kifejezések mely gyűjtőfogalom alá esnek? Alapszabály, alapító okirat, társasági szerződés?",
+    "answers": [
+      {
+        "id": 1,
+        "answer": "létesítő okirat",
+        "correct": true
+      },
+      {
+        "id": 2,
+        "answer": "tulajdonosi ellenőrzés",
+        "correct": false
+      },
+      {
+        "id": 3,
+        "answer": "döntéshozó szerv",
+        "correct": false
+      },
+      {
+        "id": 4,
+        "answer": "képviselet",
+        "correct": false
+      }
+    ]
   },
   {
-    id: 212,
-    question: "Which type of subnet allows inbound and outbound traffic from the internet?",
-    answers: [
-      { id: 1, answer: "Public subnet", correct: true },
-      { id: 2, answer: "Private subnet", correct: false },
-      { id: 3, answer: "Isolated subnet", correct: false },
-      { id: 4, answer: "NAT subnet", correct: false }
-    ],
-    difficulty: "medium",
-    category: "VPC"
+    "id": 4,
+    "question": "Az alábbi kifejezések mely gyűjtőfogalom alá esnek? Tagok gyűlése, taggyűlés, közgyűlés?",
+    "answers": [
+      {
+        "id": 1,
+        "answer": "döntéshozó szerv",
+        "correct": true
+      },
+      {
+        "id": 2,
+        "answer": "képviselet",
+        "correct": false
+      },
+      {
+        "id": 3,
+        "answer": "létesítő okirat",
+        "correct": false
+      },
+      {
+        "id": 4,
+        "answer": "tulajdonosi ellenőrzés",
+        "correct": false
+      }
+    ]
   },
   {
-    id: 213,
-    question: "What is the purpose of an Amazon VPC flow log?",
-    answers: [
-      { id: 1, answer: "To monitor the performance of VPC endpoints", correct: false },
-      { id: 2, answer: "To track changes to VPC security groups", correct: false },
-      { id: 3, answer: "To capture information about IP traffic going to and from network interfaces in a VPC", correct: true },
-      { id: 4, answer: "To redirect traffic between VPCs using VPC peering", correct: false }
-    ],
-    difficulty: "medium",
-    category: "VPC"
+    "id": 5,
+    "question": "Milyen feladatot lát el az ügyvezetés?",
+    "answers": [
+      {
+        "id": 1,
+        "answer": "A jogi személy irányításával kapcsolatos döntések meghozatala, amelyek nem tartoznak a tag(ok), alapító hatáskörébe",
+        "correct": true
+      },
+      {
+        "id": 2,
+        "answer": "A társaság leányvállalatának felügyelőbizottsági feladatait látja el",
+        "correct": false
+      },
+      {
+        "id": 3,
+        "answer": "Az állandó könyvvizsgálat ellátása mint külső ellenőrzés.",
+        "correct": false
+      },
+      {
+        "id": 4,
+        "answer": "A törvényességi felügyelet ellátása.",
+        "correct": false
+      }
+    ]
   },
   {
-    id: 214,
-    question: "What is the purpose of an Amazon VPC network access control list (ACL)?",
-    answers: [
-      { id: 1, answer: "To manage access and permissions for EC2 instances", correct: false },
-      { id: 2, answer: "To create a virtual private network connection between VPCs", correct: false },
-      { id: 3, answer: "To provide additional security at the subnet level", correct: true },
-      { id: 4, answer: "To launch instances with pre-configured operating systems and software", correct: false }
-    ],
-    difficulty: "medium",
-    category: "VPC"
+    "id": 6,
+    "question": "Melyik jellemző igaz a felügyelőbizottságra?",
+    "answers": [
+      {
+        "id": 1,
+        "answer": "Tagjai nem utasíthatóak",
+        "correct": true
+      },
+      {
+        "id": 2,
+        "answer": "A felügyelőbizottság tagjait az ügyvezető utasíthatja",
+        "correct": false
+      },
+      {
+        "id": 3,
+        "answer": "A felügyelőbizottság egyszemélyes kft. esetén egy tagból is állhat.",
+        "correct": false
+      },
+      {
+        "id": 4,
+        "answer": "A felügyelőbizottság ugyan megvizsgálja a döntéshozó szerv elé kerülő előterjesztéseket, de a társaság irataiba magától nem tekinthet be, csak akkor, ha valamilyen csalárd magatartásról szerez tudomást",
+        "correct": false
+      }
+    ]
   },
   {
-    id: 215,
-    question: "Which Amazon VPC component is used to connect VPCs in different AWS accounts?",
-    answers: [
-      { id: 1, answer: "VPC peering connection", correct: true },
-      { id: 2, answer: "Internet gateway", correct: false },
-      { id: 3, answer: "NAT gateway", correct: false },
-      { id: 4, answer: "Virtual private gateway", correct: false }
-    ],
-    difficulty: "medium",
-    category: "VPC"
+    "id": 7,
+    "question": "Mi a beolvadásos kiválás?",
+    "answers": [
+      {
+        "id": 1,
+        "answer": "A kiváló tag a jogi személy vagyonának egy részével már működő jogi személyhez mint jogutódhoz csatlakozik.",
+        "correct": true
+      },
+      {
+        "id": 2,
+        "answer": "Az összeolvadó jogi személyek megszűnnek, és új jogi személy jön létre",
+        "correct": false
+      },
+      {
+        "id": 3,
+        "answer": "A jogi személy fennmarad, és vagyonának egy része a kiválással létrejövő jogi személyre mint jogutódra száll át",
+        "correct": false
+      },
+      {
+        "id": 4,
+        "answer": "A beolvadó jogi személy szűnik meg, általános jogutódja az egyesülésben részt vevő másik jogi személy",
+        "correct": false
+      }
+    ]
   },
   {
-    id: 216,
-    question: "Which Amazon VPC feature allows you to control the flow of traffic between subnets?",
-    answers: [
-      { id: 1, answer: "VPC peering connection", correct: false },
-      { id: 2, answer: "Internet gateway", correct: false },
-      { id: 3, answer: "NAT gateway", correct: false },
-      { id: 4, answer: "Network ACL", correct: true }
-    ],
-    difficulty: "medium",
-    category: "VPC"
+    "id": 8,
+    "question": "Létrehozható-e egy gazdasági társaság egy meghatározott projekt befejezésére, azaz akként, hogy az a projekt befejezésével jogutód nélkül megszűnik?",
+    "answers": [
+      {
+        "id": 1,
+        "answer": "Igen, gazdasági társaság jogutód nélkül megszűnhet meghatározott feltétel bekövetkezéséhez kötötten.",
+        "correct": true
+      },
+      {
+        "id": 2,
+        "answer": "Nem, mivel nem létezik olyan, hogy meghatározott feltétel bekövetkeztével szűnjön meg jogutód nélkül a gazdasági társaság",
+        "correct": false
+      },
+      {
+        "id": 3,
+        "answer": "Igen, abban az esetben, ha egyidejűleg elhatározza az átalakulását.",
+        "correct": false
+      },
+      {
+        "id": 4,
+        "answer": "Nem, mert gazdasági társaságot csak legalább 6 évre lehet alapítani.",
+        "correct": false
+      }
+    ]
   },
   {
-    id: 217,
-    question: "Which of the following is true about an Amazon VPC endpoint?",
-    answers: [
-      { id: 1, answer: "It provides secure communication between on-premises and AWS VPCs", correct: false },
-      { id: 2, answer: "It provides a virtual private network connection between VPCs in different AWS accounts", correct: false },
-      { id: 3, answer: "It enables private connectivity to AWS services from within a VPC", correct: true },
-      { id: 4, answer: "It provides load balancing of traffic to multiple EC2 instances", correct: false }
-    ],
-    difficulty: "medium",
-    category: "VPC"
+    "id": 9,
+    "question": "Mikor lehetséges egyszerűsített végelszámolási eljárást választani jogutód nélküli megszűnéshez?",
+    "answers": [
+      {
+        "id": 1,
+        "answer": "Az egyszerűsített végelszámolás alanya lehet a számviteli törvény (Szt.) 155. § szerinti könyvvizsgálatra nem kötelezett cég és a másik feltétele, hogy az egyszerűsített végelszámolást 150 napon belül be kell fejezni.",
+        "correct": true
+      },
+      {
+        "id": 2,
+        "answer": "Semmikor, egyszerűsített csődeljárás létezik csak",
+        "correct": false
+      },
+      {
+        "id": 3,
+        "answer": "Zrt. választhatja, ha az átlagos éves munkavállalói létszám a 200 főt meghaladja",
+        "correct": false
+      },
+      {
+        "id": 4,
+        "answer": "Ha felszámolásba fordult a társaság és van kielégítetlen hitelezői igény.",
+        "correct": false
+      }
+    ]
   },
   {
-    id: 218,
-    question: "Which Amazon VPC feature allows you to provide an additional layer of security for inbound and outbound traffic?",
-    answers: [
-      { id: 1, answer: "VPC peering connection", correct: false },
-      { id: 2, answer: "Internet gateway", correct: false },
-      { id: 3, answer: "NAT gateway", correct: false },
-      { id: 4, answer: "Network ACL", correct: true }
-    ],
-    difficulty: "medium",
-    category: "VPC"
+    "id": 10,
+    "question": "Melyik NEM gazdasági társaság az alábbiak közül?",
+    "answers": [
+      {
+        "id": 1,
+        "answer": "egyesülés",
+        "correct": true
+      },
+      {
+        "id": 2,
+        "answer": "nyilvánosan működő részvénytársaság",
+        "correct": false
+      },
+      {
+        "id": 3,
+        "answer": "közkereseti társaság",
+        "correct": false
+      },
+      {
+        "id": 4,
+        "answer": "betéti társaság",
+        "correct": false
+      }
+    ]
   },
   {
-    id: 219,
-    question: "Which of the following is true about Amazon VPC security groups?",
-    answers: [
-      { id: 1, answer: "They are stateful, meaning that return traffic is automatically allowed", correct: true },
-      { id: 2, answer: "They are stateless, meaning that return traffic must be explicitly allowed", correct: false },
-      { id: 3, answer: "They can span multiple VPCs within the same AWS account", correct: false },
-      { id: 4, answer: "They can be used to control traffic between VPCs in different AWS accounts", correct: false }
-    ],
-    difficulty: "medium",
-    category: "VPC"
+    "id": 11,
+    "question": "Alapítható-e érvényesen kft. úgy, hogy az egyik tag 1.500.000,- Ft értékben apportálja a fél éve vásárolt, saját tulajdonában álló gépjárművét, a másik tag pedig 1.500.000,- Ft értékű készpénzt bocsát a társaság rendelkezésére?",
+    "answers": [
+      {
+        "id": 1,
+        "answer": "Igen, lehetséges pénzbeli és nem pénzbeli vagyoni hozzájárulással vegyesen alapítani társaságot.",
+        "correct": true
+      },
+      {
+        "id": 2,
+        "answer": "Nem, apportot csak alapítás után, tőkeemeléskor lehet szolgáltatni",
+        "correct": false
+      },
+      {
+        "id": 3,
+        "answer": "Igen, de csak akkor, ha a készpénzben szolgáltatott vagyoni hozzájárulást a tag közjegyzői letétbe teljesíti az alapítást követő 40 napon belül",
+        "correct": false
+      },
+      {
+        "id": 4,
+        "answer": "Nem, apport szolgáltatására csak nyrt. esetében van mód.",
+        "correct": false
+      }
+    ]
   },
   {
-    id: 220,
-    question: "What is the purpose of an Amazon VPC endpoint service?",
-    answers: [
-      { id: 1, answer: "It provides secure communication between on-premises and AWS VPCs", correct: false },
-      { id: 2, answer: "It provides a virtual private network connection between VPCs in different AWS accounts", correct: false },
-      { id: 3, answer: "It enables private connectivity to AWS services from within a VPC", correct: false },
-      { id: 4, answer: "It allows access to AWS services using private IP addresses without traversing the internet", correct: true }
-    ],
-    difficulty: "medium",
-    category: "VPC"
+    "id": 12,
+    "question": "Működhet-e egy társaság a létesítő okirat aláírása és ellenjegyzése után, de még a cégbírósági bejegyzés előtt?",
+    "answers": [
+      {
+        "id": 1,
+        "answer": "Igen, ez az előtársasági forma",
+        "correct": true
+      },
+      {
+        "id": 2,
+        "answer": "Igen, akkor, ha legalább a törzstőke több mint 75 %-át teljesítették",
+        "correct": false
+      },
+      {
+        "id": 3,
+        "answer": "Csak nyrt. működhet ilyen formában.",
+        "correct": false
+      },
+      {
+        "id": 4,
+        "answer": "Nem, meg kell várni a bejegyző végzést",
+        "correct": false
+      }
+    ]
   },
   {
-    id: 230,
-    question: "What is the maximum number of Amazon VPCs per AWS account per AWS Region?",
-    answers: [
-      { id: 1, answer: "5", correct: false },
-      { id: 2, answer: "10", correct: false },
-      { id: 3, answer: "20", correct: false },
-      { id: 4, answer: "50", correct: true }
-    ],
-    difficulty: "medium",
-    category: "VPC",
-    factChecked: false
+    "id": 13,
+    "question": "Egyszemélyes kft-met kényszertörlik, az ügyvezető is én voltam. Sajnos egy közüzemi díjtartozást nem tudott a társaság kifizetni, a hitelező bejelentkezett a cégbíróságnál, de nincs fedezet a követelésére, a társaságnak semmi vagyona nincs, annyi sem, hogy a felszámolási eljárás költségeit fedezze. A céget törölni fogja a cégbíróság, mire számítsak a cég törlése mellett?",
+    "answers": [
+      {
+        "id": 1,
+        "answer": "A cégbíróság eltiltó végzést fog hozni velem szemben.",
+        "correct": true
+      },
+      {
+        "id": 2,
+        "answer": "Arra, hogy a bíróság esetleg csődeljárást rendel el a törlést követően",
+        "correct": false
+      },
+      {
+        "id": 3,
+        "answer": "A hitelező részére alapítanom kell egy kft-t saját költségemen.",
+        "correct": false
+      },
+      {
+        "id": 4,
+        "answer": "Mint ügyvezető nem felelek, de mint tulajdonos, köteles vagyok zálogjogot alapítani a saját üzletrészemre és azt elárverezni.",
+        "correct": false
+      }
+    ]
   },
   {
-    id: 221,
-    question: "Which type of subnet allows inbound and outbound traffic from the internet?",
-    answers: [
-      { id: 1, answer: "Public subnet", correct: true },
-      { id: 2, answer: "Private subnet", correct: false },
-      { id: 3, answer: "Isolated subnet", correct: false },
-      { id: 4, answer: "NAT subnet", correct: false }
-    ],
-    difficulty: "medium",
-    category: "VPC",
-    factChecked: false
+    "id": 14,
+    "question": "Ki a cégvezető?",
+    "answers": [
+      {
+        "id": 1,
+        "answer": "A vezető tisztségviselők munkájának segítése érdekében, a legfőbb szerv által kinevezett olyan munkavállaló, aki a vezető tisztségviselő rendelkezései alapján irányítja a társaság folyamatos működését.",
+        "correct": true
+      },
+      {
+        "id": 2,
+        "answer": "A felügyelőbizottság elnöke",
+        "correct": false
+      },
+      {
+        "id": 3,
+        "answer": "A bt. kültagjának másik elnevezése, ha az alapszabály erre vonatkozóan legalább 4 évre őt ezen másik elnevezéssel illeti.",
+        "correct": false
+      },
+      {
+        "id": 4,
+        "answer": "Az ügyvezető másik elnevezése",
+        "correct": false
+      }
+    ]
   },
   {
-    id: 222,
-    question: "What is the purpose of an Amazon VPC flow log?",
-    answers: [
-      { id: 1, answer: "To monitor the performance of VPC endpoints", correct: false },
-      { id: 2, answer: "To track changes to VPC security groups", correct: false },
-      { id: 3, answer: "To capture information about IP traffic going to and from network interfaces in a VPC", correct: true },
-      { id: 4, answer: "To redirect traffic between VPCs using VPC peering", correct: false }
-    ],
-    difficulty: "medium",
-    category: "VPC",
-    factChecked: false
+    "id": 15,
+    "question": "Mi a felmentvény?",
+    "answers": [
+      {
+        "id": 1,
+        "answer": "A társaság legfőbb szerve a beszámoló elfogadásával egyidejűleg az előző üzleti évben kifejtett ügyvezetési tevékenység megfelelőségét megállapító nyilatkozatot ad, mellyel a legfőbb szerv elismeri, hogy a vezető tisztségviselő megfelelően járt el.",
+        "correct": true
+      },
+      {
+        "id": 2,
+        "answer": "A vezető tisztségviselőhöz címzett felmondást nevezik így",
+        "correct": false
+      },
+      {
+        "id": 3,
+        "answer": "Az ügydöntő felügyelőbizottság által hozott határozat neve",
+        "correct": false
+      },
+      {
+        "id": 4,
+        "answer": "A társaság vezető állású munkavállalójának joga arra, hogy bármely munkavállaló jogviszonyát megszüntesse.",
+        "correct": false
+      }
+    ]
   },
   {
-    id: 223,
-    question: "What is the purpose of an Amazon VPC network access control list (ACL)?",
-    answers: [
-      { id: 1, answer: "To manage access and permissions for EC2 instances", correct: false },
-      { id: 2, answer: "To create a virtual private network connection between VPCs", correct: false },
-      { id: 3, answer: "To provide additional security at the subnet level", correct: true },
-      { id: 4, answer: "To launch instances with pre-configured operating systems and software", correct: false }
-    ],
-    difficulty: "medium",
-    category: "VPC",
-    factChecked: false
+    "id": 16,
+    "question": "Az alábbiak közül melyik esetben kell biztosan felügyelőbizottságot létrehozni?",
+    "answers": [
+      {
+        "id": 1,
+        "answer": "Egy ezer fős nagyvállaltnál, ahol működik üzemi tanács és az üzemi tanács kifejezetten jelezte, hogy szeretne munkavállalói részvételt a felügyelőbizottságban",
+        "correct": true
+      },
+      {
+        "id": 2,
+        "answer": "Az átalakulásról szóló második körben hozott döntés meghozatalához kell létrehozni felügyelőbizottságot",
+        "correct": false
+      },
+      {
+        "id": 3,
+        "answer": "Ha az állandó könyvvizsgáló arra utasítja a társaság ügyvezetését, hogy jelöljön ki erre három személyt",
+        "correct": false
+      },
+      {
+        "id": 4,
+        "answer": "Minden 3 millió forintot elérő törzstőkéjű kft-ben",
+        "correct": false
+      }
+    ]
   },
   {
-    id: 224,
-    question: "Which Amazon VPC component is used to connect VPCs in different AWS accounts?",
-    answers: [
-      { id: 1, answer: "VPC peering connection", correct: true },
-      { id: 2, answer: "Internet gateway", correct: false },
-      { id: 3, answer: "NAT gateway", correct: false },
-      { id: 4, answer: "Virtual private gateway", correct: false }
-    ],
-    difficulty: "medium",
-    category: "VPC",
-    factChecked: false
+    "id": 17,
+    "question": "Mi az ügydöntő felügyelőbizottság?",
+    "answers": [
+      {
+        "id": 1,
+        "answer": "A létesítő okirat egyes döntések meghozatalát vagy azok jóváhagyását a felügyelőbizottság hatáskörébe utalja.",
+        "correct": true
+      },
+      {
+        "id": 2,
+        "answer": "A munkavállalókból álló felügyelőbizottságot jelenti.",
+        "correct": false
+      },
+      {
+        "id": 3,
+        "answer": "A felügyelőbizottság elnöke önállóan, a testület nevében határoz",
+        "correct": false
+      },
+      {
+        "id": 4,
+        "answer": "Ülés tartása nélkül hozhat határozatot a felügyelőbizottság.",
+        "correct": false
+      }
+    ]
   },
   {
-    id: 225,
-    question: "Which Amazon VPC feature allows you to control the flow of traffic between subnets?",
-    answers: [
-      { id: 1, answer: "VPC peering connection", correct: false },
-      { id: 2, answer: "Internet gateway", correct: false },
-      { id: 3, answer: "NAT gateway", correct: false },
-      { id: 4, answer: "Network ACL", correct: true }
-    ],
-    difficulty: "medium",
-    category: "VPC",
-    factChecked: false
+    "id": 18,
+    "question": "A Nagy Kft. Nagy Géza kizárólagos tulajdonában áll. Nagy Gézáné, a feleség állandó könyvvizsgálóként szeretné ellátni a társaság részére az állandó könyvvizsgálói feladatokat. Van-e összeférhetetlenség a feladat ellátása körében?",
+    "answers": [
+      {
+        "id": 1,
+        "answer": "Igen, mert Nagy Gézáné a tag hozzátartozója, így összeférhetetlen.",
+        "correct": true
+      },
+      {
+        "id": 2,
+        "answer": "Egyszemélyes társaságnak nem lehet állandó könyvvizsgálója, így nem lehet Nagy Gézánénak elvállalni ezt a megbízatást, függetlenül attól, hogy összeférhetetlen-e.",
+        "correct": false
+      },
+      {
+        "id": 3,
+        "answer": "Nincs, ha Nagy Gézáné írásban vállalja és kijelenti, hogy a független könyvvizsgálatra képes és alkalmas hozzátartozóként is.",
+        "correct": false
+      },
+      {
+        "id": 4,
+        "answer": "Nincs, mert Nagy Gézáné nem tulajdonos a társaságban",
+        "correct": false
+      }
+    ]
   },
   {
-    id: 226,
-    question: "Which of the following is true about an Amazon VPC endpoint?",
-    answers: [
-      { id: 1, answer: "It provides secure communication between on-premises and AWS VPCs", correct: false },
-      { id: 2, answer: "It provides a virtual private network connection between VPCs in different AWS accounts", correct: false },
-      { id: 3, answer: "It enables private connectivity to AWS services from within a VPC", correct: true },
-      { id: 4, answer: "It provides load balancing of traffic to multiple EC2 instances", correct: false }
-    ],
-    difficulty: "medium",
-    category: "VPC",
-    factChecked: false
+    "id": 19,
+    "question": "Volt egy kft-m, megszüntettem szabályszerűen végelszámolással, ennek a végén 100 ezer forint maradt a társaság bankszámláján minden fizetendő kötelezettség és a bejelentett hitelezői igények kielégítése után. Kit illet ez a pénz?",
+    "answers": [
+      {
+        "id": 1,
+        "answer": " Engem, mint alapítót, mert hitelezők kielégítése után fennmaradt vagyon a jogi személy tagjait (alapítói jogok gyakorlóit)\r\nilleti vagyoni hozzájárulásuk arányában",
+        "correct": true
+      },
+      {
+        "id": 2,
+        "answer": "A Magyar Államot, mert minden megszűnő jogi személy fennmaradó vagyona az államot illeti.",
+        "correct": false
+      },
+      {
+        "id": 3,
+        "answer": "A felszámolóbiztost illeti meg, mivel megdolgozott a végelszámolás szabályszerű lezárásával.",
+        "correct": false
+      },
+      {
+        "id": 4,
+        "answer": "Az örökösömet fogja megilletni, amikor én elhalálozom, addig pedig a társaság törlésére nem kerülhet sor",
+        "correct": false
+      }
+    ]
   },
   {
-    id: 227,
-    question: "Which Amazon VPC feature allows you to provide an additional layer of security for inbound and outbound traffic?",
-    answers: [
-      { id: 1, answer: "VPC peering connection", correct: false },
-      { id: 2, answer: "Internet gateway", correct: false },
-      { id: 3, answer: "NAT gateway", correct: false },
-      { id: 4, answer: "Network ACL", correct: true }
-    ],
-    difficulty: "medium",
-    category: "VPC",
-    factChecked: false
+    "id": 20,
+    "question": "A 75 %-os tulajdonomat képező társaságomnak csak főtevékenységet rögzítettünk a társasági szerződésében. Szeretném az ingatlan bérbeadása egyéb tevékenységi kört is rögzíteni most. A tagtársam viszont ezt nem szeretné. Át tudom vezetni a módosítást?",
+    "answers": [
+      {
+        "id": 1,
+        "answer": "Igen, mivel ez egyszerű többséget igénylő határozat.",
+        "correct": true
+      },
+      {
+        "id": 2,
+        "answer": "Nem, ehhez egyhangú döntés kell.",
+        "correct": false
+      },
+      {
+        "id": 3,
+        "answer": "Nem, mert egyéb tevékenységi köre nem lehet egy társaságnak, csak főtevékenysége",
+        "correct": false
+      },
+      {
+        "id": 4,
+        "answer": "Igen, ha a döntéssel egyidejűleg elhatározom a társaság végelszámolását is.",
+        "correct": false
+      }
+    ]
   },
   {
-    id: 228,
-    question: "Which of the following is true about Amazon VPC security groups?",
-    answers: [
-      { id: 1, answer: "They are stateful, meaning that return traffic is automatically allowed", correct: true },
-      { id: 2, answer: "They are stateless, meaning that return traffic must be explicitly allowed", correct: false },
-      { id: 3, answer: "They can span multiple VPCs within the same AWS account", correct: false },
-      { id: 4, answer: "They can be used to control traffic between VPCs in different AWS accounts", correct: false }
-    ],
-    difficulty: "medium",
-    category: "VPC",
-    factChecked: false
+    "id": 21,
+    "question": "A megbízással rendelkező állandó könyvvizsgáló kutakodni akar az egyszemélyes kft-m iratai között, van erre joga?",
+    "answers": [
+      {
+        "id": 1,
+        "answer": "Igen, hiszen iratbetekintési joga van.",
+        "correct": true
+      },
+      {
+        "id": 2,
+        "answer": "Igen, amennyiben alátámasztja, hogy szabálytalanság gyanúja merült fel.",
+        "correct": false
+      },
+      {
+        "id": 3,
+        "answer": "Nincs, rt. esetében lenne csak joga rá.",
+        "correct": false
+      },
+      {
+        "id": 4,
+        "answer": "Nincs, én bíztam meg, én mondom meg, hogy mit vizsgálhat.",
+        "correct": false
+      }
+    ]
   },
   {
-    id: 229,
-    question: "What is the purpose of an Amazon VPC endpoint service?",
-    answers: [
-      { id: 1, answer: "It provides secure communication between on-premises and AWS VPCs", correct: false },
-      { id: 2, answer: "It provides a virtual private network connection between VPCs in different AWS accounts", correct: false },
-      { id: 3, answer: "It enables private connectivity to AWS services from within a VPC", correct: false },
-      { id: 4, answer: "It allows access to AWS services using private IP addresses without traversing the internet", correct: true }
-    ],
-    difficulty: "medium",
-    category: "VPC",
-    factChecked: false
+    "id": 22,
+    "question": "Alapítok egy kkt-t négy barátommal, de időközben megromlik a viszony köztem és a tagok közül két taggal. Van-e lehetőségem arra, hogy átalakulással bt-ként folytassam a két jóbarátommal? A két rossz viszonyt létrehozó barát sem akar már együttműködni velünk, szívesen szabadulnának a társaságból.",
+    "answers": [
+      {
+        "id": 1,
+        "answer": "Igen, a társasági forma megváltoztatható és arra is van mód, hogy az átalakulás után a társaság jogutódjában egyes tagok, akik nem kívánnak részt venni, távozzanak",
+        "correct": true
+      },
+      {
+        "id": 2,
+        "answer": "Nincs, a formakényszer miatt a létrehozott kkt. nem alakulhat át",
+        "correct": false
+      },
+      {
+        "id": 3,
+        "answer": "Nincs, mert bár átalakulásra lenne mód, de kkt. nem alakulhat át bt-vé",
+        "correct": false
+      },
+      {
+        "id": 4,
+        "answer": "Csak akkor, ha valamennyi tag, azaz mind az öten vállaljuk, hogy a jogutódban is részt veszünk az átalakulás után.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 23,
+    "question": "A bt. kültagjának milyen felelőssége van?",
+    "answers": [
+      {
+        "id": 1,
+        "answer": "A vagyoni betétje szolgáltatásáért felel, a társasági kötelezettségekért - ha a Ptk. eltérően nem rendelkezik - nem tartozik helytállási kötelezettséggel",
+        "correct": true
+      },
+      {
+        "id": 2,
+        "answer": "Felel azért, hogy a társaság jogutód nélküli megszűnése esetén a társaság érdekeinek elsődlegessége szerint záruljon le a végelszámolási eljárás",
+        "correct": false
+      },
+      {
+        "id": 3,
+        "answer": "A kültagnak csak vezető tisztségviselői felelőssége van.",
+        "correct": false
+      },
+      {
+        "id": 4,
+        "answer": "A társaságnak a társasági vagyon által nem fedezett kötelezettségeiért a többi beltaggal egyetemlegesen köteles helytállni",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 24,
+    "question": "Mi a kft. esetében a mellékszolgáltatás?",
+    "answers": [
+      {
+        "id": 1,
+        "answer": "Olyan személyes közreműködés, melyet a tag erre irányuló külön jogviszony hiányában vállal a társaság tevékenységében, ezért ellenszolgáltatást igényelhet a társasági szerződés szerint.",
+        "correct": true
+      },
+      {
+        "id": 2,
+        "answer": "A tag ingyen vállalt engedély nélküli másodállása a vezető tisztségviselői tisztsége mellett.",
+        "correct": false
+      },
+      {
+        "id": 3,
+        "answer": "A társaság által vállalt zálogjog tagi bizosítéka",
+        "correct": false
+      },
+      {
+        "id": 4,
+        "answer": "A pótbefizetés",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 25,
+    "question": "Melyik állítás igaz a pótbefizetésre?",
+    "answers": [
+      {
+        "id": 1,
+        "answer": "A társasági veszteségek rendezésére használható fel, a tag törzsbetétét nem növeli.",
+        "correct": true
+      },
+      {
+        "id": 2,
+        "answer": "A saját tőke eredménytartalékkal csökkentett összegével egyezik meg",
+        "correct": false
+      },
+      {
+        "id": 3,
+        "answer": "Osztalékfizetéssel egyidejűleg esedékes a megfizetése",
+        "correct": false
+      },
+      {
+        "id": 4,
+        "answer": "A felügyelőbizottság indítványára az ügyvezető rendeli el annak alkalmazását.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 26,
+    "question": "Ki jogosult osztalékra?",
+    "answers": [
+      {
+        "id": 1,
+        "answer": "Aki az osztalékfizetésről szóló döntés meghozatalának időpontjában a tagsági jogok gyakorlására jogosult",
+        "correct": true
+      },
+      {
+        "id": 2,
+        "answer": "Aki a társaság vezető tisztségviselője",
+        "correct": false
+      },
+      {
+        "id": 3,
+        "answer": "Aki a közbenső mérleget könyvvizsgálja.",
+        "correct": false
+      },
+      {
+        "id": 4,
+        "answer": "Akit a vezető tisztségviselő a határozatok könyvébe történő rögzítéssel osztalékra jogosultként nyilvántartásba vesz.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 27,
+    "question": "Melyik esetben kötelező összehívni a kft. taggyűlését a Ptk. értelmében?",
+    "answers": [
+      {
+        "id": 1,
+        "answer": "A társaság saját tőkéje veszteség folytán a törzstőke felére csökkent.",
+        "correct": true
+      },
+      {
+        "id": 2,
+        "answer": "A kft. részvénykönyvébe történő bejegyzéshez.",
+        "correct": false
+      },
+      {
+        "id": 3,
+        "answer": "A társaság arról határoz, hogy kétórás munkaviszonyt létesít egy nagykorú személlyel.",
+        "correct": false
+      },
+      {
+        "id": 4,
+        "answer": "A vezető tisztségviselő le akar mondani.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 28,
+    "question": "Melyik NEM előfeltétele a törzstőkén felüli vagyonból történő tőkeemelésnek?",
+    "answers": [
+      {
+        "id": 1,
+        "answer": "A társaságnak nem volt az elmúlt három hónapban tőkeleszállításról szóló döntése",
+        "correct": true
+      },
+      {
+        "id": 2,
+        "answer": "A társaság az előző üzleti évre vonatkozó beszámolójának/tárgyévi közbenső mérlege szerint rendelkezik olyan törzstőkén felüli vagyonnal, amely törzstőke-emelésre fordítható.",
+        "correct": false
+      },
+      {
+        "id": 3,
+        "answer": "A felemelt törzstőke nem haladja meg a társaság – lekötött tartalékkal, értékelési tartalékkal csökkentett – saját tőkéjét.",
+        "correct": false
+      },
+      {
+        "id": 4,
+        "answer": "A fedezetet a társaság 6 hónapnál nem régebbi fordulónappal készült beszámolója/közbenső mérlege igazolja.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 29,
+    "question": "Van egy kft-m, 100 millió forintos törzstőkével. Van egy magyarországi székhelyű bank, akinek tartozom 5 millió forinttal, melyet záloghitel biztosít a társaság 20 millió forintot érő ingatlanán. A társaságom törzstőkéjét szeretném leszállítani tőkekivonás miatt 80 millió forintra. Köteles vagyok-e a hitelező banknak biztosítékot nyújtani a tőkeleszállításra tekintettel?",
+    "answers": [
+      {
+        "id": 1,
+        "answer": "Nem, mert a hitelező már rendelkezik a törzstőke-leszállításhoz kapcsolódó kockázattal arányos biztosítékkal.",
+        "correct": true
+      },
+      {
+        "id": 2,
+        "answer": "Igen, a hitelezők minden tőkeleszállításnál jogosultak biztosítékra.",
+        "correct": false
+      },
+      {
+        "id": 3,
+        "answer": "Igen, mert a bankok minden esetben jogosultak biztosítékra",
+        "correct": false
+      },
+      {
+        "id": 4,
+        "answer": "Nem, mert itt a tőkeleszállítás azért kötelező, mert a kft. esetében a tőke nem lehet nagyobb hárommillió forintnál.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 30,
+    "question": "Egyszemélyes kft-m van, aminek van egy használt, 10 éves műanyag kerti tárolója, amit szeretnék megvásárolni ellenérték fejében. Van-e rá lehetőségem társasági jogi szempontból?",
+    "answers": [
+      {
+        "id": 1,
+        "answer": "Megvehetem, de a szerződést közokiratba vagy teljes bizonyító erejű magánokiratba kell foglalni.",
+        "correct": true
+      },
+      {
+        "id": 2,
+        "answer": "Csak akkor vehetem meg, ha az ellenérték eléri a százezer forintot",
+        "correct": false
+      },
+      {
+        "id": 3,
+        "answer": "Megvehetem minden feltétel nélkül.",
+        "correct": false
+      },
+      {
+        "id": 4,
+        "answer": "Egyszemélyes kft. tagja nem veheti meg a saját kft-je tulajdonát képező vagyontárgyat.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 31,
+    "question": "Megszüntetem az 50 %-50 %-os részesedésű kft-nket, marad benne 100 ezer forint, amiből 20-20 ezer forint a másik taggal teljesített pótbefizetés maradéka, továbbá egy hitelezői igény érkezik a NAV-tól, egy 30 ezer forintos elmulasztott járulék megfizetése. Mi a kielégítés jogszabálynak megfelelő sorrendje?",
+    "answers": [
+      {
+        "id": 1,
+        "answer": "Kifizetjük a hitelezőt, majd a pótbefizetést visszatéríthető a tagoknak, végül a fennmaradó 30 ezer forintot a törzsbetétek arányában felosztjuk egymás között 50 %-50 %-ban",
+        "correct": true
+      },
+      {
+        "id": 2,
+        "answer": "Kifizetjük a hitelezőt, a fennmaradó 70 ezer forintot a törzsbetétek arányában felosztjuk egymás között 50 %-50 %-ban.",
+        "correct": false
+      },
+      {
+        "id": 3,
+        "answer": "Nem fizetünk ki senkit, megszüntetjük gyorsan a céget és a fennmaradó vagyonért a NAV perelheti a végelszámolót.",
+        "correct": false
+      },
+      {
+        "id": 4,
+        "answer": "Kifizetjük a tagokat 50 %-50 %-ban a 100 ezer forintból és reménykedünk, hogy a NAV nem veszi észre, hogy megszüntettük a gt-t. A pótbefizetés úgyis a jegyzett tőkét növelte, így annak külön nem kell a visszatérítéséről rendelkezni.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 32,
+    "question": "Mi a cégjegyzés?",
+    "answers": [
+      {
+        "id": 1,
+        "answer": "A társaság írásbeli képviselete.",
+        "correct": true
+      },
+      {
+        "id": 2,
+        "answer": "A vezető tisztségviselő megválasztásának elsőbbségét biztosító részvény jegyzésének neve.",
+        "correct": false
+      },
+      {
+        "id": 3,
+        "answer": "A cégnyilvántartás",
+        "correct": false
+      },
+      {
+        "id": 4,
+        "answer": "A cégbíróság cégeljárása.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 33,
+    "question": "Fertőző járvány tombol, kft-beli cégtársam nem akar velem személyesen találkozni. Elfogadhatjuk-e az éves beszámolót személyes részvétel helyett videókonferenciával?",
+    "answers": [
+      {
+        "id": 1,
+        "answer": "Ha a létesítő okirat engedi, akkor igen, a legfőbb szerv ülést elektronikus hírközlő eszközön keresztül is tarthat.",
+        "correct": true
+      },
+      {
+        "id": 2,
+        "answer": "Nincs erre jogszerűen mód.",
+        "correct": false
+      },
+      {
+        "id": 3,
+        "answer": "Akkor lenne rá mód, ha nyrt-ről beszélünk, más társasági formáknál nem",
+        "correct": false
+      },
+      {
+        "id": 4,
+        "answer": "Ha van ügydöntő felügyelőbizottság a társaságban, akkor lehetséges, egyébként nem",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 34,
+    "question": "Mi a hányadrészvény?",
+    "answers": [
+      {
+        "id": 1,
+        "answer": "A részvény névértékét az alaptőke mindenkori összegének hányadában határozzák meg és nem tüntetik fel a részvényen az alaptőke összegét.",
+        "correct": true
+      },
+      {
+        "id": 2,
+        "answer": "Ha egy részvénynek több tulajdonosa van",
+        "correct": false
+      },
+      {
+        "id": 3,
+        "answer": "Az elsőbbségi jogokat megtestesítő részvény.",
+        "correct": false
+      },
+      {
+        "id": 4,
+        "answer": "Vételi, eladási vagy mindkettő jogot biztosító részvény.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 35,
+    "question": "Egészítse ki a helyes válasszal a mondatot! A ………………………- az rt-nél foglalkoztatott munkavállalók számára ingyenesen, vagy pedig a részvény névértékénél alacsonyabb, kedvezményes áron bocsátható ki és csak alaptőkeemeléssel egyidejűleg lehet kibocsátani.",
+    "answers": [
+      {
+        "id": 1,
+        "answer": "dolgozói részvény",
+        "correct": true
+      },
+      {
+        "id": 2,
+        "answer": "részvényutalvány",
+        "correct": false
+      },
+      {
+        "id": 3,
+        "answer": "visszaváltható részvény",
+        "correct": false
+      },
+      {
+        "id": 4,
+        "answer": "kamatozó részvény",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 36,
+    "question": "Mi a részvényutalvány?",
+    "answers": [
+      {
+        "id": 1,
+        "answer": "Alapítás vagy tőkeemelés bejegyzése előtt a vagyoni hozzájárulást teljesítő személy kérésére a társaság olyan okiratot állít ki, amely tartalmazza a jogosult nevét, a teljesített vagyoni hozzájárulás összegét, és az ellenkező bizonyításáig igazolja az okiratban meghatározott személynek a rt-gal szemben fennálló jogait és kötelességeit, nem értékpapír",
+        "correct": true
+      },
+      {
+        "id": 2,
+        "answer": "Nyomdai előállítás esetén több, azonos sorozatba tartozó részvényt egy részvényokiratba foglalva állítanak elő, mely utóbb szétbontható kisebb címletű részvényekre.",
+        "correct": false
+      },
+      {
+        "id": 3,
+        "answer": "A részvénykönyv vezetője a részvénykönyvben szereplő, a tulajdonosi megfeleltetés időpontjában hatályos valamennyi adatot törli, és ezzel egyidejűleg a tulajdonosi megfeleltetés eredményének megfelelő adatokat a részvénykönyvbe bejegyzi.",
+        "correct": false
+      },
+      {
+        "id": 4,
+        "answer": "Alapítás vagy tőkeemelés bejegyzése után a vagyoni hozzájárulás teljes befizetéséig a részvényes által átvenni vállalt vagy már teljesített vagyoni hozzájárulás összegéről állítják ki. Ez alapján a részvényes részvényesi jogait az általa már teljesített vagyoni hozzájárulás mértékével arányosan gyakorolja, elsőbbségi jog csak teljes vagyoni hozzájárulás után illeti. A részvény előállításakor felszólításra be kell nyújtania ezt, a dematerializált verzióját pedig érvénytelenné nyilvánítják",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 37,
+    "question": "Mi az egységes irányítási rendszer?",
+    "answers": [
+      {
+        "id": 1,
+        "answer": "A felügyelőbizottság és az igazgatóság az nyrt. estében együtt működik, melynek neve: igazgatótanács. Az igazgatótanács minimálisan 5 főből áll, többségében független tagokkal",
+        "correct": true
+      },
+      {
+        "id": 2,
+        "answer": "A kibocsátó részvénytársaságban gyakorolható tagsági jogokat megtestesítő, névre szóló, névértékkel rendelkező, forgalomképes értékpapír",
+        "correct": false
+      },
+      {
+        "id": 3,
+        "answer": "Az rt. közgyűlése arról dönt, hogy a jegyzett tőkét megemeli.",
+        "correct": false
+      },
+      {
+        "id": 4,
+        "answer": "Az nyrt. igazgatósága az éves rendes közgyűlés elé terjeszti a rt. társaságirányítási gyakorlatát bemutató, az adott tőzsde szereplői számára előírt módon elkészített jelentést, melyet a közgyűlés fogad el.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 38,
+    "question": "Az alábbiak közül melyik társasági formánál kötelező auditbizottságot létrehozni?",
+    "answers": [
+      {
+        "id": 1,
+        "answer": "nyrt",
+        "correct": true
+      },
+      {
+        "id": 2,
+        "answer": "Csak egyéni vállalkozónak kell auditbizottságot létrehozni, ő pedig ugye nem társaság.",
+        "correct": false
+      },
+      {
+        "id": 3,
+        "answer": "zrt.",
+        "correct": false
+      },
+      {
+        "id": 4,
+        "answer": "kft.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 39,
+    "question": "A 10 millió forintos alaptőkéjű zrt-mből szeretnék kivonni tőkét, mert pénzre van szükségem. Kitalálom, hogy a tőkekivonással együtt a pénzbeli hozzájárulás helyett a most vásárolt autómat apportálnám. Egy gond van, nekem 6 millió forintra lenne szükségem, viszont a gépjármű egy 21 millió forintot érő Tesla. Van-e lehetőségem a fentiek szerinti művelettel a tőkekivonást és a tőkeemelést végrehajtani jogszerűen?",
+    "answers": [
+      {
+        "id": 1,
+        "answer": "Lehetséges, mert ha egyidejűleg határozok a minimális alaptőke-összegig történő felemelésről is a példa szerinti összegű apporttal, az jogszerű.",
+        "correct": true
+      },
+      {
+        "id": 2,
+        "answer": "Nincs, az alaptőkéből 6 millió forint kivonásával az alaptőke a minimum alá esne, akkor sem lehet ilyet, ha egyidejűleg az apportálással felemelem azt a minimum felé",
+        "correct": false
+      },
+      {
+        "id": 3,
+        "answer": "Csak akkor lehet, ha ehhez dolgozói részvények kibocsátásáról is határozok",
+        "correct": false
+      },
+      {
+        "id": 4,
+        "answer": "Nincs, hiszen tőkekivonásra nincs mód a zrt. esetében, nem létezik ilyen okból történő tőkeleszállítás",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 40,
+    "question": "Lehet-e saját részvénye az egyszemélyes rt-nek?",
+    "answers": [
+      {
+        "id": 1,
+        "answer": "Nem, semmilyen formában nem lehet saját részvénye az egyszemélyes rt-nek.",
+        "correct": true
+      },
+      {
+        "id": 2,
+        "answer": "A részvénytársaságban nincs saját részvény, csak a kft-ben létezik a saját részvény fogalom, ezért nem lehet.",
+        "correct": false
+      },
+      {
+        "id": 3,
+        "answer": "Csak az nyrt-nek.",
+        "correct": false
+      },
+      {
+        "id": 4,
+        "answer": "Igen",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 41,
+    "question": "Mikor jár „jól” a likvidációs hányadhoz fűződő elsőbbségi részvény tulajdonosa, azaz elsőbbségi joga milyen előnyt hordoz a számára?",
+    "answers": [
+      {
+        "id": 1,
+        "answer": "A társaság alapításakor, mert elsőbbséggel jegyezhet ezzel a részvénnyel kötvényeket",
+        "correct": true
+      },
+      {
+        "id": 2,
+        "answer": "A társaság megszűnéskor, mert a társasági tartozások után fennmaradó vagyonból elsőbbséggel kap részesedést.",
+        "correct": false
+      },
+      {
+        "id": 3,
+        "answer": "Osztalékfizetéskor, mert osztalékelsőbbséget biztosít a részvénye",
+        "correct": false
+      },
+      {
+        "id": 4,
+        "answer": "A vezető tisztségviselő megválasztásánál, mert ez a részvény ezt az elsőbbségi jogot biztosítja, ha a részvényes az alaptőke legalább 51 %-ával megegyező összegű ilyen likvidációs hányadhoz fűződő elsőbbségi részvénnyel bír",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 42,
+    "question": "Átalakult a cégem, a végleges vagyonmérlegben az átalakulási vagyonmérleg-tervezet szerint megállapított saját tőkéhez képest több mint húszezer forint pozitív különbözet merült fel. Mi lesz ennek a sorsa?",
+    "answers": [
+      {
+        "id": 1,
+        "answer": "A jegyzett tőkén felüli vagyonként kell figyelembe venni.",
+        "correct": true
+      },
+      {
+        "id": 2,
+        "answer": "Le kell a jehyzet tőkét szállítani vele.",
+        "correct": false
+      },
+      {
+        "id": 3,
+        "answer": "Jogutód nélkül meg kell szüntetni emiatt a társaságot.",
+        "correct": false
+      },
+      {
+        "id": 4,
+        "answer": "Az egész átalakulás emiatt érvénytelen, így mindent vissza kell csinálni és értesíteni a cégbíróságot.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 43,
+    "question": "Melyik NEM tőkeleszállításra okot adó körülmény?",
+    "answers": [
+      {
+        "id": 1,
+        "answer": "Új részvények kibocsátása",
+        "correct": true
+      },
+      {
+        "id": 2,
+        "answer": "Saját tőke más elemének növelése",
+        "correct": false
+      },
+      {
+        "id": 3,
+        "answer": "Veszteségrendezés",
+        "correct": false
+      },
+      {
+        "id": 4,
+        "answer": "Tőkekivonással",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 44,
+    "question": "Kötelező alaptőke leszállítás történik, a Cégközlönybeli erről szóló hirdetményi közzététel alapján megilleti-e a jog a hitelezőket biztosíték iránti igény bejelentésére?",
+    "answers": [
+      {
+        "id": 1,
+        "answer": "Nem.",
+        "correct": true
+      },
+      {
+        "id": 2,
+        "answer": "Igen, minden esetben.",
+        "correct": false
+      },
+      {
+        "id": 3,
+        "answer": "Csak nyrt.-nél.",
+        "correct": false
+      },
+      {
+        "id": 4,
+        "answer": "Igen, ha az alaptőke kevesebb mint ötmillió forint.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 45,
+    "question": "Milyen kötelezettsége van a részvényesnek a részvénytársasággal szemben?",
+    "answers": [
+      {
+        "id": 1,
+        "answer": "A részvény névértékének vagy kibocsátási értékének szolgáltatása.",
+        "correct": true
+      },
+      {
+        "id": 2,
+        "answer": "A részvények átruházása.",
+        "correct": false
+      },
+      {
+        "id": 3,
+        "answer": "Egyetemleges és korlátlan helytállási kötelezettség a társaság által vállalt kötelezettségekért.",
+        "correct": false
+      },
+      {
+        "id": 4,
+        "answer": "Személyes munkavégzés.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 46,
+    "question": "Melyik jogintézmény definíciója az alábbi: olyan vállalkozás, amelynek összes foglalkoztatotti létszáma 10 főnél kevesebb, és éves nettó árbevétele vagy mérlegfőösszege legfeljebb 2 millió eurónak megfelelő forintösszeg?",
+    "answers": [
+      {
+        "id": 1,
+        "answer": "mikrovállalkozás",
+        "correct": true
+      },
+      {
+        "id": 2,
+        "answer": "nagyvállalat",
+        "correct": false
+      },
+      {
+        "id": 3,
+        "answer": "kisvállalkozás",
+        "correct": false
+      },
+      {
+        "id": 4,
+        "answer": "középvállalkozás",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 47,
+    "question": "Milyen (nem büntetőjogi) szankcióra számíthat egy kft. vezető tisztségviselője, ha súlyos mulasztásokat követ el az ügyvezetői feladatai ellátása során, ami végül oda vezet, hogy a társaságot jogerősen kényszertörlési eljárásba fordítják?",
+    "answers": [
+      {
+        "id": 1,
+        "answer": "A legrosszabb esetben a vezető tisztségviselőt akár eltilthatják.",
+        "correct": true
+      },
+      {
+        "id": 2,
+        "answer": "Semmilyenre, felel majd a tag",
+        "correct": false
+      },
+      {
+        "id": 3,
+        "answer": "Csak az nyrt. auditbizottsági tagja ellen lehet pénzbírságot kiszabni, más gt-nél nincs szankció",
+        "correct": false
+      },
+      {
+        "id": 4,
+        "answer": "Ha a céget törlik, elveszíti a munkahelyét, ezen kívül más szankció nem állhat be vele szemben",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 48,
+    "question": "Egészítse ki a helyes válasszal a mondatot! A felszámolási eljárás egy az adós ……………………………. a jogi személy jogutód nélküli megszűnésére vezető eljárás",
+    "answers": [
+      {
+        "id": 1,
+        "answer": "fizetésképtelensége esetén",
+        "correct": true
+      },
+      {
+        "id": 2,
+        "answer": "csődegyezségi kérelmére induló",
+        "correct": false
+      },
+      {
+        "id": 3,
+        "answer": "cég törlését követő",
+        "correct": false
+      },
+      {
+        "id": 4,
+        "answer": "vagyonfelügyelő választásával kezdődő",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 49,
+    "question": "Szüneteltethető-e az egyéni vállalkozó tevékenysége?",
+    "answers": [
+      {
+        "id": 1,
+        "answer": "Igen, de legfeljebb három évig.",
+        "correct": true
+      },
+      {
+        "id": 2,
+        "answer": "Nem.",
+        "correct": false
+      },
+      {
+        "id": 3,
+        "answer": "Igen, ha helyettest bíz meg ezen időtartam alatt, aki helyette ellátja a munkát.",
+        "correct": false
+      },
+      {
+        "id": 4,
+        "answer": "Nem, ebben az esetben vissza kell adni a vállalkozói igazolványt és megszüntetni a teljes tevékenységet",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 50,
+    "question": "Legfeljebb hány tagja lehet az egyéni cégnek?",
+    "answers": [
+      {
+        "id": 1,
+        "answer": "Egy",
+        "correct": true
+      },
+      {
+        "id": 2,
+        "answer": "Egy sem, az egyéni cégnek nincs tagja",
+        "correct": false
+      },
+      {
+        "id": 3,
+        "answer": "Korlátlan számú",
+        "correct": false
+      },
+      {
+        "id": 4,
+        "answer": "Kettő",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 51,
+    "question": "Melyik jogintézmény sajátosságait ismeri fel az alábbiakból? E jogánál fogva a jogosult a más személy tulajdonában álló dolgot birtokában tarthatja, használhatja, hasznosíthatja és hasznait szedheti. E jog a dolog tulajdonosának változására tekintet nélkül fennmarad. Ezen jogot csak határozott időre, természetes személynek legfeljebb a haláláig, jogi személynek maximum 50 évre lehet alapítani.",
+    "answers": [
+      {
+        "id": 1,
+        "answer": "haszonélvezeti jog",
+        "correct": true
+      },
+      {
+        "id": 2,
+        "answer": "telki szolgalom",
+        "correct": false
+      },
+      {
+        "id": 3,
+        "answer": "túlépítés",
+        "correct": false
+      },
+      {
+        "id": 4,
+        "answer": "birtokvédelem",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 52,
+    "question": "Kezdő méhész vagyok, az első méhrajom rögtön a szomszéd garázsának az eresze alá költözik az éj leple alatt. Van-e jogom arra, hogy őket hazahozzam reggel?",
+    "answers": [
+      {
+        "id": 1,
+        "answer": "Igen, a szomszédjogok közül a szomszédos telek igénybevétele éppen erre szolgál, az állatokat így befoghatom.",
+        "correct": true
+      },
+      {
+        "id": 2,
+        "answer": "Igen, ha egyidejűleg hozzájárulok ahhoz, hogy a szomszéd telki szolgalmat alapítson az én telkemen.",
+        "correct": false
+      },
+      {
+        "id": 3,
+        "answer": "Csak akkor illeti meg a szomszédos telek igénybevételének joga, ha arról előzetesen szerződést kötöttem a szomszéddal és biztosítékot is adtam.",
+        "correct": false
+      },
+      {
+        "id": 4,
+        "answer": "Nincs, lettem volna óvatosabb.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 53,
+    "question": "Egészítse ki a helyes válasszal! A szerződés a felek akaratának kölcsönös és ……………………. kifejezésével jön létre.",
+    "answers": [
+      {
+        "id": 1,
+        "answer": "egybehangzó",
+        "correct": true
+      },
+      {
+        "id": 2,
+        "answer": "eltérő",
+        "correct": false
+      },
+      {
+        "id": 3,
+        "answer": "ellentmondó",
+        "correct": false
+      },
+      {
+        "id": 4,
+        "answer": "tiltakozó",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 54,
+    "question": "Az alábbiak közül melyik jogosultságot társítjuk a tulajdonjog részjogosítványainak körébe?",
+    "answers": [
+      {
+        "id": 1,
+        "answer": "rendelkezés joga",
+        "correct": true
+      },
+      {
+        "id": 2,
+        "answer": "végelszámolás",
+        "correct": false
+      },
+      {
+        "id": 3,
+        "answer": "szállítási szerződés",
+        "correct": false
+      },
+      {
+        "id": 4,
+        "answer": "zálogjog",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 55,
+    "question": "Mindenképpen talpig lila biciklit akarok venni, ajánlatot tesz egy eladó, de fehér rajta a pedál. Kérdés nélkül postázza nekem így és elvárná, hogy kifizessem. Mire hivatkozhatok?",
+    "answers": [
+      {
+        "id": 1,
+        "answer": "A szerződés köztünk létre sem jött.",
+        "correct": true
+      },
+      {
+        "id": 2,
+        "answer": "Semmire, a szerződés küztünk létrejött.",
+        "correct": false
+      },
+      {
+        "id": 3,
+        "answer": "Végelszámoltathatom a céget.",
+        "correct": false
+      },
+      {
+        "id": 4,
+        "answer": "Kényszertöröltethetem a céget.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 56,
+    "question": "Jelölje meg, hogy az alábbi jogintézmények a szerződés érvénytelenségének melyik kategóriájába tartoznak: felek téves feltevése, feltűnő értékaránytalanság ",
+    "answers": [
+      {
+        "id": 1,
+        "answer": "megtámadhatóság",
+        "correct": true
+      },
+      {
+        "id": 2,
+        "answer": "mind a kettőbe tartoznak ezek a jogintézmények",
+        "correct": false
+      },
+      {
+        "id": 3,
+        "answer": "nem létezik olyan, hogy szerződés érvénytelensége",
+        "correct": false
+      },
+      {
+        "id": 4,
+        "answer": "semmiség",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 57,
+    "question": "Jelzálog-szerződést kötök a bankkal. Általános szerz. felételt alkalmaz, elfogadom. Szerződés egyoldalú módosításra jogosult, ha kitör a járvány. Covid van, módosíthat-e?",
+    "answers": [
+      {
+        "id": 1,
+        "answer": "Igen, hisz szerződésben kötöttük.",
+        "correct": true
+      },
+      {
+        "id": 2,
+        "answer": "Csak akkor ha bíróság elrendeli",
+        "correct": false
+      },
+      {
+        "id": 3,
+        "answer": "Nincs lehetőség",
+        "correct": false
+      },
+      {
+        "id": 4,
+        "answer": "Csak ha a jelzálog-fedezetet megszünteti",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 58,
+    "question": "Könyvelő vagyok, megkérem egyik barátomat, hogy helyettesítsen egy bevallás benyújtásánál. Határidőn túl nyújtja be. Ki a hibás?",
+    "answers": [
+      {
+        "id": 1,
+        "answer": "Én felelek.",
+        "correct": true
+      },
+      {
+        "id": 2,
+        "answer": "Az ügyfél a barátomat perelheti.",
+        "correct": false
+      },
+      {
+        "id": 3,
+        "answer": "Az ügyfél felel",
+        "correct": false
+      },
+      {
+        "id": 4,
+        "answer": "Senki nem felel",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 59,
+    "question": "Elvittem a cipészhez a cipőmet, szerdára ígérte a javítást. Pénteken még mindig nincs kész, szerződést szegett. Mit követelhetek a Ptk. alapján?",
+    "answers": [
+      {
+        "id": 1,
+        "answer": "A szerződésszerű teljesítést",
+        "correct": true
+      },
+      {
+        "id": 2,
+        "answer": "Semmit",
+        "correct": false
+      },
+      {
+        "id": 3,
+        "answer": "Késedelemre tekintettel vegye meg a cipőmet",
+        "correct": false
+      },
+      {
+        "id": 4,
+        "answer": "Jogutód nélkül szüntesse meg a vállalkozást.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 60,
+    "question": "L Kft és N Zrt egymással adásvételi szerződést kötnek. N Zrt késedelembe esik a vételár megfizetésével. Mekkora összegú késedelmi kamatot kell fizetnie?",
+    "answers": [
+      {
+        "id": 1,
+        "answer": "A késedelemmel érintett naptári félév első napján érvényes jegybanki alapkamat 8 százalékponttal növelt értékének megfelelően.",
+        "correct": true
+      },
+      {
+        "id": 2,
+        "answer": "A késedelemmel érintett naptári félév első napján érvényes jegybanki alapkamattal megegyező mértékűt",
+        "correct": false
+      },
+      {
+        "id": 3,
+        "answer": "A késedelemmel érintett naptári félév első napján érvényes jegybanki alapkamat egyharmadát",
+        "correct": false
+      },
+      {
+        "id": 4,
+        "answer": "Vállalkozások között késedelmi kamat kikötése lehetetlen és tilos",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 61,
+    "question": "Melyik nem kellékszavatossági igény?",
+    "answers": [
+      {
+        "id": 1,
+        "answer": "perindítás",
+        "correct": true
+      },
+      {
+        "id": 2,
+        "answer": "kijavítás",
+        "correct": false
+      },
+      {
+        "id": 3,
+        "answer": "kicserélés",
+        "correct": false
+      },
+      {
+        "id": 4,
+        "answer": "árleszállítás",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 62,
+    "question": "Melyik jogintézmény definíciója az alábbi: a kötelezett írásban pénz fizetésére kötelezi magát arra az esetre, ha olyan okokból, amiért felelős, megszegi a szerződést.",
+    "answers": [
+      {
+        "id": 1,
+        "answer": "kötbér",
+        "correct": true
+      },
+      {
+        "id": 2,
+        "answer": "foglaló",
+        "correct": false
+      },
+      {
+        "id": 3,
+        "answer": "jótállás",
+        "correct": false
+      },
+      {
+        "id": 4,
+        "answer": "jogvesztés",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 63,
+    "question": "Kit illet meg az alábbi jog? E jog alapján a követelésének biztosítására szolgáló vagyontárgyból más követeléseket megelőző sorrendben kielégítést kereshet, ha a biztosított követelés kötelezetje nem teljesít.",
+    "answers": [
+      {
+        "id": 1,
+        "answer": "zálogjogosult",
+        "correct": true
+      },
+      {
+        "id": 2,
+        "answer": "zálogkötelezett",
+        "correct": false
+      },
+      {
+        "id": 3,
+        "answer": "megrendelő",
+        "correct": false
+      },
+      {
+        "id": 4,
+        "answer": "eladó",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 64,
+    "question": "Melyik szerződésfajta? Az egyik fél tevékenységgel elérhető eredmény (azaz mű) megvalósítására, a másik fél pedig annak átvételére és a díj megfizetésére köteles.",
+    "answers": [
+      {
+        "id": 1,
+        "answer": "vállalkozási szerződés",
+        "correct": true
+      },
+      {
+        "id": 2,
+        "answer": "megbízási szerződés",
+        "correct": false
+      },
+      {
+        "id": 3,
+        "answer": "adásvétel",
+        "correct": false
+      },
+      {
+        "id": 4,
+        "answer": "haszonélvezeti jogot alapító szerződés",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 65,
+    "question": "A jogi személy ............., azaz olyan jogok és kötelezettségek illetik, terhelik, melyek jellegüknél fogva nem csupán az emberhez fűződhetnek.",
+    "answers": [
+      {
+        "id": 1,
+        "answer": "jogképes",
+        "correct": true
+      },
+      {
+        "id": 2,
+        "answer": "cselekvőképtelen",
+        "correct": false
+      },
+      {
+        "id": 3,
+        "answer": "objektív felelősséggel bír",
+        "correct": false
+      },
+      {
+        "id": 4,
+        "answer": "testület",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 66,
+    "question": "Nem pénzbeni vagyoni hozzájárulás, mely lehet dolog tulajdonjoga vagy vagyoni értékű jog",
+    "answers": [
+      {
+        "id": 1,
+        "answer": "apport",
+        "correct": true
+      },
+      {
+        "id": 2,
+        "answer": "auditbizottság",
+        "correct": false
+      },
+      {
+        "id": 3,
+        "answer": "likvidációs hányadhoz fűződő elsőbbségi részvény",
+        "correct": false
+      },
+      {
+        "id": 4,
+        "answer": "átalakulási terv",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 67,
+    "question": "Alapítok egy társaságot, előtársaságként működik, de sajnos nem jegyzik be. Az előtársasági létének megszűnése után végezhet még jogszerűen üzletszerű gazdasági tevéket?",
+    "answers": [
+      {
+        "id": 1,
+        "answer": "Nem, mivel a jogerős elutasítás miatt azonnal be kell fejeznie a működést.",
+        "correct": true
+      },
+      {
+        "id": 2,
+        "answer": "Igen, mivel még 45 napig működhet a cég jogerős elutasító végzés kézhezvétele után.",
+        "correct": false
+      },
+      {
+        "id": 3,
+        "answer": "Nem, mivel előtársaságként nem is lehetett volna üzletszerű tevéket végezni",
+        "correct": false
+      },
+      {
+        "id": 4,
+        "answer": "Ha biztosítékot adok, akkor igen.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 68,
+    "question": "Az egyéni vállalkozó a tevékből eredő kötelezettségeiért.................felel.",
+    "answers": [
+      {
+        "id": 1,
+        "answer": "teljes vagyonával",
+        "correct": true
+      },
+      {
+        "id": 2,
+        "answer": "1 millió forintig",
+        "correct": false
+      },
+      {
+        "id": 3,
+        "answer": "egy évig",
+        "correct": false
+      },
+      {
+        "id": 4,
+        "answer": "vagyonával nem",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 69,
+    "question": "Melyik lehet szerződés érvénytelenségének megtámadási oka az alábbiak közül?",
+    "answers": [
+      {
+        "id": 1,
+        "answer": "az érdekellentét képviselő, képviselt között",
+        "correct": true
+      },
+      {
+        "id": 2,
+        "answer": "a színlelt szerződés",
+        "correct": false
+      },
+      {
+        "id": 3,
+        "answer": "az alaki hiba",
+        "correct": false
+      },
+      {
+        "id": 4,
+        "answer": "fiduciárius hitelbiztosíték kikötése",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 70,
+    "question": "Kölcsönt veszek fel a banktól évi 3%-os kamatra. Késedelembe esek, mekkora mértékű lesz a késedelmi kamat mértéke?",
+    "answers": [
+      {
+        "id": 1,
+        "answer": "Az ügyleti kamat és felette a jegybanki alapkamat egyharmadával megegyező kés. kamat, de legalább a késedelemmel érintett naptári félév első napján érvényes jegybanki alapkamat fizetendő.",
+        "correct": true
+      },
+      {
+        "id": 2,
+        "answer": "Az ügylet késedelmi kamattól mentes, mert a szerződésben nem rögzítették.",
+        "correct": false
+      },
+      {
+        "id": 3,
+        "answer": "A jegybani alapkamat egyharmadával megegyező mértékű.",
+        "correct": false
+      },
+      {
+        "id": 4,
+        "answer": "A jegybanki alapkamattal egyező mértékű.",
+        "correct": false
+      }
+    ]
   }
 ];
 
