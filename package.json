@@ -1,8 +1,8 @@
 {
-  "name": "konyvelo-quiz",
+  "name": "konyvelo-kviz",
   "version": "0.1.2",
   "private": false,
-  "homepage": "https://adankot.github.io/konyvelo-quiz/",
+  "homepage": "https://adankot.github.io/konyvelo-kviz/",
   "dependencies": {
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
