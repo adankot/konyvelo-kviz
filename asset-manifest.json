@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/konyvelo-quiz/static/css/main.263fa9e9.css",
+    "main.js": "/konyvelo-quiz/static/js/main.d4f428dc.js",
+    "static/js/787.fc387b03.chunk.js": "/konyvelo-quiz/static/js/787.fc387b03.chunk.js",
+    "service-worker.js": "/konyvelo-quiz/service-worker.js",
+    "static/media/Stencilia-A.ttf": "/konyvelo-quiz/static/media/Stencilia-A.bb89079a72a7ab5e32bb.ttf",
+    "index.html": "/konyvelo-quiz/index.html",
+    "main.263fa9e9.css.map": "/konyvelo-quiz/static/css/main.263fa9e9.css.map",
+    "main.d4f428dc.js.map": "/konyvelo-quiz/static/js/main.d4f428dc.js.map",
+    "787.fc387b03.chunk.js.map": "/konyvelo-quiz/static/js/787.fc387b03.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.263fa9e9.css",
+    "static/js/main.d4f428dc.js"
+  ]
+}

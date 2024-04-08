@@ -1,0 +1,20 @@
+{
+  "name": "Quiz",
+  "short_name": "Quiz",
+  "start_url": "/aws-quiz/",
+  "icons": [
+    {
+      "src": "/icon192x192.png?v=NmbWaqEWWA",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon512x512.png?v=NmbWaqEWWA",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#ffffff",
+  "background_color": "#ffffff",
+  "display": "standalone"
+}
