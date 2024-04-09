@@ -62,27 +62,17 @@ function Quiz({ game, onShowRanking, startGame, nextGame }: any) {
 
   useEffect(() => {
     if (timeSpent === 0) {
-      setFaults((oldFaults: number) => {
-        if (3 === oldFaults + 1) {
-          setFailed(true);
-        }
-        return oldFaults + 1;
-      });
+      setFaults((oldFaults: number) => oldFaults + 1);
       setShowRightAnswer(true);
       setShowNextButton(true);
     }
   }, [timeSpent]);
 
   function selectAnswer(answer: Answer) {
-    if (failed) return;
+    if (showRightAnswer) return;
     setPicked(answer.answer);
     if (!showRightAnswer && answer.correct) setPoints((oldPoints: number) => game.timeLimit ? oldPoints + 1 + timeSpent : oldPoints + 1);
-    if (!showRightAnswer && !answer.correct) setFaults((oldFaults: number) => {
-      if (3 === oldFaults + 1) {
-        setFailed(true);
-      }
-      return oldFaults + 1;
-    });
+    if (!showRightAnswer && !answer.correct) setFaults((oldFaults: number) => oldFaults + 1);
     setShowRightAnswer(true);
     setShowNextButton(true);
   }
@@ -107,17 +97,17 @@ function Quiz({ game, onShowRanking, startGame, nextGame }: any) {
         {!finished && <>
           <div className={'GameInfoBox top'}>
             <div className={'GameInfoLeft'}>
-              Questions: {`${currentQuestion + 1}/${game.steps.length}`}</div>
-            <div className={'GameInfoRight'}>Faults: {faults}</div>
-            <div className={'GameInfoLeft'}>Time left: {timeSpent}</div>
-            <div className={'GameInfoRight'}>Points: {points}</div>
+              Kérdések: {`${currentQuestion + 1}/${game.steps.length}`}</div>
+            <div className={'GameInfoRight'}>Hiba: {faults}</div>
+            <div className={'GameInfoLeft'}>Hátralévő idő: {timeSpent}</div>
+            <div className={'GameInfoRight'}>Pontok: {points}</div>
           </div>
-          <div className={'GameInfoBox bottom'}>
-            <div className={'GameInfoLeft'}>Category: {question.category || 'Common'}</div>
-            <div className={'GameInfoRight'}>ID: {question.id}</div>
-            <div className={'GameInfoLeft'}>Difficulty: {question.difficulty}</div>
-            <div className={'GameInfoRight'}>Version: {`${process.env.REACT_APP_VERSION}`}</div>
-          </div>
+          {/*<div className={'GameInfoBox bottom'}>*/}
+          {/*  <div className={'GameInfoLeft'}>Category: {question.category || 'Common'}</div>*/}
+          {/*  <div className={'GameInfoRight'}>ID: {question.id}</div>*/}
+          {/*  <div className={'GameInfoLeft'}>Difficulty: {question.difficulty}</div>*/}
+          {/*  <div className={'GameInfoRight'}>Version: {`${process.env.REACT_APP_VERSION}`}</div>*/}
+          {/*</div>*/}
           <div className='question'>
             {question.question}
           </div>
@@ -147,12 +137,12 @@ function Quiz({ game, onShowRanking, startGame, nextGame }: any) {
             </button>
             {finished && <div className='GameFinishContainer'>
               <div className='GameFinishTitle'>Game finished</div>
-                <div className='GameFinishData'>
-                  points: {points}
-                </div>
-                <div className='GameFinishData'>
-                  faults: {faults}
-                </div>
+              <div className='GameFinishData'>
+                points: {points}
+              </div>
+              <div className='GameFinishData'>
+                faults: {faults}
+              </div>
               <button className='btn'
                       onClick={startGame}>Finish
               </button>

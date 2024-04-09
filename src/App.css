@@ -127,7 +127,7 @@
     font-size: 3rem;
     color: white;
     padding-bottom: 50px;
-    font-family: Stencilia;
+    /*font-family: Stencilia;*/
 }
 
 .title-logo {
@@ -138,7 +138,7 @@
     color: white;
     height: 250px;
     padding-bottom: 25px;
-    font-family: Stencilia;
+    /*font-family: Stencilia;*/
 }
 
 .title-art {
@@ -149,7 +149,7 @@
     color: white;
     height: 550px;
     padding-bottom: 25px;
-    font-family: Stencilia;
+    /*font-family: Stencilia;*/
 }
 
 .title-logo img {

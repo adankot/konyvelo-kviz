@@ -39,19 +39,13 @@ function shuffle(array: Array<any>) {
 }
 
 function App() {
-  const [selectedGame, setSelectedGame] = useState<any>({
-    type: 'quiz-4',
-    description: 'A quiz game to help you prepare for the AWS Certified Developer Associate exam. It always contains 10 questions, and you have 45 minutes to answer them. You get points for the remaining time. Good luck!',
-    timeLimit: 45,
-    steps: steps
-  });
+  const [selectedGame, setSelectedGame] = useState<any>({});
   const [running, setRunning] = useState(false);
 
   function startGame() {
     setSelectedGame({
-      type: 'quiz-4',
-      description: 'Ez egy kvíz ami segít felkészülni a könyvelői vizsgára. Mindig 10 kérdés van, és 45 másodperced van válaszolni. A megmaradt időért pontokat kapsz. Sok sikert!',
-      timeLimit: 45,
+      description: 'Ez egy kvíz ami segít felkészülni a könyvelői vizsgára. Mindig 10 kérdés van, és 60 másodperced van válaszolni. A megmaradt időért pontokat kapsz. Sok sikert!',
+      timeLimit: 60,
       steps: pickRandomObjects(steps, 10).map(step => ({
         ...step,
         answers: shuffle(step.answers)
